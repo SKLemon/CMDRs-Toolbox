@@ -253,18 +253,41 @@ table.tableizer-table {
 					<th></th>
 				</tr>
 			</Table>
-			<div style="padding-top:10px;">
-				<div style="width: 50%;float: Left;"><h3 id="RouteLength">Route Length: 0.00 Ly</h3></div>
-				<div style="width: 50%;float: Right;" align="right"><input id="OptimizeRouteButton" type="button" value="Optimize Route" onclick="OptimizeRouteClick()"></div>
-			</div>
-			<div style="padding-top:10px;">
-				<div style="width: 100%;float: Left;"><h3 id="WarningMessage"></h3></div>
-			</div>
-		</div>
-	</div>
+                        <div style="padding-top:10px;">
+                                <div style="width: 50%;float: Left;"><h3 id="RouteLength">Route Length: 0.00 Ly</h3></div>
+                                <div style="width: 50%;float: Right;" align="right"><input id="OptimizeRouteButton" type="button" value="Optimize Route" onclick="OptimizeRouteClick()"></div>
+                        </div>
+                        <div style="padding-top:10px;" id="SpanshShipSettings">
+                                <div style="width: 32%;float: left;padding-right:10px;">
+                                        <label for="JumpRangeInput"><strong>Jump Range (Ly)</strong></label>
+                                        <input type="number" id="JumpRangeInput" placeholder="e.g. 55" min="0" step="0.1">
+                                </div>
+                                <div style="width: 32%;float: left;padding-right:10px;">
+                                        <label for="FuelCapacityInput"><strong>Fuel Tank Size (T)</strong></label>
+                                        <input type="number" id="FuelCapacityInput" placeholder="e.g. 32" min="0" step="0.1">
+                                </div>
+                                <div style="width: 32%;float: left;">
+                                        <label for="CargoCapacityInput"><strong>Cargo (T)</strong></label>
+                                        <input type="number" id="CargoCapacityInput" placeholder="e.g. 0" min="0" step="0.1">
+                                </div>
+                                <div style="clear: both;"></div>
+                        </div>
+                        <div style="padding-top:10px;">
+                                <div style="width: 100%;float: Left;"><h3 id="WarningMessage"></h3></div>
+                        </div>
+                        <div style="padding-top:10px;">
+                                <div style="width: 100%;float: Left;">
+                                        <p style="font-size: 14px; color: #FF9300; font-weight: bold;">
+                                                Spansh route planning requests are sent directly from your browser. Some environments require
+                                                enabling CORS or using a proxy/API key if spansh.co.uk blocks unauthenticated calls.
+                                        </p>
+                                </div>
+                        </div>
+                </div>
+        </div>
 </div>
 <script>
-	var SystemCoords = {};
+        var SystemCoords = {};
 	var input = document.getElementById("SystemNameInput");
 	var PermutationArray = [];
 
@@ -480,10 +503,15 @@ function CommenLocationsSelectClick(InputElement) {
 	AddSystemClick();
 }
 function OptimizeRouteClick() {
-	var SelectSystemTable, TableRows, WarningMessage;
-	var StartRowId, EndRowId; 
-	var i, j, StartSystemId, EndSystemId, NSystems, PermutationSeedArray, SelectSystemTableClone, BestRoute, BestRouteLength, CloneRow, CurrentRoute, CurrentRouteLength;
-	var SystemsAdded, Retries;
+        optimizeRouteLocally();
+        triggerSpanshPlanning();
+}
+
+function optimizeRouteLocally() {
+        var SelectSystemTable, TableRows, WarningMessage;
+        var StartRowId, EndRowId;
+        var i, j, StartSystemId, EndSystemId, NSystems, PermutationSeedArray, SelectSystemTableClone, BestRoute, BestRouteLength, CloneRow, CurrentRoute, CurrentRouteLength;
+        var SystemsAdded, Retries;
 
 	//Set Variables
 	SelectSystemTable = document.getElementById('SelectSystemTable');
@@ -645,8 +673,336 @@ function OptimizeRouteClick() {
 	RouteLength = GetRouteLength();
     p.innerHTML = 'Route Length: ' + RouteLength.toFixed(2) + ' Ly';
 
-	TableRows[2].cells[3].innerHTML = '0.00 Ly';
+        TableRows[2].cells[3].innerHTML = '0.00 Ly';
 
+}
+
+function triggerSpanshPlanning(){
+        var orderedSystems = getOrderedSystemList();
+        if(orderedSystems.length < 2){
+                return;
+        }
+
+        var WarningMessage = document.getElementById('WarningMessage');
+        WarningMessage.innerHTML = 'Contacting Spansh for detailed routing metrics...';
+
+        requestSpanshRoute(orderedSystems).then(function(spanshData){
+                if(!spanshData){
+                        throw new Error('No data returned by Spansh');
+                }
+                applySpanshMetrics(spanshData, orderedSystems);
+        }).catch(function(error){
+                var RouteLengthElement = document.getElementById('RouteLength');
+                var RouteLength = GetRouteLength();
+                RouteLengthElement.innerHTML = 'Route Length: ' + RouteLength.toFixed(2) + ' Ly (Spansh unavailable)';
+                var guidance = error && error.message ? error.message : 'Unknown error';
+                if(guidance === 'Failed to fetch'){
+                        guidance += '. Browser-to-Spansh requests may require a CORS proxy.';
+                }
+                WarningMessage.innerHTML = 'WARNING: Spansh route planner unavailable - ' + guidance + '. Using internal estimation.';
+        });
+}
+
+function getOrderedSystemList(){
+        var SelectSystemTable = document.getElementById('SelectSystemTable');
+        var TableRows = SelectSystemTable.rows;
+        var SystemList = [];
+
+        for(var i = 2; i < TableRows.length; i++){
+                var SystemName = TableRows[i].cells[0].innerHTML;
+                if(SystemName && SystemName.trim().length > 0){
+                        SystemList.push(SystemName.trim());
+                }
+        }
+
+        return SystemList;
+}
+
+function getShipParameters(){
+        var JumpRange = parseFloat(document.getElementById('JumpRangeInput').value);
+        var FuelCapacity = parseFloat(document.getElementById('FuelCapacityInput').value);
+        var CargoCapacity = parseFloat(document.getElementById('CargoCapacityInput').value);
+
+        return {
+                jump_range: isNaN(JumpRange) ? null : JumpRange,
+                fuel_capacity: isNaN(FuelCapacity) ? null : FuelCapacity,
+                cargo: isNaN(CargoCapacity) ? null : CargoCapacity
+        };
+}
+
+function buildSpanshPayload(orderedSystems){
+        var shipParameters = getShipParameters();
+        var startSystem = orderedSystems[0];
+        var destinationSystem = orderedSystems[orderedSystems.length - 1];
+        var intermediateSystems = orderedSystems.slice(1, orderedSystems.length - 1);
+
+        var shipConfig = {};
+        var settingsConfig = {};
+
+        if(shipParameters.jump_range !== null){
+                shipConfig.jump_range = shipParameters.jump_range;
+                settingsConfig.range = shipParameters.jump_range;
+        }
+        if(shipParameters.fuel_capacity !== null){
+                shipConfig.fuel_capacity = shipParameters.fuel_capacity;
+                settingsConfig.tank_size = shipParameters.fuel_capacity;
+        }
+        if(shipParameters.cargo !== null){
+                shipConfig.cargo = shipParameters.cargo;
+                settingsConfig.cargo = shipParameters.cargo;
+        }
+
+        var payload = {
+                start: startSystem,
+                destination: destinationSystem,
+                waypoints: intermediateSystems,
+                systems: orderedSystems,
+                ship: shipConfig,
+                settings: settingsConfig
+        };
+
+        if(Object.keys(shipConfig).length === 0){
+                delete payload.ship;
+        }
+        if(Object.keys(settingsConfig).length === 0){
+                delete payload.settings;
+        }
+
+        return payload;
+}
+
+function spanshFetch(url, options){
+        if(window.fetch){
+                return fetch(url, options);
+        }
+
+        return new Promise(function(resolve, reject){
+                var xhr = new XMLHttpRequest();
+                var method = options && options.method ? options.method : 'GET';
+                xhr.open(method, url, true);
+
+                if(options && options.headers){
+                        for(var header in options.headers){
+                                if(Object.prototype.hasOwnProperty.call(options.headers, header)){
+                                        xhr.setRequestHeader(header, options.headers[header]);
+                                }
+                        }
+                }
+
+                xhr.onreadystatechange = function(){
+                        if(xhr.readyState === 4){
+                                var responseText = xhr.responseText;
+                                var response = {
+                                        ok: xhr.status >= 200 && xhr.status < 300,
+                                        status: xhr.status,
+                                        json: function(){
+                                                if(responseText && responseText.length > 0){
+                                                        return Promise.resolve(JSON.parse(responseText));
+                                                }
+                                                return Promise.resolve({});
+                                        }
+                                };
+
+                                resolve(response);
+                        }
+                };
+
+                xhr.onerror = function(){
+                        reject(new Error('Network error contacting Spansh'));
+                };
+
+                if(options && options.body){
+                        xhr.send(options.body);
+                }else{
+                        xhr.send();
+                }
+        });
+}
+
+function requestSpanshRoute(orderedSystems){
+        var payload = buildSpanshPayload(orderedSystems);
+        var spanshUrl = 'https://spansh.co.uk/api/route/plot';
+
+        return spanshFetch(spanshUrl, {
+                method: 'POST',
+                headers: {
+                        'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
+        }).then(function(response){
+                if(response.status === 429){
+                        throw new Error('Spansh rate limit reached. Please wait before trying again or use an authenticated proxy.');
+                }
+                if(!response.ok){
+                        throw new Error('Unexpected response (' + response.status + ')');
+                }
+                return response.json();
+        }).then(function(data){
+                if(data && data.job){
+                        return pollSpanshJob(data.job, 15, 2000);
+                }
+                return data;
+        });
+}
+
+function pollSpanshJob(jobId, retries, delay){
+        var url = 'https://spansh.co.uk/api/results/' + jobId;
+        return new Promise(function(resolve, reject){
+                var attempt = function(remaining){
+                        spanshFetch(url).then(function(response){
+                                if(!response.ok){
+                                        throw new Error('Unexpected response (' + response.status + ') while polling Spansh');
+                                }
+                                return response.json();
+                        }).then(function(data){
+                                if(data && data.status === 'finished'){
+                                        resolve(data.result || data);
+                                }else if(data && data.status === 'error'){
+                                        reject(new Error(data.message || 'Spansh reported an error'));
+                                }else if(remaining > 0){
+                                        setTimeout(function(){
+                                                attempt(remaining - 1);
+                                        }, delay);
+                                }else{
+                                        reject(new Error('Spansh request timed out'));
+                                }
+                        }).catch(function(error){
+                                reject(error);
+                        });
+                };
+                attempt(retries);
+        });
+}
+
+function applySpanshMetrics(spanshData, orderedSystems){
+        var routeInfo = spanshData;
+        if(spanshData.result){
+                routeInfo = spanshData.result;
+        }
+
+        var summary = routeInfo.stats || routeInfo.summary || {};
+        var legs = [];
+
+        if(Array.isArray(routeInfo.legs)){
+                legs = routeInfo.legs;
+        }else if(Array.isArray(routeInfo.route)){
+                legs = routeInfo.route;
+        }else if(Array.isArray(routeInfo.jumps)){
+                legs = routeInfo.jumps;
+        }
+
+        var totalDistance = null;
+        if(summary.distance !== undefined){
+                totalDistance = summary.distance;
+        }else if(summary.total_distance !== undefined){
+                totalDistance = summary.total_distance;
+        }
+        if(totalDistance === null && legs.length > 0){
+                totalDistance = legs.reduce(function(acc, leg){
+                        if(typeof leg.distance === 'number'){
+                                return acc + leg.distance;
+                        }
+                        if(typeof leg.length === 'number'){
+                                return acc + leg.length;
+                        }
+                        return acc;
+                }, 0);
+        }
+
+        var totalJumps = null;
+        if(summary.jumps !== undefined){
+                totalJumps = summary.jumps;
+        }else if(summary.total_jumps !== undefined){
+                totalJumps = summary.total_jumps;
+        }
+        if(totalJumps === null && Array.isArray(routeInfo.jumps)){
+                totalJumps = routeInfo.jumps.length;
+        }
+
+        var refuelStops = null;
+        if(summary.refuels !== undefined){
+                refuelStops = summary.refuels;
+        }else if(summary.refuel_stops !== undefined){
+                refuelStops = summary.refuel_stops;
+        }else if(summary.refuel !== undefined){
+                refuelStops = summary.refuel;
+        }else{
+                refuelStops = 0;
+        }
+
+        var travelTimeSeconds = summary.time || summary.travel_time || summary.estimated_time || null;
+
+        var RouteLengthElement = document.getElementById('RouteLength');
+        var WarningMessage = document.getElementById('WarningMessage');
+
+        var baseDistance = totalDistance !== null ? totalDistance : GetRouteLength();
+        var routeSummaryText = 'Route Length: ' + baseDistance.toFixed(2) + ' Ly';
+        if(totalJumps !== null){
+                routeSummaryText += ' | ' + totalJumps + ' jumps';
+        }
+        if(refuelStops !== null && refuelStops !== undefined){
+                routeSummaryText += ' | ' + refuelStops + ' refuel stops';
+        }
+        if(travelTimeSeconds !== null){
+                routeSummaryText += ' | ' + formatTravelTime(travelTimeSeconds);
+        }
+
+        RouteLengthElement.innerHTML = routeSummaryText;
+        WarningMessage.innerHTML = 'Spansh route metrics applied successfully.';
+
+        if(legs.length === orderedSystems.length - 1){
+                updateLegCells(legs);
+        }
+}
+
+function formatTravelTime(seconds){
+        var totalSeconds = Math.round(seconds);
+        var hours = Math.floor(totalSeconds / 3600);
+        var minutes = Math.floor((totalSeconds % 3600) / 60);
+        var secs = totalSeconds % 60;
+
+        var parts = [];
+        if(hours > 0){
+                parts.push(hours + 'h');
+        }
+        if(minutes > 0 || hours > 0){
+                parts.push(minutes + 'm');
+        }
+        parts.push(secs + 's');
+
+        return parts.join(' ');
+}
+
+function updateLegCells(legs){
+        var SelectSystemTable = document.getElementById('SelectSystemTable');
+        var TableRows = SelectSystemTable.rows;
+
+        for(var i = 0; i < legs.length; i++){
+                var rowIndex = i + 3;
+                if(rowIndex >= TableRows.length){
+                        break;
+                }
+                var DistanceCell = TableRows[rowIndex].cells[3];
+                var leg = legs[i];
+                var distanceValue = leg.distance !== undefined ? leg.distance : leg.length;
+                var distance = typeof distanceValue === 'number' ? distanceValue : parseFloat(distanceValue);
+                var jumps = leg.jumps || leg.jump_count || null;
+                var refuels = leg.refuels || leg.refuel_stops || 0;
+                var timeValue = leg.time || leg.travel_time || null;
+
+                var text = !isNaN(distance) ? distance.toFixed(2) + ' Ly' : '0.00 Ly';
+                if(jumps !== null){
+                        text += ' | ' + jumps + ' jumps';
+                }
+                if(refuels){
+                        text += ' | ' + refuels + ' refuel';
+                }
+                if(timeValue !== null){
+                        text += ' | ' + formatTravelTime(timeValue);
+                }
+
+                DistanceCell.innerHTML = text;
+        }
 }
 function swap(array, index1, index2) {
 	var temp = array[index1];
