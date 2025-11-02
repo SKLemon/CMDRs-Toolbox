@@ -1,0 +1,68 @@
+System Name,Body Name,Distance To Arrival,Landmark Subtype,Value_x,Value_y,Route Order
+Col 285 Sector BS-I c10-11,Col 285 Sector BS-I c10-11 ABCD 2 a,372.956437,"Cactoida Vermis, Tussock Virgam, Osseus Discus, Clypeus Lacrimam, Frutexa Sponsae",73491045,73491045,1
+HIP 82068,HIP 82068 5 c,787.069427,"Cactoida Vermis, Osseus Discus, Clypeus Lacrimam, Frutexa Sponsae",56713830,56713830,2
+HIP 83863,HIP 83863 AB 1 e,912.978397,"Cactoida Vermis, Tussock Virgam, Clypeus Lacrimam, Frutexa Sponsae",56713830,56713830,3
+HIP 84676,HIP 84676 5 b,706.384364,"Tussock Virgam, Osseus Discus, Clypeus Lacrimam, Frutexa Sponsae",56713830,56713830,4
+HIP 86940,HIP 86940 2 a,749.80862,"Cactoida Vermis, Tussock Virgam, Osseus Discus, Clypeus Lacrimam, Frutexa Sponsae",73491045,120892745,5
+Acurus,Acurus A 3,40.621293,"Osseus Discus, Clypeus Margaritus, Tussock Virgam",50331645,50331645,6
+Col 285 Sector JY-H c10-27,Col 285 Sector JY-H c10-27 B 5 a,2001.345279,"Cactoida Vermis, Tussock Virgam, Clypeus Lacrimam, Frutexa Sponsae",56713830,56713830,7
+Col 285 Sector GK-K b23-8,Col 285 Sector GK-K b23-8 C 1,1137.016822,"Osseus Discus, Clypeus Margaritus, Cactoida Vermis, Tussock Virgam, Stratum Tectonicas",83886075,83886075,8
+Col 285 Sector ID-G a54-2,Col 285 Sector ID-G a54-2 A 2,17.693304,"Stratum Tectonicas, Cactoida Vermis, Tussock Virgam",50331645,50331645,9
+Kwatee,Kwatee C 6,490.722866,"Stratum Tectonicas, Clypeus Margaritus, Cactoida Vermis",50331645,50331645,10
+Bridge,Bridge 1,29.101117,"Tussock Virgam, Stratum Tectonicas, Cactoida Vermis",50331645,50331645,11
+Harma,Harma A 7 f,2103.615804,"Osseus Pellebantus, Clypeus Lacrimam, Tussock Triticum, Frutexa Acus",52458600,52458600,12
+Daruwutja,Daruwutja B 4,758.965434,"Cactoida Vermis, Clypeus Margaritus",33554430,83886075,13
+Daruwutja,Daruwutja B 5,739.678246,"Tussock Virgam, Stratum Tectonicas, Clypeus Margaritus",50331645,83886075,13
+Lyncis Sector CL-Y c14,Lyncis Sector CL-Y c14 ABC 1 c,754.492011,"Aleoida Gravis, Stratum Cucumisis, Recepta Deltahedronix",50331645,74977645,14
+Arietis Sector YU-X b1-4,Arietis Sector YU-X b1-4 B 6,1159.655158,"Aleoida Gravis, Clypeus Margaritus, Stratum Tectonicas, Tussock Triticum",62654645,62654645,15
+Hyades Sector YU-Y d76,Hyades Sector YU-Y d76 1 b,779.727662,"Cactoida Vermis, Tussock Virgam, Osseus Discus, Clypeus Lacrimam, Frutexa Sponsae",73491045,146982090,16
+Hyades Sector YU-Y d76,Hyades Sector YU-Y d76 1 c,779.949256,"Tussock Virgam, Cactoida Vermis, Osseus Discus, Clypeus Lacrimam, Frutexa Sponsae",73491045,146982090,16
+Hyades Sector AL-X c1-24,Hyades Sector AL-X c1-24 A 3,507.676422,"Aleoida Gravis, Stratum Tectonicas, Clypeus Margaritus",50331645,67108860,17
+HIP 22633,HIP 22633 3 a,1170.934624,"Tussock Virgam, Osseus Discus, Clypeus Lacrimam, Frutexa Sponsae",56713830,56713830,18
+HIP 20415,HIP 20415 11 b,1394.508927,"Frutexa Acus, Tubus Compagibus",24646000,137383645,19
+HIP 20415,HIP 20415 11 d,1394.127829,"Tubus Compagibus, Frutexa Acus",24646000,137383645,19
+HIP 20415,HIP 20415 7 c,402.923048,"Cactoida Vermis, Tussock Virgam, Osseus Discus, Clypeus Lacrimam",63445645,137383645,19
+Arietis Sector ZE-A d74,Arietis Sector ZE-A d74 1 d,2469.695012,"Stratum Cucumisis, Osseus Pellebantus, Clypeus Lacrimam, Tussock Triticum, Frutexa Acus",69235815,69235815,20
+HIP 21946,HIP 21946 6 b,2659.420887,"Stratum Cucumisis, Aleoida Gravis, Clypeus Speculumi, Osseus Pellebantus, Tussock Triticum",77353245,77353245,21
+HR 1385,HR 1385 6 b,1202.50115,"Cactoida Vermis, Tussock Virgam",33554430,117440505,22
+HR 1385,HR 1385 6 c,1201.391476,"Cactoida Vermis, Tussock Virgam",33554430,117440505,22
+HR 1385,HR 1385 6 d,1202.965463,"Cactoida Vermis, Tussock Virgam, Osseus Discus",50331645,117440505,22
+Hyades Sector GB-W b2-5,Hyades Sector GB-W b2-5 AB 5,77.461233,"Tussock Virgam, Stratum Tectonicas, Cactoida Vermis",50331645,50331645,23
+HIP 26761,HIP 26761 5 a,604.285638,"Osseus Discus, Clypeus Lacrimam, Frutexa Sponsae",39936615,113427660,24
+HIP 26761,HIP 26761 5 c,604.834103,"Osseus Discus, Cactoida Vermis, Tussock Virgam, Clypeus Lacrimam, Frutexa Sponsae",73491045,113427660,24
+Shoribelu,Shoribelu 5 b,851.847382,"Cactoida Vermis, Tussock Virgam",33554430,106641775,25
+Shoribelu,Shoribelu 5 c,851.551767,"Osseus Discus, Cactoida Vermis, Tussock Virgam",50331645,106641775,25
+Shoribelu,Shoribelu 9 e,2500.997726,"Frutexa Acus, Aleoida Coronamus",22755700,106641775,25
+HIP 28774,HIP 28774 AB 10 e,2903.633758,"Osseus Pellebantus, Clypeus Lacrimam, Frutexa Acus, Tussock Triticum",52458600,77104600,26
+Col 285 Sector ST-P c6-11,Col 285 Sector ST-P c6-11 A 4,1507.537021,"Stratum Tectonicas, Aleoida Gravis, Clypeus Margaritus, Tussock Triticum",62654645,62654645,27
+Aleutes,Aleutes B 2,1045.614136,"Stratum Tectonicas, Clypeus Margaritus, Cactoida Vermis",50331645,50331645,28
+Col 285 Sector YK-M c8-9,Col 285 Sector YK-M c8-9 1,478.452651,"Stratum Tectonicas, Aleoida Gravis, Clypeus Margaritus, Osseus Pellebantus, Tussock Triticum",77353245,77353245,29
+HIP 56960,HIP 56960 3 a,497.788627,"Cactoida Vermis, Tussock Virgam, Osseus Discus, Clypeus Lacrimam",63445645,63445645,30
+Borfor,Borfor 1 c,761.621593,"Tussock Virgam, Osseus Discus, Cactoida Vermis",50331645,100663290,31
+Borfor,Borfor 1 d,768.507932,"Cactoida Vermis, Tussock Virgam",33554430,100663290,31
+Arvirisa,Arvirisa C 4,2390.866828,"Aleoida Gravis, Clypeus Margaritus, Stratum Tectonicas, Tussock Triticum",62654645,79431860,32
+Chersem,Chersem 2,533.493406,"Stratum Tectonicas, Aleoida Gravis, Osseus Pellebantus, Tussock Triticum",60576030,60576030,33
+HIP 86086,HIP 86086 4 a,1952.912234,"Aleoida Gravis, Osseus Pellebantus, Clypeus Lacrimam, Frutexa Acus",56912815,56912815,34
+HR 6015,HR 6015 3 c,1814.555352,"Cactoida Vermis, Tussock Virgam, Osseus Discus, Clypeus Lacrimam, Frutexa Sponsae",73491045,73491045,35
+Col 285 Sector WE-Q d5-88,Col 285 Sector WE-Q d5-88 A 4,2312.8103,"Stratum Tectonicas, Clypeus Margaritus, Osseus Pellebantus, Tussock Triticum",60576030,60576030,36
+Kherthaje,Kherthaje 3 e,2803.658312,"Clypeus Speculumi, Osseus Pellebantus, Frutexa Acus, Tussock Triticum",56121815,56121815,37
+Antliae Sector IM-W d1-129,Antliae Sector IM-W d1-129 4,2186.747188,"Aleoida Gravis, Clypeus Margaritus, Stratum Tectonicas",50331645,67108860,38
+Setati,Setati A 1,363.197695,"Clypeus Margaritus, Cactoida Vermis, Tussock Virgam",50331645,50331645,39
+Col 285 Sector BG-E c12-16,Col 285 Sector BG-E c12-16 A 8 a,1175.751607,"Stratum Cucumisis, Osseus Pellebantus, Clypeus Lacrimam, Tussock Triticum",56912815,56912815,40
+Col 285 Sector SI-J c9-12,Col 285 Sector SI-J c9-12 5 e,2113.280872,"Stratum Cucumisis, Aleoida Gravis, Osseus Pellebantus, Clypeus Lacrimam, Tussock Triticum",73690030,73690030,41
+HIP 37068,HIP 37068 1 b,670.045011,"Osseus Discus, Cactoida Vermis, Tussock Virgam",50331645,124269645,42
+HIP 37068,HIP 37068 6 a,1805.973706,"Frutexa Acus, Tubus Compagibus",24646000,124269645,42
+HIP 37068,HIP 37068 6 b,1811.235916,"Frutexa Acus, Tubus Compagibus",24646000,124269645,42
+Wuning,Wuning A 1,30.432142,"Stratum Tectonicas, Cactoida Vermis, Tussock Virgam, Clypeus Margaritus",67108860,67108860,43
+Col 285 Sector ZE-P c6-21,Col 285 Sector ZE-P c6-21 B 4,2244.034432,"Cactoida Vermis, Osseus Discus, Tussock Virgam, Clypeus Margaritus",67108860,67108860,44
+HIP 26060,HIP 26060 5 a,2833.623084,"Stratum Cucumisis, Osseus Pellebantus, Clypeus Lacrimam, Frutexa Acus",56912815,56912815,45
+BD-08 535,BD-08 535 1 c,497.94235,"Stratum Cucumisis, Osseus Pellebantus, Clypeus Lacrimam, Tussock Triticum",56912815,56912815,46
+Hyades Sector JR-W c1-6,Hyades Sector JR-W c1-6 1 a,665.043787,"Stratum Cucumisis, Aleoida Gravis, Clypeus Lacrimam, Tussock Triticum",58991430,58991430,47
+HIP 9331,HIP 9331 AB 5 c,1796.715833,"Osseus Pellebantus, Clypeus Lacrimam, Frutexa Acus, Tussock Triticum",52458600,52458600,48
+HIP 772,HIP 772 2 b,422.005273,"Cactoida Vermis, Tussock Virgam, Osseus Discus",50331645,100663290,49
+HIP 772,HIP 772 2 c,422.631004,"Osseus Discus, Cactoida Vermis, Tussock Virgam",50331645,100663290,49
+El Tio,El Tio 5 a,2725.906545,"Clypeus Speculumi, Osseus Pellebantus, Frutexa Acus, Tussock Triticum",56121815,56121815,50
+HIP 105439,HIP 105439 AB 4 e,1369.943098,"Cactoida Vermis, Tussock Virgam, Clypeus Lacrimam, Frutexa Sponsae",56713830,69036830,51
+Faroras,Faroras 3 d,1578.84007,"Aleoida Gravis, Osseus Pellebantus, Clypeus Lacrimam, Tussock Triticum",56912815,56912815,52
+Di Yomi,Di Yomi C 7,2603.167434,"Stratum Tectonicas, Clypeus Margaritus, Aleoida Gravis",50331645,50331645,53
+Samontia,Samontia 1 g,1230.251518,"Aleoida Gravis, Osseus Pellebantus, Clypeus Lacrimam, Tussock Triticum",56912815,56912815,54

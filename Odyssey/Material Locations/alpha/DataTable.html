@@ -1,0 +1,191 @@
+<style type="text/css">
+  #MatNameInput {
+  background-color: #FFB300;  
+  font-size: 14px; /* Increase font-size */
+  Width: 80%;
+  color: #383838;
+  padding: 5px 5px 5px 5px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 12px; /* Add some space below the input */
+}
+  #TypeInput{
+    background-color: #FFB300;  
+  	font-size: 12px; /* Increase font-size */
+  	Width: 100px;
+  	color: #383838;
+    padding: 5px 0px 5px 0px;
+    border: 1px solid #ddd; /* Add a grey border */
+  	margin-bottom: 12px; /* Add some space below the input */
+  }
+   #SubTypeInput{
+    background-color: #FFB300;  
+  	font-size: 12px; /* Increase font-size */
+  	Width: 150px;
+  	color: #383838;
+    padding: 5px 0px 5px 0px;
+    border: 1px solid #ddd; /* Add a grey border */
+  	margin-bottom: 12px; /* Add some space below the input */
+  }
+#GradeInput{
+    background-color: #FFB300;  
+  	font-size: 12px; /* Increase font-size */
+  	Width: 50px;
+  	color: #383838;
+    padding: 5px 0px 5px 0px;
+    border: 1px solid #ddd; /* Add a grey border */
+  	margin-bottom: 12px; /* Add some space below the input */
+  }
+	table.tableizer-table {
+		font-size: 12px;
+		border: 1px solid #CCC; 
+		font-family: Arial, Helvetica, sans-serif;
+      	background-color: rgba(0,0,0,0.7)
+	} 
+	.tableizer-table td {
+		padding: 4px;
+		margin: 3px;
+		border: 1px solid #CCC;
+    white-space: nowrap;
+	}
+	.tableizer-table th {
+		background-color: #FF9300; 
+		color: #383838;
+		font-weight: bold;
+      	font-size: 14px;
+	}
+</style>
+
+<script>
+function SearchFunction() {
+  // Declare variables
+  var Nameinput, Namefilter, table, tr, NameTd, i, NameValue, TrDisplay;
+  Nameinput = document.getElementById("MatNameInput");
+  Namefilter = Nameinput.value.toUpperCase();
+  
+  table = document.getElementById("MatTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    NameTd = tr[i].getElementsByTagName("td")[0];
+    
+    TrDisplay = "";
+    
+    if (NameTd) {
+      NameValue = NameTd.textContent || NameTd.innerText;
+      if (NameValue.toUpperCase().indexOf(Namefilter) <= -1) {
+       TrDisplay = "none";
+      }
+    }
+    tr[i].style.display = TrDisplay;
+  }
+}
+</script>
+
+<table class="tableizer-table" id="MatTable">
+<thead><tr class="tableizer-firstrow">
+    <th>Material Name</th>
+    <th>Power Data Port</th>
+    <th>Security Data Port</th>
+    <th>Medical Data Port</th>
+    <th>Laboratory Data Port</th>
+    <th>Industrial Data Port</th>
+    <th>Agricultural Data Port</th>
+    <th>Data Port</th>
+  </tr>
+<tr class="tableizer-firstrow">
+  <th>
+    <input type="text" id="MatNameInput" onkeyup="SearchFunction()" placeholder="Material Name...">
+  </th><th>
+  </th><th>
+  </th><th>
+  </th><th>
+  </th><th></th><th></th><th></th></tr> 
+ </thead>
+
+ <tbody>
+  <tr><td><b>Accident logs</b></td><td bgcolor="White"></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td bgcolor="White"></td><td bgcolor="White"></td></tr>
+  <tr><td><b>Air Quality Reports</b></td><td bgcolor="White"></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td></tr>
+  <tr><td><b>Atmospheric Data</b></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Audio Logs</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>AX Combat Data</b></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Ballistics Data</b></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Biometric Data</b></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Blacklist Data</b></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Blood Test Results</b></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Campaign Plans</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td></tr>
+  <tr><td><b>Cat Media</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Chemical Experiment Data</b></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td></tr>
+  <tr><td><b>Chemical Formulae</b></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td></tr>
+  <tr><td><b>Chemical Inventory</b></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td></tr>
+  <tr><td><b>Chemical Patents</b></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td></tr>
+  <tr><td><b>Chemical Process Sample</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Classic Entertainment</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Combat Performance</b></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Combat Training Meterial</b></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Conflict History</b></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Digital Designs</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Duty Rota</b></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td></tr>
+  <tr><td><b>Employee Directory</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Employee Genetic Data</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Employment History</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td></tr>
+  <tr><td><b>Evacuation Protocols</b></td><td bgcolor="White"></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td></tr>
+  <tr><td><b>Exploration Journals</b></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td></tr>
+  <tr><td><b>Faction Associates</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Faction Donator List</b></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td></tr>
+  <tr><td><b>Faction News</b></td><td></td><td bgcolor="White"></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td bgcolor="White"></td></tr>
+  <tr><td><b>Financial Projections</b></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td></tr>
+  <tr><td><b>Fleet Registry</b></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Gene Sequencing</b></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Genetic Research</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Geological data</b></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td></tr>
+  <tr><td><b>Hydroponic Data</b></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Internal Correspondence</b></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Interrogation recordings</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Job Applications</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Maintenance Logs</b></td><td bgcolor="White"></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td bgcolor="White"></td></tr>
+  <tr><td><b>Manufacturing Instructions</b></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td bgcolor="White"></td></tr>
+  <tr><td><b>Meeting Minutes</b></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td bgcolor="White"></td></tr>
+  <tr><td><b>Mineral Analyrics</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Mineral Survey</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Network Security Protocols</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>NOC Data</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Operational Manual</b></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td></tr>
+  <tr><td><b>Patient History</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Patrol Routes</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Personal Logs</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td></tr>
+  <tr><td><b>Pharmaceutical Patents</b></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Plant Growth Charts</b></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Prisoner Logs</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Production Reports</b></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td></tr>
+  <tr><td><b>Production Schedule</b></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td></tr>
+  <tr><td><b>Propaganda</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Purchase Records</b></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td bgcolor="White"></td></tr>
+  <tr><td><b>Purchase Requests</b></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td bgcolor="White"></td></tr>
+  <tr><td><b>Radioactivity Data</b></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Reactor Output Review</b></td><td bgcolor="White"></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Risk Assessments</b></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Sales Records</b></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td bgcolor="White"></td></tr>
+  <tr><td><b>Security Expenses</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Security Plans</b></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Seed Genaology</b></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Setellar Activity Data</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Settlement Assault Plans</b></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Settlement Defence Plans</b></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Shareholder Information</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Spectral Analysis Data</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Stellar Activity Logs</b></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Surveilleance Logs</b></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Tactical Plans</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Tax Records</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td></tr>
+  <tr><td><b>Topographical Surveys</b></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Travel Permit</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Troop Deployment Records</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Union Membership</b></td><td bgcolor="White"></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td bgcolor="White"></td></tr>
+  <tr><td><b>Vaccination Records</b></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td></tr>
+  <tr><td><b>VIP Security Detail</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Virology Data</b></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Visitor Register</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Weapon Test Data</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td></tr>
+  <tr><td><b>Xeno-Defence Protocols</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+</tbody></table>

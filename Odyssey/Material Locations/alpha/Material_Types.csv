@@ -1,0 +1,129 @@
+MaterialName,Type
+Accident logs,Data
+Aerogel,Components
+Air Quality Reports,Data
+Audio Logs,Data
+AX Combat Data,Data
+Biometric Data,Data
+Blacklist Data,Data
+Buildings Schematic,Item
+Campaign Plans,Data
+Carbon Fibre Plating,Components
+Cat Media,Data
+Chemical Catalyst,Components
+Chemical Experiment Data,Data
+Chemical Formulae,Data
+Chemical Inventory,Data
+Chemical Patents,Data
+Chemical Process Sample,Data
+Chemical Process Sample,Item
+Chemical Sample,Item
+Chemical Superbase,Components
+Circuit Board,Components
+Circuit Switch,Components
+Classic Entertainment,Data
+Combat Training Meterial,Data
+Compact Library,Item
+Compression-Liquified Gas,Item
+Conflict History,Data
+Deep Mantle Sample,Item
+Degraded Power Regulator,Item
+Digital Designs,Data
+Duty Rota,Data
+Electrical Fuse,Components
+Electrical Wiring,Components
+Electromagnet,Components
+Employee Directory,Data
+Employee Genetic Data,Data
+Encrypted Memory Chip,Components
+Epinephrine,Components
+Epoxy Adhesive,Components
+Evacuation Protocols,Data
+Exploration Journals,Data
+Faction Associates,Data
+Faction News,Data
+Financial Projections,Data
+G-Meds,Item
+Gene Sequencing,Data
+Genetic Repair Meds,Item
+Genetic Research,Data
+Genetic Sample ,Item
+Graphien,Components
+Health Monitor,Item
+Inertia Canister,Item
+Infinity,Item
+Insight,Item
+Insight Data Bank,Item
+Insight Entertainment Suite,Item
+Internal Correspondence,Data
+Interrogation recordings,Data
+Ion Bettery,Components
+Ionised Gas,Item
+Job Applications,Data
+Maintenance Logs,Data
+Manufacturing Instructions,Data
+Meeting Minutes,Data
+Memory Chip,Components
+Metal Coil,Components
+Micro Hydraulics,Components
+Micro Supercapacitor,Components
+Micro Thrusters,Components
+Micro Transformer,Components
+Microbial Inhibitor,Item
+Microelectrode,Components
+Mineral Analyrics,Data
+Mineral Survey,Data
+Motor,Components
+Network Security Protocols,Data
+NOC Data,Data
+Nutritional Concentrate,Item
+Operational Manual,Data
+Optical Fiber,Components
+Optical Lens,Components
+Oxygenic Bacteria,Components
+Patient History,Data
+Patrol Routes,Data
+Personal Computer,Item
+Personal Documents,Item
+PH Neutraliser,Components
+Pharmaceutical Patents,Data
+Power Regulator,Item
+Prisoner Logs,Data
+Production Reports,Data
+Production Schedule,Data
+Propaganda,Data
+Purchase Records,Data
+Purchase Requests,Data
+Pyrolytic Catalyst,Item
+Radioactivity Data,Data
+RDX,Components
+Reactor Output Review,Data
+Risk Assessments,Data
+Sales Records,Data
+Scrambler,Components
+Security Expenses,Data
+Setellar Activity Data,Data
+Settlement Assault Plans,Data
+Shareholder Information,Data
+Ship Schematic,Item
+Spectral Analysis Data,Data
+Stellar Activity Data,Data
+Stellar Activity Logs,Data
+Suit Schematic,Item
+Surveillance Equipment,Item
+Synthetic Genome,Item
+Tactical Plans,Data
+Tax Records,Data
+Titanium Plating,Components
+Transmitter,Components
+Travel Permit,Data
+Troop Deployment Records,Data
+Union Membership,Data
+Universal Translator,Item
+VIP Security Detail,Data
+Virology Data,Data
+Viscoelastic Polymer,Components
+Visitor Register,Data
+Weapon Component,Components
+Weapon Schematic,Item
+Xeno-Defence Protocols,Data

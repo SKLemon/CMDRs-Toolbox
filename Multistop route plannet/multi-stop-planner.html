@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font: 16px Arial;  
+}
+
+input {
+  border: 1px solid transparent;
+  background-color: #FFB300;
+  font-size: 16px;
+  color: #383838;
+}
+
+input[type=text] {
+  background-color: #FFB300;
+  width: 100%;
+  padding: 10px;
+}
+
+input[type=button] {
+  background-color: #FF9300;
+  color: #383838;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px;
+}
+
+input[type=radio]{
+	color: #FF9300;
+}
+textarea{
+	background-color: #FFB300;
+	box-sizing:border-box;
+	resize: none;
+}
+
+.autocomplete-items {
+  color: #fff;
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: rgba(0,0,0,0.7); 
+  border-bottom: 1px solid #d4d4d4; 
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  background-color: #fff; 
+  color: rgba(0,0,0,0.7); 
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: #FF9300 !important; 
+  color: #383838; 
+}
+
+.dropbtn {
+  background-color: #FF9300;
+  color: #383838;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #FF9300;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  width: 450px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: white;
+  background-color: rgba(0,0,0,0.7);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown a:hover {
+	color: rgba(0,0,0,0.7);
+	background-color: white;
+}
+table.tableizer-table {
+	border: 1px solid #CCC; 
+	font-size: 18px;
+	color: #FF9300;
+	vertical-align: center;
+
+	background-color: rgba(0,0,0,0.7)
+} 
+.tableizer-table td {
+	padding: 4px;
+	margin: 3px;
+	color: #FF9300;
+	font-weight: bold;
+	vertical-align: center;
+	border: 1px solid #CCC;
+}
+.tableizer-table th {
+	background-color: #FF9300; 
+	color: #383838;
+	font-weight: bold;
+	font-size: 18px;
+}
+::placeholder {
+  color: #383838;
+}
+.show {display: block;}
+
+.darkenBackground {
+	background-color: rgb(0, 0, 0);
+	opacity: 0.7; /* Safari, Opera */
+	-moz-opacity:0.70; /* FireFox */
+	filter: alpha(opacity=70); /* IE */
+	z-index: 20;
+	height: 100%;
+	width: 100%;
+	background-repeat:repeat;
+	position:fixed;
+	top: 0px;
+	left: 0px;
+}
+
+.hoverbox{
+	z-index: 20;
+	position:fixed;
+	background:#131313;
+	width: 400px;
+	height: 500px;
+	position: fixed;
+	top: 10%;
+	left: 50%;
+	/* bring your own prefixes */
+	margin-left: -200px;
+}
+
+
+</style>
+</head>
+<body>
+<div id="darkBackgroundLayer" class="darkenBackground" style="display:none;"></div>
+
+<div id="MultiAddWindow" class="hoverbox" style="display:none;" align="center">
+	<div style="width:100%;padding:10px" align="center">
+		<textarea id="MultiTextArea" style="width: 100%;height:400px;" placeholder="Type one system name per line..."></textarea>
+	</div>
+	<div style="height: 50px;padding:10px" align="Right">
+		<input id="MultiAddButton" type="button" value="Add Systems" onclick="MultiAddClick()">
+		<input id="MultiCancelButton" type="button" value="Cancel" onclick="MultiCancelClick()">
+	</div>
+</div>
+
+<div>
+	<div style="width: 33%;float: left;height:50px;"></div>
+	<div style="width: 67%;float: right;height:50px;">
+		<input id="ClearAllButton" type="button" value="Clear All" onclick="ClearAllClick()">
+		<input id="OpenMultiAddButton" type="button" value="Add Multiple Systems" onclick="OpenMultiAddClick()">
+	</div>
+	<div style="width: 33%;float: left;height:100%;padding-right:25px;">
+		<div style="max-width: 620px;;float: right">
+			<div class="autocomplete" style="width:250px;position: relative;display: inline-block;">
+				<input type="text" id="SystemNameInput" onkeyup="SystemNameAC()" placeholder="System name..." autocomplete="off">
+				<div id="SystemNameInput-autocompleteList" class="autocomplete-items"></div>
+			</div>
+			<input id="AddButton" type="button" value="Add System" onclick="AddSystemClick()">
+			<div style=height:10Px;"></div>
+			<div align="left">
+				<div class="dropdown">
+					<button onclick="CommenLocationsClick()" class="dropbtn">Common Locations &#9660</button>
+					<div id="CommenLocationsDropdown" class="dropdown-content">
+						<a id='Alioth' onclick='CommenLocationsSelectClick(this)'><strong>Bill Turner</strong> [Engineer] - Alioth</a>
+						<a id='Muang' onclick='CommenLocationsSelectClick(this)'><strong>Broo Tarquin</strong> [Engineer] - Muang</a>
+						<a id='Shenve' onclick='CommenLocationsSelectClick(this)'><strong>Chloe Sedesi</strong> [Engineer] - Shenve</a>
+						<a id='Sol' onclick='CommenLocationsSelectClick(this)'><strong>Colonel Bris Dekker</strong> [Engineer] - Sol</a>
+						<a id='Leesti' onclick='CommenLocationsSelectClick(this)'><strong>Didi Vatermann</strong> [Engineer] - Leesti</a>
+						<a id='Khun' onclick='CommenLocationsSelectClick(this)'><strong>Elvira Martuuk</strong> [Engineer] - Khun</a>
+						<a id='Deciat' onclick='CommenLocationsSelectClick(this)'><strong>Felicity Farseer</strong> [Engineer] - Deciat</a>
+						<a id='Kuwemaki' onclick='CommenLocationsSelectClick(this)'><strong>Hera Tani</strong> [Engineer] - Kuwemaki</a>
+						<a id='Giryak' onclick='CommenLocationsSelectClick(this)'><strong>Juri Ishmaak</strong> [Engineer] - Giryak</a>
+						<a id='Laksak' onclick='CommenLocationsSelectClick(this)'><strong>Lei Cheung</strong> [Engineer] - Laksak</a>
+						<a id='Eurybia' onclick='CommenLocationsSelectClick(this)'><strong>Liz Ryder</strong> [Engineer] - Eurybia</a>
+						<a id='Shinrarta Dezhra' onclick='CommenLocationsSelectClick(this)'><strong>Lori Jameson</strong> [Engineer] - Shinrarta Dezhra</a>
+						<a id='Sirius' onclick='CommenLocationsSelectClick(this)'><strong>Marco Qwent</strong> [Engineer] - Sirius</a>
+						<a id='Arque' onclick='CommenLocationsSelectClick(this)'><strong>Professor Palin</strong> [Engineer] - Arque</a>
+						<a id='Meene' onclick='CommenLocationsSelectClick(this)'><strong>Ram Tah</strong> [Engineer] - Meene</a>
+						<a id='Kuk' onclick='CommenLocationsSelectClick(this)'><strong>Selene Jean</strong> [Engineer] - Kuk</a>
+						<a id='Wyrd' onclick='CommenLocationsSelectClick(this)'><strong>The Dweller</strong> [Engineer] - Wyrd</a>
+						<a id='Beta-3 Tucani' onclick='CommenLocationsSelectClick(this)'><strong>The Sarge</strong> [Engineer] - Beta-3 Tucani</a>
+						<a id='Achenar' onclick='CommenLocationsSelectClick(this)'><strong>Tiana Fortune</strong> [Engineer] - Achenar</a>
+						<a id='Wolf 397' onclick='CommenLocationsSelectClick(this)'><strong>Tod 'The Blaster' McQuinn</strong> [Engineer] - Wolf 397</a>
+						<a id='Yoru' onclick='CommenLocationsSelectClick(this)'><strong>Zacariah Nemo</strong> [Engineer] - Yoru</a>
+						<a id='Hyades Sector DR-V c2-23' onclick='CommenLocationsSelectClick(this)'><strong>Dav's Hope</strong> - Hyades Sector DR-V c2-23</a>
+						<a id='HIP 12099' onclick='CommenLocationsSelectClick(this)'><strong>Jameson's Cobra</strong> - HIP 12099</a>
+						<a id='Orrere' onclick='CommenLocationsSelectClick(this)'><strong>Crashed Conda (1)</strong> - Orrere</a>
+						<a id='Koli Discii' onclick='CommenLocationsSelectClick(this)'><strong>Crashed Conda (2)</strong> - Koli Discii</a>
+						<a id='HIP 16613' onclick='CommenLocationsSelectClick(this)'><strong>Crashed Conda (3)</strong> - HIP 16613</a>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+	<div style="width: 67%;float: right;height:100%;">
+		<div style="max-width: 750px;">
+			<Table class="tableizer-table" id="SelectSystemTable" border="0">
+				<tr>
+					<th style="width: 350px">System Name</th>
+					<th style="width: 125px;">Start System</th>
+					<th style="width: 125px">End System</th>
+					<th style="width: 125px">Distance</th>
+					<th style="width: 65px"></th>
+					<th style="width: 85px"></th>
+				</tr>
+				<tr>
+					<th></th>
+					<th><input type="radio" name="Start-list" value="" checked>None</th>
+					<th><input type="radio" name="End-list" value="" checked>None</th>
+					<th></th>
+					<th></th>
+					<th></th>
+				</tr>
+			</Table>
+			<div style="padding-top:10px;">
+				<div style="width: 50%;float: Left;"><h3 id="RouteLength">Route Length: 0.00 Ly</h3></div>
+				<div style="width: 50%;float: Right;" align="right"><input id="OptimizeRouteButton" type="button" value="Optimize Route" onclick="OptimizeRouteClick()"></div>
+			</div>
+			<div style="padding-top:10px;">
+				<div style="width: 100%;float: Left;"><h3 id="WarningMessage"></h3></div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	var SystemCoords = {};
+	var input = document.getElementById("SystemNameInput");
+	var PermutationArray = [];
+
+input.addEventListener("keyup", function(event) {
+    // Number 13 is the "Enter" key on the keyboard
+    if (event.keyCode === 13) {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    document.getElementById("AddButton").click();
+    }
+});
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+function SystemNameAC() {
+	var filter, url;
+    var input = document.getElementById("SystemNameInput");    
+    var xmlhttp = new XMLHttpRequest();
+    var DivList = document.getElementById("SystemNameInput-autocompleteList");
+    
+    xmlhttp.onreadystatechange = function() {
+    	var SystemNameArr, i;
+        
+        DivList.innerHTML = '';
+        
+        if (this.readyState === XMLHttpRequest.DONE && this.status == 200) {
+        	
+            SystemNameArr = JSON.parse(this.responseText)
+            
+    		for(i = 0; i < SystemNameArr.length && i < 10; i++) {
+            	b = document.createElement("DIV");
+          		b.innerHTML = "<strong>" + SystemNameArr[i].name.substr(0, filter.length) + "</strong>";
+                b.innerHTML += SystemNameArr[i].name.substr(filter.length);
+                b.innerHTML += '<input type="hidden" value="' + SystemNameArr[i].name + '">';
+				b.addEventListener("click", function(e) {
+              		input.value = this.getElementsByTagName("input")[0].value;
+              		DivList.innerHTML = '';
+          		});
+          		DivList.appendChild(b);
+            }
+    	}
+	};
+    
+    input = document.getElementById("SystemNameInput");
+    filter = input.value.toUpperCase();
+    
+    if(filter.length >= 3){
+    	url = 'https://www.edsm.net/api-v1/systems?systemName=' + encodeURIComponent(filter);
+    
+    	xmlhttp.open("GET", url, true);
+		xmlhttp.send();
+	}else{
+    	DivList.innerHTML = '';
+    }
+}
+function GetRouteLength() {
+	var SelectSystemTable = document.getElementById("SelectSystemTable");
+	var RouteLength = 0;
+	var i,CureentX,CureentY,CureentZ,PreviousX,PreviousY,PreviousZ,PreviousSystemName,CureentSystemName,CureentDistanceCell,JumpLength;
+	
+	TableRows = SelectSystemTable.rows;
+	for(i=3;i<TableRows.length;i++){
+        PreviousSystemName = TableRows[i - 1].cells[0].innerHTML;
+        CureentSystemName = TableRows[i].cells[0].innerHTML;
+		CureentDistanceCell = TableRows[i].cells[3];
+		PreviousX = SystemCoords[PreviousSystemName].x;
+		PreviousY = SystemCoords[PreviousSystemName].y;
+		PreviousZ = SystemCoords[PreviousSystemName].z;
+		CureentX = SystemCoords[CureentSystemName].x;
+		CureentY = SystemCoords[CureentSystemName].y;
+		CureentZ = SystemCoords[CureentSystemName].z;
+		 
+		JumpLength = Math.sqrt(Math.pow(CureentX-PreviousX, 2) + Math.pow(CureentY-PreviousY, 2) + Math.pow(CureentZ-PreviousZ, 2));
+		CureentDistanceCell.innerHTML = JumpLength.toFixed(2) + ' Ly'
+		RouteLength += JumpLength
+		 
+	}
+	return RouteLength;
+	
+}
+function AddSystemClick() {
+	var SelectSystemTable = document.getElementById('SelectSystemTable');
+	var SystemName = document.getElementById("SystemNameInput").value;
+	
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function() {
+    	
+        if (this.readyState ==4 && this.status == 200) {
+			    	
+        	if(this.responseText == '[]'){
+        		alert('No system data found!');
+        	}else{
+				var JsonResponse;
+            	JsonResponse = JSON.parse(this.responseText);
+
+        		var SystemName = JsonResponse.name;
+	        	var SelectSystemTable = document.getElementById('SelectSystemTable')
+		    	var NewRow = SelectSystemTable.insertRow();
+				var SystemNameCell = NewRow.insertCell(0);
+				var StartCell = NewRow.insertCell(1);
+				var EndCell = NewRow.insertCell(2);
+				var DistanceCell = NewRow.insertCell(3);
+				var CopyCell = NewRow.insertCell(4);
+				var RemoveCell = NewRow.insertCell(5);
+		    	
+	        	SystemNameCell.innerHTML = SystemName;
+				
+                SystemCoords[SystemName] = {"x": JsonResponse.coords.x, "y": JsonResponse.coords.y, "z": JsonResponse.coords.z}
+        
+                StartCell.align = 'center';
+                StartCell.innerHTML = '<input type="radio" name="Start-list" value="' + SystemName + '">';
+
+                EndCell.align = 'center';
+				EndCell.innerHTML = '<input type="radio" name="End-list" value="' + SystemName + '">';
+				
+				DistanceCell.align = 'center';
+				DistanceCell.innerHTML = '0.00 Ly';
+
+				CopyCell.innerHTML = '<input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)">';
+				
+				RemoveCell.innerHTML = '<input style= "padding: 2px 5px;" type="button" value="Remove" onclick="RemoveClick(this)">';
+				
+				var p = document.getElementById("RouteLength");
+				var RouteLength;
+				RouteLength = GetRouteLength();
+				p.innerHTML = 'Route Length: ' + RouteLength.toFixed(2) + ' Ly';
+			}        	
+        }
+	};
+	
+	var url = 'https://www.edsm.net/api-v1/system?systemName=' +  encodeURIComponent(SystemName) + '&showCoordinates=1';
+
+	xmlhttp.open("GET", url, true);
+	xmlhttp.send();
+}
+function OpenMultiAddClick(){
+	document.getElementById("darkBackgroundLayer").style.display = "block";
+	document.getElementById("MultiAddWindow").style.display = "block";
+}
+function MultiAddClick(){
+	var SystemNameInput = document.getElementById("SystemNameInput");
+	var SystemList = document.getElementById("MultiTextArea").value.split('\n');
+	var i;
+
+	for(var i = 0;i < SystemList.length;i++){
+		SystemNameInput.value = SystemList[i];
+		AddSystemClick();
+	}
+	SystemNameInput.value = '';
+	MultiCancelClick();
+
+}
+function MultiCancelClick(){
+	document.getElementById("darkBackgroundLayer").style.display = "none";
+	document.getElementById("MultiAddWindow").style.display = "none";
+}
+function RemoveClick(InputElement) {
+    var TrParent=InputElement.parentNode.parentNode;
+        
+    // Remove row from table
+	TrParent.parentNode.removeChild(TrParent);
+    
+    // Upate route length
+	var p = document.getElementById("RouteLength");
+	var RouteLength;
+	RouteLength = GetRouteLength();
+	p.innerHTML = 'Route Length: ' + RouteLength.toFixed(2) + ' Ly';
+}
+function CopyClick(InputElement) {
+	var TrParent=InputElement.parentNode.parentNode;
+	var TdSystemName = TrParent.cells[0];
+	
+	const TextElement = document.createElement('textarea');
+	TextElement.value = TdSystemName.innerHTML;
+	document.body.appendChild(TextElement);
+	TextElement.select();
+	document.execCommand('copy');
+	document.body.removeChild(TextElement);
+	
+}
+function ClearAllClick() {
+	var SelectSystemTable = document.getElementById('SelectSystemTable');
+    
+	while(SelectSystemTable.rows.length > 2){
+		SelectSystemTable.deleteRow(2);
+    }
+    
+	var p = document.getElementById("RouteLength");
+	var RouteLength = GetRouteLength();
+	p.innerHTML = 'Route Length: ' + RouteLength.toFixed(2) + ' Ly';
+}
+function CommenLocationsClick() {
+  document.getElementById("CommenLocationsDropdown").classList.toggle("show");
+}
+function CommenLocationsSelectClick(InputElement) {
+	var SystemName = InputElement.id;
+	var SystemNameInput = document.getElementById("SystemNameInput");
+	
+	SystemNameInput.value = SystemName;
+	AddSystemClick();
+}
+function OptimizeRouteClick() {
+	var SelectSystemTable, TableRows, WarningMessage;
+	var StartRowId, EndRowId; 
+	var i, j, StartSystemId, EndSystemId, NSystems, PermutationSeedArray, SelectSystemTableClone, BestRoute, BestRouteLength, CloneRow, CurrentRoute, CurrentRouteLength;
+	var SystemsAdded, Retries;
+
+	//Set Variables
+	SelectSystemTable = document.getElementById('SelectSystemTable');
+    TableRows = SelectSystemTable.rows;
+	StartRowId = 2;
+	EndRowId = TableRows.length - 1;
+	StartSystemId = -1;
+	EndSystemId = -1;
+	Retries = 3;
+
+	// Clear Warning
+	WarningMessage = document.getElementById('WarningMessage');
+	WarningMessage.innerHTML = "";
+
+	// Reset Permutation array
+	PermutationArray = [];
+
+    //Get Start System row id
+    var StartList = document.querySelectorAll('[name=Start-list]');
+    for(i=0;i<StartList.length;i++){
+        if(StartList[i].checked){
+            StartSystemId = StartList[i].parentNode.parentNode.rowIndex;
+        }
+	}
+	
+    // Update start System Location
+    if(StartSystemId > 1){
+        TableRows[2].parentNode.insertBefore(TableRows[StartSystemId],TableRows[2]);
+        StartSystemId = 2;
+        StartRowId++;
+    }
+	
+    // Get end System row id
+    var EndList = document.querySelectorAll('[name=End-list]');
+    for(i=0;i<EndList.length;i++){
+        if(EndList[i].checked){
+            EndSystemId = EndList[i].parentNode.parentNode.rowIndex;
+        }
+    }
+
+    // Update start System Location
+    if(EndSystemId > 1){
+        var EndSystemNode = TableRows[EndSystemId].cloneNode(true);
+        SelectSystemTable.appendChild(EndSystemNode);
+        if(StartSystemId == EndSystemId){
+            for(i=0;i<StartList.length;i++){
+                if(StartList[i].parentNode.parentNode.rowIndex == 2){
+                    StartList[i].checked = true;
+                }
+            }
+        }else{
+            TableRows[EndSystemId].parentNode.removeChild(TableRows[EndSystemId]);        
+        }
+        EndRowId = TableRows.length - 2;
+        EndSystemId = TableRows.length - 1;
+    }
+
+	// Save a Clone of the system table
+	SelectSystemTableClone = SelectSystemTable.cloneNode(true);
+
+    NSystems = EndRowId - StartRowId + 1;
+    if(NSystems <= 7){
+
+        // create array from StartRowId to EndRowId
+        PermutationSeedArray = Array(EndRowId - StartRowId + 1).fill().map((_, idx) => StartRowId + idx);
+        
+        // Build all posible permutation
+        PermutationArray = permutationHeap(PermutationSeedArray,NSystems);
+
+        // Initilize "best"
+        BestRoute = Array(EndRowId - StartRowId + 1).fill().map((_, idx) => StartRowId + idx);
+        BestRouteLength = GetRouteLength();
+
+        // Try all permutations
+        for(i=0;i<PermutationArray.length;i++){
+            
+            // Empty the systems from the main table that needs to be tested
+            for(j=StartRowId;j<=EndRowId;j++){
+                TableRows[StartRowId].parentNode.removeChild(TableRows[StartRowId]);
+            }
+
+            CurrentRoute = PermutationArray[i];
+            for(j=0;j<CurrentRoute.length;j++){
+                CloneRow = SelectSystemTableClone.rows[CurrentRoute[j]].cloneNode(true);
+                if(EndSystemId > 1){
+                    SelectSystemTable.insertBefore(CloneRow,TableRows[TableRows.length-1]);
+                }else{
+                    SelectSystemTable.appendChild(CloneRow);
+                }
+            }
+            CurrentRouteLength = GetRouteLength();
+
+            if(CurrentRouteLength < BestRouteLength){
+                BestRouteLength = CurrentRouteLength;
+                BestRoute = CurrentRoute;
+            }
+        }
+
+        // Update with Best Route
+        for(i=StartRowId;i<=EndRowId;i++){
+            TableRows[StartRowId].parentNode.removeChild(TableRows[StartRowId]);
+        }
+        for(i=0;i<BestRoute.length;i++){
+            CloneRow = SelectSystemTableClone.rows[BestRoute[i]].cloneNode(true);
+            if(EndSystemId > 1){
+                SelectSystemTable.insertBefore(CloneRow,TableRows[TableRows.length-1]);
+            }else{
+                SelectSystemTable.appendChild(CloneRow);
+            }
+        }
+
+    }else{
+		WarningMessage.innerHTML = "WARNING: Large number of systems. using faster, but less accurate solution";
+
+		// Empty the systems from the main table that needs to be tested
+		for(i=StartRowId;i<=EndRowId;i++){
+        	TableRows[StartRowId].parentNode.removeChild(TableRows[StartRowId]);
+		}
+		
+		SystemsAdded = 0; // Keep track for how many system we have added
+		for(i=StartRowId;i<=EndRowId;i++){
+			BestRouteLength = -1; //Dafault meaning no route has been tested yet
+
+			// loop over all positions the next system could be placed
+			for(j=StartRowId; j<=StartRowId + SystemsAdded; j++){
+				CloneRow = SelectSystemTableClone.rows[i].cloneNode(true);
+
+				//Insert the row
+				if(j == TableRows.length){
+					SelectSystemTable.appendChild(CloneRow);
+				}else{
+					SelectSystemTable.insertBefore(CloneRow,TableRows[j]);
+				}
+
+				CurrentRouteLength = GetRouteLength();
+				if(CurrentRouteLength < BestRouteLength || BestRouteLength == -1){
+                	BestRouteLength = CurrentRouteLength;
+					BestRoute = j;
+				}
+
+				// Remove the row again
+				TableRows[j].parentNode.removeChild(TableRows[j]);
+			}
+
+			//Add the system to the best position
+			CloneRow = SelectSystemTableClone.rows[i].cloneNode(true);
+			if(BestRoute == TableRows.length){
+				SelectSystemTable.appendChild(CloneRow);
+			}else{
+				SelectSystemTable.insertBefore(CloneRow,TableRows[BestRoute]);
+			}
+			SystemsAdded++;
+		}
+    }
+
+	// Upate route length
+	var p = document.getElementById("RouteLength");
+	var RouteLength;
+	RouteLength = GetRouteLength();
+    p.innerHTML = 'Route Length: ' + RouteLength.toFixed(2) + ' Ly';
+
+	TableRows[2].cells[3].innerHTML = '0.00 Ly';
+
+}
+function swap(array, index1, index2) {
+	var temp = array[index1];
+	array[index1] = array[index2];
+	array[index2] = temp;
+	return array;
+}
+function permutationHeap(array, n) {
+	n = n || array.length; // set n default to array.length
+	if (n === 1) {
+		PermutationArray.push(Array.from(array));
+	} else {
+		for (var i = 1; i <= n; i++) {
+			permutationHeap(array, n - 1);
+			if (n % 2) {
+				swap(array, 0, n - 1); // when length is odd so n % 2 is 1,  select the first number, then the second number, then the third number. . . to be swapped with the last number
+			} else {
+				swap(array, i - 1, n - 1); // when length is even so n % 2 is 0,  always select the first number with the last number
+			}
+		}
+	}
+	return PermutationArray;
+}
+</script>
+</body>
+</html>

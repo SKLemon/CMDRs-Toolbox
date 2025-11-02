@@ -1,0 +1,283 @@
+Aiphaisty CW-X b29-6:
+- Aiphaisty CW-X b29-6 8 (x2,x2,x2,x2)
+Aiphaisty RZ-Q b33-7:
+- Aiphaisty RZ-Q b33-7 ABCD 2 (x2)
+Aishaint AN-R b32-13:
+- Aishaint AN-R b32-13 4 (x2)
+Aishaint GL-K b23-8:
+- Aishaint GL-K b23-8 6 (x2)
+Aishaint GY-Y b44-2:
+- Aishaint GY-Y b44-2 5 (x2)
+Aishaint IX-P c20-12:
+- Aishaint IX-P c20-12 5 (x2)
+Aishaint NL-W c15-70:
+- Aishaint NL-W c15-70 A 4 (x2)
+Aishaint VF-E b42-2:
+- Aishaint VF-E b42-2 2 (x2)
+Aishaint XI-K d8-127:
+- Aishaint XI-K d8-127 B 11 (x3)
+Aishaism NM-R c6-21:
+- Aishaism NM-R c6-21 A 9 (x2,x2,x2,x2,x2,x2)
+Arietis Sector MX-U c2-19:
+- Arietis Sector MX-U c2-19 10 b (x3,x3,x3,x3)
+Aucoks QI-N b54-4:
+- Aucoks QI-N b54-4 5 (x2)
+Auphaisys EV-P d5-0:
+- Auphaisys EV-P d5-0 8 (x2)
+Blaa Gree XO-I c12-1:
+- Blaa Gree XO-I c12-1 4 a (x2,x2,x2,x2,x2,x2,x2,x2,x2,x2)
+Blooe Ploe HE-E d13-39:
+- Blooe Ploe HE-E d13-39 6 (x2,x2)
+Blua Hypue TP-A c3-133:
+- Blua Hypue TP-A c3-133 5 (x2)
+Byeia Thoea KZ-S c3-0:
+- Byeia Thoea KZ-S c3-0 C 4 (x2)
+Cat's Paw Sector HR-W d1-147:
+- Cat's Paw Sector HR-W d1-147 8 (x2)
+Coests SF-Y c17-90:
+- Coests SF-Y c17-90 B 2 (x2)
+Coests YX-P a73-0:
+- Coests YX-P a73-0 4 (x2)
+Col 285 Sector AC-H b25-6:
+- Col 285 Sector AC-H b25-6 A 9 (x2)
+Col 285 Sector DY-L b23-3:
+- Col 285 Sector DY-L b23-3 4 (x2,x2,x2,x2,x2,x2,x2,x2,x2,x2)
+Col 285 Sector EF-W b16-5:
+- Col 285 Sector EF-W b16-5 1 (x2)
+Col 285 Sector GO-E b26-3:
+- Col 285 Sector GO-E b26-3 7 (x2)
+Col 285 Sector KK-C b14-1:
+- Col 285 Sector KK-C b14-1 6 (x2)
+Col 285 Sector KQ-F b11-2:
+- Col 285 Sector KQ-F b11-2 5 (x2)
+Col 285 Sector KU-C b14-3:
+- Col 285 Sector KU-C b14-3 5 (x2)
+Col 285 Sector NN-F b13-0:
+- Col 285 Sector NN-F b13-0 A 2 (x2)
+Col 285 Sector OE-G c11-19:
+- Col 285 Sector OE-G c11-19 BC 5 (x2)
+Col 285 Sector PY-I c9-19:
+- Col 285 Sector PY-I c9-19 6 (x2)
+Col 285 Sector RC-C b13-2:
+- Col 285 Sector RC-C b13-2 A 5 (x2)
+Eishaw SN-B c16-0:
+- Eishaw SN-B c16-0 AB 4 (x2)
+Ellairb YU-M c21-4:
+- Ellairb YU-M c21-4 AB 3 (x2,x2,x2,x2)
+Eoch Flyuae UO-X c2-294:
+- Eoch Flyuae UO-X c2-294 A 13 (x2)
+Eock Flyou VR-F c13-4:
+- Eock Flyou VR-F c13-4 3 (x2)
+Eocs Aihm RR-F b11-0:
+- Eocs Aihm RR-F b11-0 1 (x2)
+Eocs Aihm UL-O c6-0:
+- Eocs Aihm UL-O c6-0 A 4 (x2,x2,x2,x2)
+Eok Flyuae FM-D d12-1157:
+- Eok Flyuae FM-D d12-1157 ABCD 1 (x2)
+Eok Flyuae ID-H c24-221:
+- Eok Flyuae ID-H c24-221 ABCD 2 (x2)
+Eol Prou DF-U b18-26:
+- Eol Prou DF-U b18-26 AB 2 (x2)
+Eol Prou DF-U b18-9:
+- Eol Prou DF-U b18-9 4 (x2)
+Eol Prou FQ-S b19-29:
+- Eol Prou FQ-S b19-29 5 (x2)
+Eol Prou FV-N c7-16:
+- Eol Prou FV-N c7-16 C 5 (x2)
+Eol Prou FV-S b19-17:
+- Eol Prou FV-S b19-17 1 (x2)
+Eol Prou IW-W e1-1807:
+- Eol Prou IW-W e1-1807 B 8 (x2)
+Eol Prou KM-K c9-82:
+- Eol Prou KM-K c9-82 5 (x2)
+Eol Prou LW-L c8-307:
+- Eol Prou LW-L c8-307 11 (x2)
+Eol Prou LW-L c8-74:
+- Eol Prou LW-L c8-74 BC 1 (x2)
+Eol Prou PC-K c9-118:
+- Eol Prou PC-K c9-118 A 6 (x2)
+Eol Prou PC-K c9-221:
+- Eol Prou PC-K c9-221 5 (x2,x2)
+Eol Prou QR-Z b15-10:
+- Eol Prou QR-Z b15-10 3 (x2,x2)
+Eol Prou UD-S d4-1194:
+- Eol Prou UD-S d4-1194 2 (x2)
+Eol Prou WI-W b17-2:
+- Eol Prou WI-W b17-2 A 3 (x2)
+Eol Prou XD-W b17-0:
+- Eol Prou XD-W b17-0 1 (x2)
+Eolls Flyao FK-J c11-1:
+- Eolls Flyao FK-J c11-1 5 (x2)
+Flya Byoea XO-T c6-0:
+- Flya Byoea XO-T c6-0 B 2 (x2,x2,x2,x2)
+Flyiedgou KO-X d2-188:
+- Flyiedgou KO-X d2-188 C 5 (x2)
+Flyoo Prao FC-X c4-0:
+- Flyoo Prao FC-X c4-0 A 4 (x2)
+Flyua Dryoae XV-V b48-4:
+- Flyua Dryoae XV-V b48-4 4 (x2)
+Flyua Phio XE-A b43-0:
+- Flyua Phio XE-A b43-0 8 (x2)
+G 240-11:
+- G 240-11 B 8 (x2)
+Gludgeia UN-K d8-1:
+- Gludgeia UN-K d8-1 8 a (x2,x2)
+Gludgeia ZQ-B c27-0:
+- Gludgeia ZQ-B c27-0 AB 2 b (x2)
+Grea Eohn DV-E c28-0:
+- Grea Eohn DV-E c28-0 4 (x2)
+Gria Eon YH-D c15-0:
+- Gria Eon YH-D c15-0 3 (x2)
+Grie Dryiae PO-T b9-2:
+- Grie Dryiae PO-T b9-2 2 (x3)
+Groeb BB-W c15-3:
+- Groeb BB-W c15-3 BC 5 (x2,x2)
+- Groeb BB-W c15-3 BC 5 b (x2,x2,x2)
+Groeb XQ-S b31-0:
+- Groeb XQ-S b31-0 A 8 b (x2)
+Groeb XQ-S b31-2:
+- Groeb XQ-S b31-2 2 (x2)
+HIP 102611:
+- HIP 102611 A 10 (x2)
+HIP 10972:
+- HIP 10972 AB 5 (x2)
+HIP 13476:
+- HIP 13476 13 (x2)
+HIP 43490:
+- HIP 43490 2 (x2)
+HIP 76521:
+- HIP 76521 A 2 (x3)
+HIP 9659:
+- HIP 9659 7 (x2)
+Hyades Sector LX-T b3-0:
+- Hyades Sector LX-T b3-0 9 (x2)
+Hyades Sector PD-T c3-13:
+- Hyades Sector PD-T c3-13 6 b (x2)
+Hypiae Auscs HZ-L b7-18:
+- Hypiae Auscs HZ-L b7-18 10 (x2)
+Hypo Auf ER-K d9-5:
+- Hypo Auf ER-K d9-5 B 10 (x2)
+Hypoae Aim JA-A c3:
+- Hypoae Aim JA-A c3 CD 3 (x2,x2,x2,x2,x2,x2,x2,x2,x2)
+Hypuae Braea KS-A d1-0:
+- Hypuae Braea KS-A d1-0 DE 3 (x2)
+Hyuedeou OA-A d0:
+- Hyuedeou OA-A d0 B 5 (x2,x2)
+IC 2944 Sector GW-D b16-0:
+- IC 2944 Sector GW-D b16-0 3 (x2)
+IC 4604 Sector FG-X b1-3:
+- IC 4604 Sector FG-X b1-3 7 (x2)
+Jukurang:
+- Jukurang ABCD 9 (x2)
+Kopernik:
+- Kopernik A 7 (x2)
+Lasao CT-T c19-495:
+- Lasao CT-T c19-495 ABC 3 a (x2)
+Leameia ST-H b56-16:
+- Leameia ST-H b56-16 2 (x2)
+Mylaifai EJ-K c24-1223:
+- Mylaifai EJ-K c24-1223 4 (x2)
+Mylaifai QB-O c22-1524:
+- Mylaifai QB-O c22-1524 2 (x2)
+NGC 5315 Sector MS-T b3-2:
+- NGC 5315 Sector MS-T b3-2 AB 2 (x2)
+Nyeajaae WJ-G b43-4:
+- Nyeajaae WJ-G b43-4 13 (x2)
+Oob Aoc ZM-S c17-12:
+- Oob Aoc ZM-S c17-12 ABC 4 (x2)
+Oob Aoscs FY-H c23-9:
+- Oob Aoscs FY-H c23-9 4 (x2)
+Oochody HV-Q c20-0:
+- Oochody HV-Q c20-0 3 (x2)
+Oochonz YM-O b38-0:
+- Oochonz YM-O b38-0 3 (x2)
+Phipoea CM-C d13-6471:
+- Phipoea CM-C d13-6471 6 (x2)
+Phipoea DD-F c26-1089:
+- Phipoea DD-F c26-1089 2 (x2,x2)
+Phipoea DD-F c26-2863:
+- Phipoea DD-F c26-2863 5 (x2,x2)
+Phipoea GG-K b52-82:
+- Phipoea GG-K b52-82 B 3 (x2)
+Phoo Aim CF-A b58-0:
+- Phoo Aim CF-A b58-0 3 (x2)
+Phraa Blao HO-S c20-7:
+- Phraa Blao HO-S c20-7 A 1 (x3)
+Phraa Blao IV-O b39-13:
+- Phraa Blao IV-O b39-13 4 (x2)
+Phraa Blao JJ-S c20-50:
+- Phraa Blao JJ-S c20-50 5 (x3)
+Phroi Pra AA-Q c21-36:
+- Phroi Pra AA-Q c21-36 4 (x2)
+Phylur AF-J b38-0:
+- Phylur AF-J b38-0 1 (x2)
+Plio Eurl EU-R c4-3:
+- Plio Eurl EU-R c4-3 4 (x2)
+Plua Auscs RG-Y d10:
+- Plua Auscs RG-Y d10 BCD 1 (x2)
+Praea Euq SG-Y d10:
+- Praea Euq SG-Y d10 AB 1 (x3)
+Puekaei QG-Y d3208:
+- Puekaei QG-Y d3208 A 10 (x2)
+Pyramoe SK-A c16-12:
+- Pyramoe SK-A c16-12 7 (x2)
+Pyramoe UZ-N d7-11:
+- Pyramoe UZ-N d7-11 11 (x2)
+Rosette Sector JH-V c2-11:
+- Rosette Sector JH-V c2-11 6 (x2)
+Sadr Region Sector CV-X b1-2:
+- Sadr Region Sector CV-X b1-2 9 (x2)
+Skaudou XX-C c28-14:
+- Skaudou XX-C c28-14 6 (x2,x2,x2,x2,x2,x2,x2)
+Slegou ZN-I c10-2:
+- Slegou ZN-I c10-2 3 (x2,x2,x2,x2,x2,x2,x2,x2)
+Smaidiae MS-B c16-0:
+- Smaidiae MS-B c16-0 BCD 5 (x2)
+Smootoae UW-J b22-10:
+- Smootoae UW-J b22-10 5 (x2,x2,x2,x2,x2,x2,x2,x2)
+Socho:
+- Socho 5 (x2)
+Splieck IJ-O c20-0:
+- Splieck IJ-O c20-0 5 (x2,x2,x2)
+Spoihaae DD-T c20-13:
+- Spoihaae DD-T c20-13 AB 3 (x2)
+Statue of Liberty Sector IH-V c2-10:
+- Statue of Liberty Sector IH-V c2-10 A 9 (x2)
+Stuemeae FG-Y d1474:
+- Stuemeae FG-Y d1474 2 (x2,x2,x2,x2)
+Stuemeae FG-Y d772:
+- Stuemeae FG-Y d772 2 (x2,x2,x2,x2,x2)
+Stuemeae GG-Y c3272:
+- Stuemeae GG-Y c3272 9 (x2)
+Stuemeae JM-W c1-8902:
+- Stuemeae JM-W c1-8902 ABC 2 (x2)
+Stuemeae KM-W c1-1117:
+- Stuemeae KM-W c1-1117 11 (x2)
+Stuemeae OS-U c2-2528:
+- Stuemeae OS-U c2-2528 A 2 (x2)
+Swoilz UF-Y c17-14:
+- Swoilz UF-Y c17-14 3 (x2)
+Swoilz WC-T b37-3:
+- Swoilz WC-T b37-3 11 (x2)
+Swoilz WM-U b36-3:
+- Swoilz WM-U b36-3 3 (x2,x2)
+Swoilz ZF-L d9-74:
+- Swoilz ZF-L d9-74 8 (x2)
+Syneaxeau WG-Y c0:
+- Syneaxeau WG-Y c0 4 (x2)
+Synookio AC-L d8-57:
+- Synookio AC-L d8-57 12 (x2,x2)
+Synuefe KO-H b43-3:
+- Synuefe KO-H b43-3 1 (x2)
+Syrivo UW-N c6-1:
+- Syrivo UW-N c6-1 A 13 (x2,x2,x2,x2,x2,x2,x2,x2)
+Tamaya:
+- Tamaya 9 (x2)
+Traikaae CI-Y b4:
+- Traikaae CI-Y b4 13 (x2,x2,x2,x2)
+Traili JD-I b10-0:
+- Traili JD-I b10-0 BC 2 (x2)
+Witch Head Sector DQ-Y c2:
+- Witch Head Sector DQ-Y c2 ABC 10 (x2)
+Wregoe DJ-X c28-19:
+- Wregoe DJ-X c28-19 6 (x3)

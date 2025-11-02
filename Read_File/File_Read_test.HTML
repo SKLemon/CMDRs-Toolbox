@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font: 16px Arial;  
+}
+
+input {
+  border: 1px solid transparent;
+  background-color: #FFB300;
+  font-size: 16px;
+  color: #383838;
+}
+
+input[type=text] {
+  background-color: #FFB300;
+  width: 100%;
+  padding: 10px;
+}
+
+input[type=button] {
+  background-color: #FF9300;
+  color: #383838;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px;
+}
+
+input[type=radio]{
+	color: #FF9300;
+}
+textarea{
+	background-color: #FFB300;
+	box-sizing:border-box;
+	resize: none;
+}
+.show {display: block;}
+</style>
+</head>
+<body>
+    <script type="text/javascript">
+        function StartClick() {
+
+            var Reader = new FileReader();
+            var FileObject = document.getElementById("SelectFileInput").files[0];
+            console.log(FileObject);
+            Reader.onload = function(){
+               console.log(Reader.result);
+            }
+            Reader.readAsText(FileObject, "UTF-8");
+
+        };
+    </script>
+	<div>
+		<input id="SelectFileInput" type="file" Accept=".json">
+		<input id="B_Start" type="button" value="Start" onclick="StartClick()">
+	</div>
+</body>
+</html>

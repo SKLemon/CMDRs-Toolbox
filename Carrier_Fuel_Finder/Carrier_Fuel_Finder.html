@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font: 16px Arial;  
+}
+
+input {
+  border: 1px solid transparent;
+  background-color: #FFB300;
+  font-size: 16px;
+  color: #383838;
+}
+
+input[type=text] {
+  background-color: #FFB300;
+  width: 100%;
+  padding: 10px;
+}
+
+input[type=button] {
+  background-color: #FF9300;
+  color: #383838;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px;
+}
+
+input[type=radio]{
+	color: #FF9300;
+}
+
+.autocomplete-items {
+  color: #fff;
+  position: absolute;
+  border: 1px solid #d4d4d4;
+  border-bottom: none;
+  border-top: none;
+  z-index: 99;
+  /*position the autocomplete items to be the same width as the container:*/
+  top: 100%;
+  left: 0;
+  right: 0;
+}
+
+.autocomplete-items div {
+  padding: 10px;
+  cursor: pointer;
+  background-color: rgba(0,0,0,0.7); 
+  border-bottom: 1px solid #d4d4d4; 
+}
+
+/*when hovering an item:*/
+.autocomplete-items div:hover {
+  background-color: #fff; 
+  color: rgba(0,0,0,0.7); 
+}
+
+/*when navigating through the items using the arrow keys:*/
+.autocomplete-active {
+  background-color: #FF9300 !important; 
+  color: #383838; 
+}
+
+.dropbtn {
+  background-color: #FF9300;
+  color: #383838;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #FF9300;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  width: 450px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: white;
+  background-color: rgba(0,0,0,0.7);
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown a:hover {
+	color: rgba(0,0,0,0.7);
+	background-color: white;
+}
+table.tableizer-table {
+	border: 1px solid #CCC; 
+	font-size: 18px;
+	color: #FF9300;
+	vertical-align: center;
+
+	background-color: rgba(0,0,0,0.7)
+} 
+.tableizer-table td {
+	padding: 4px;
+	margin: 3px;
+	color: #FF9300;
+	font-weight: bold;
+	vertical-align: center;
+	border: 1px solid #CCC;
+}
+.tableizer-table th {
+	background-color: #FF9300; 
+	color: #383838;
+	font-weight: bold;
+	font-size: 18px;
+}
+::placeholder {
+  color: #383838;
+}
+.show {display: block;}
+</style>
+</head>
+<body>
+<div style="width: 100%!">
+	<div style="vertical-align: top;padding-right:25px;display: inline-block;">
+		<div class="autocomplete" style="width:250px;position: relative;">
+				<input type="text" id="SystemNameInput" onkeyup="SystemNameAC()" placeholder="System name..." autocomplete="off">
+				<div id="SystemNameInput-autocompleteList" class="autocomplete-items"></div>
+		</div>
+		<div style=height:10Px;"></div>
+		<input type="number" id="SystemPosX" placeholder="X" autocomplete="off">
+		<div style=height:10Px;"></div>
+		<input type="number" id="SystemPosY" placeholder="Y" autocomplete="off">
+		<div style=height:10Px;"></div>
+		<input type="number" id="SystemPosZ" placeholder="Z" autocomplete="off">
+	</div>
+	<div style="vertical-align: top;display: inline-block;">
+		<input id="SearchButton" type="button" value="Find Fuel" onclick="SearchClick()">
+	</div>
+	<div style="vertical-align: top;padding-top:25px">
+		<Table class="tableizer-table" id="OverlapsTable" border="0">
+			<tr>
+				<th style="width: 350px">System Name</th>
+				<th style="width: 75px;">X</th>
+				<th style="width: 75px">Y</th>
+				<th style="width: 75px">Z</th>
+				<th style="width: 100px">Body</th>
+				<th style="width: 150px">Distance [LY]</th>
+			</tr>
+			
+
+			<TR><TD>BLEAE THUA HK-L B35-4</TD><TD>-1037.47</TD><TD>32.25</TD><TD>2264.75</TD><TD>1</TD><TD></TD></TR>
+			<TR><TD>BLEAE THUA QC-G B38-0</TD><TD>-1085.81</TD><TD>34.41</TD><TD>2324.5</TD><TD>5</TD><TD></TD></TR>
+			<TR><TD>BYEIA THAA XM-W D1-67</TD><TD>-1355.59</TD><TD>-7.81</TD><TD>2998.06</TD><TD>B 1</TD><TD></TD></TR>
+			<TR><TD>Aishaint XI-K d8-127</TD><TD>11416.28</TD><TD>72.38</TD><TD>34242.94</TD><TD>B 11</TD><TD></TD></TR>
+			<TR><TD>Arietis Sector MX-U c2-19</TD><TD>-89.09</TD><TD>-143.84</TD><TD>-98.28</TD><TD>10 b</TD><TD></TD></TR>
+			<TR><TD>Grie Dryiae PO-T b9-2</TD><TD>14321.28</TD><TD>-108.34</TD><TD>5548.22</TD><TD>2</TD><TD></TD></TR>
+			<TR><TD>HIP 76521</TD><TD>83.12</TD><TD>40.44</TD><TD>174.69</TD><TD>A 2</TD><TD></TD></TR>
+			<TR><TD>Phraa Blao HO-S c20-7</TD><TD>11261.22</TD><TD>-163.25</TD><TD>34409.56</TD><TD>A 1</TD><TD></TD></TR>
+			<TR><TD>Phraa Blao JJ-S c20-50</TD><TD>11273.84</TD><TD>-219.59</TD><TD>34386.19</TD><TD>5</TD><TD></TD></TR>
+			<TR><TD>Praea Euq SG-Y d10</TD><TD>1089.25</TD><TD>-22.56</TD><TD>332.12</TD><TD>AB 1</TD><TD></TD></TR>
+			<TR><TD>Wregoe DJ-X c28-19 </TD><TD>302.69</TD><TD>-0.09</TD><TD>212.28</TD><TD>6</TD><TD></TD></TR>
+			<TR><TD>Aiphaisty CW-X b29-6</TD><TD>-17932.5</TD><TD>223.47</TD><TD>34154.62</TD><TD>8</TD><TD></TD></TR>
+			<TR><TD>Aiphaisty RZ-Q b33-7</TD><TD>-17920.94</TD><TD>245.16</TD><TD>34223.75</TD><TD>ABCD 2</TD><TD></TD></TR>
+			<TR><TD>Aishaint AN-R b32-13</TD><TD>11268.41</TD><TD>104.91</TD><TD>34201.81</TD><TD>4</TD><TD></TD></TR>
+			<TR><TD>Aishaint GL-K b23-8</TD><TD>10897.56</TD><TD>240.97</TD><TD>34009.81</TD><TD>6</TD><TD></TD></TR>
+			<TR><TD>Aishaint GY-Y b44-2</TD><TD>11268.5</TD><TD>565.91</TD><TD>34456.59</TD><TD>5</TD><TD></TD></TR>
+			<TR><TD>Aishaint IX-P c20-12</TD><TD>11224.56</TD><TD>571.34</TD><TD>34391.28</TD><TD>5</TD><TD></TD></TR>
+			<TR><TD>Aishaint NL-W c15-70</TD><TD>11261.69</TD><TD>62.44</TD><TD>34206.22</TD><TD>A 4</TD><TD></TD></TR>
+			<TR><TD>Aishaint VF-E b42-2</TD><TD>11287</TD><TD>563.28</TD><TD>34411.25</TD><TD>2</TD><TD></TD></TR>
+			<TR><TD>Aishaint XI-K d8-127</TD><TD>11416.28</TD><TD>72.38</TD><TD>34242.94</TD><TD>B 11</TD><TD></TD></TR>
+			<TR><TD>Aishaism NM-R c6-21</TD><TD>7367.59</TD><TD>780.66</TD><TD>33810.78</TD><TD>A 9</TD><TD></TD></TR>
+			<TR><TD>Arietis Sector MX-U c2-19</TD><TD>-89.09</TD><TD>-143.84</TD><TD>-98.28</TD><TD>10 b</TD><TD></TD></TR>
+			<TR><TD>Aucoks QI-N b54-4</TD><TD>660.16</TD><TD>-81.28</TD><TD>2672.41</TD><TD>5</TD><TD></TD></TR>
+			<TR><TD>Auphaisys EV-P d5-0</TD><TD>11049.38</TD><TD>2705.56</TD><TD>33979.88</TD><TD>8</TD><TD></TD></TR>
+			<TR><TD>Blaa Gree XO-I c12-1</TD><TD>-8902.44</TD><TD>-143.22</TD><TD>55782.56</TD><TD>4 a</TD><TD></TD></TR>
+			<TR><TD>Blooe Ploe HE-E d13-39</TD><TD>24857.12</TD><TD>-59.5</TD><TD>43595.81</TD><TD>6</TD><TD></TD></TR>
+			<TR><TD>Blua Hypue TP-A c3-133</TD><TD>-4481.38</TD><TD>-46.34</TD><TD>11858.09</TD><TD>5</TD><TD></TD></TR>
+			<TR><TD>Byeia Thoea KZ-S c3-0</TD><TD>-32513.94</TD><TD>2.16</TD><TD>2956.84</TD><TD>C 4</TD><TD></TD></TR>
+			<TR><TD>Cat's Paw Sector HR-W d1-147</TD><TD>828.72</TD><TD>54.12</TD><TD>5433.16</TD><TD>8</TD><TD></TD></TR>
+			<TR><TD>Coests SF-Y c17-90</TD><TD>6188.91</TD><TD>-81.78</TD><TD>16354.94</TD><TD>B 2</TD><TD></TD></TR>
+			<TR><TD>Coests YX-P a73-0</TD><TD>6201.53</TD><TD>-68.78</TD><TD>16357.12</TD><TD>4</TD><TD></TD></TR>
+			<TR><TD>Col 285 Sector AC-H b25-6</TD><TD>104.03</TD><TD>-2.44</TD><TD>187.16</TD><TD>A 9</TD><TD></TD></TR>
+			<TR><TD>Col 285 Sector DY-L b23-3</TD><TD>88.06</TD><TD>138.66</TD><TD>149.22</TD><TD>4</TD><TD></TD></TR>
+			<TR><TD>Col 285 Sector EF-W b16-5</TD><TD>217.5</TD><TD>-68.69</TD><TD>0.38</TD><TD>1</TD><TD></TD></TR>
+			<TR><TD>Col 285 Sector GO-E b26-3</TD><TD>-18.62</TD><TD>-79.41</TD><TD>197.41</TD><TD>7</TD><TD></TD></TR>
+			<TR><TD>Col 285 Sector KK-C b14-1</TD><TD>-249.03</TD><TD>30.06</TD><TD>-49.94</TD><TD>6</TD><TD></TD></TR>
+			<TR><TD>Col 285 Sector KQ-F b11-2</TD><TD>55.84</TD><TD>-201.84</TD><TD>-111.34</TD><TD>5</TD><TD></TD></TR>
+			<TR><TD>Col 285 Sector KU-C b14-3</TD><TD>-167.06</TD><TD>65.88</TD><TD>-48.75</TD><TD>5</TD><TD></TD></TR>
+			<TR><TD>Col 285 Sector NN-F b13-0</TD><TD>155.62</TD><TD>158.81</TD><TD>-79.34</TD><TD>A 2</TD><TD></TD></TR>
+			<TR><TD>Col 285 Sector OE-G c11-19</TD><TD>-125.03</TD><TD>-13.03</TD><TD>103.59</TD><TD>BC 5</TD><TD></TD></TR>
+			<TR><TD>Col 285 Sector PY-I c9-19</TD><TD>-94.28</TD><TD>-165.19</TD><TD>17.97</TD><TD>6</TD><TD></TD></TR>
+			<TR><TD>Col 285 Sector RC-C b13-2</TD><TD>50.78</TD><TD>-201.47</TD><TD>-65.62</TD><TD>A 5</TD><TD></TD></TR>
+			<TR><TD>Eishaw SN-B c16-0</TD><TD>4110.09</TD><TD>-122.78</TD><TD>59775.59</TD><TD>AB 4</TD><TD></TD></TR>
+			<TR><TD>Ellairb YU-M c21-4</TD><TD>-1664.31</TD><TD>264.69</TD><TD>10106</TD><TD>AB 3</TD><TD></TD></TR>
+			<TR><TD>Eoch Flyuae UO-X c2-294</TD><TD>-8540.75</TD><TD>-694.41</TD><TD>16987.91</TD><TD>A 13</TD><TD></TD></TR>
+			<TR><TD>Eock Flyou VR-F c13-4</TD><TD>-14971.88</TD><TD>-381.12</TD><TD>17429.03</TD><TD>3</TD><TD></TD></TR>
+			<TR><TD>Eocs Aihm RR-F b11-0</TD><TD>22796.94</TD><TD>60.94</TD><TD>-11059.66</TD><TD>1</TD><TD></TD></TR>
+			<TR><TD>Eocs Aihm UL-O c6-0</TD><TD>22735.25</TD><TD>137.25</TD><TD>-11021.59</TD><TD>A 4</TD><TD></TD></TR>
+			<TR><TD>Eok Flyuae FM-D d12-1157</TD><TD>-1870.78</TD><TD>-1110.5</TD><TD>17961.72</TD><TD>ABCD 1</TD><TD></TD></TR>
+			<TR><TD>Eok Flyuae ID-H c24-221</TD><TD>-1870.44</TD><TD>-1095.19</TD><TD>17926.72</TD><TD>ABCD 2</TD><TD></TD></TR>
+			<TR><TD>Eol Prou DF-U b18-26</TD><TD>-9547.34</TD><TD>-926.94</TD><TD>19824.66</TD><TD>AB 2</TD><TD></TD></TR>
+			<TR><TD>Eol Prou DF-U b18-9</TD><TD>-9545.78</TD><TD>-925.25</TD><TD>19819.12</TD><TD>4</TD><TD></TD></TR>
+			<TR><TD>Eol Prou FQ-S b19-29</TD><TD>-9545.59</TD><TD>-917.78</TD><TD>19842.41</TD><TD>5</TD><TD></TD></TR>
+			<TR><TD>Eol Prou FV-N c7-16</TD><TD>-9513.31</TD><TD>-897.38</TD><TD>19761.72</TD><TD>C 5</TD><TD></TD></TR>
+			<TR><TD>Eol Prou FV-S b19-17</TD><TD>-9510.44</TD><TD>-898.94</TD><TD>19839.59</TD><TD>1</TD><TD></TD></TR>
+			<TR><TD>Eol Prou IW-W e1-1807</TD><TD>-9516</TD><TD>-914.41</TD><TD>19826.69</TD><TD>B 8</TD><TD></TD></TR>
+			<TR><TD>Eol Prou KM-K c9-82</TD><TD>-9545.22</TD><TD>-858.88</TD><TD>19820.16</TD><TD>5</TD><TD></TD></TR>
+			<TR><TD>Eol Prou LW-L c8-307</TD><TD>-9540.66</TD><TD>-915.88</TD><TD>19806.69</TD><TD>11</TD><TD></TD></TR>
+			<TR><TD>Eol Prou LW-L c8-74</TD><TD>-9539.59</TD><TD>-912.16</TD><TD>19799.09</TD><TD>BC 1</TD><TD></TD></TR>
+			<TR><TD>Eol Prou PC-K c9-118</TD><TD>-9507.22</TD><TD>-929.84</TD><TD>19849</TD><TD>A 6</TD><TD></TD></TR>
+			<TR><TD>Eol Prou PC-K c9-221</TD><TD>-9528.91</TD><TD>-915.19</TD><TD>19815.44</TD><TD>5</TD><TD></TD></TR>
+			<TR><TD>Eol Prou QR-Z b15-10</TD><TD>-9544.16</TD><TD>-921.72</TD><TD>19762</TD><TD>3</TD><TD></TD></TR>
+			<TR><TD>Eol Prou UD-S d4-1194</TD><TD>-9498.91</TD><TD>-889.5</TD><TD>19846.19</TD><TD>2</TD><TD></TD></TR>
+			<TR><TD>Eol Prou WI-W b17-2</TD><TD>-9535.62</TD><TD>-896.88</TD><TD>19804.19</TD><TD>A 3</TD><TD></TD></TR>
+			<TR><TD>Eol Prou XD-W b17-0</TD><TD>-9559.03</TD><TD>-919.94</TD><TD>19800.56</TD><TD>1</TD><TD></TD></TR>
+			<TR><TD>Eolls Flyao FK-J c11-1</TD><TD>21900.47</TD><TD>-342.66</TD><TD>17339.09</TD><TD>5</TD><TD></TD></TR>
+			<TR><TD>Flya Byoea XO-T c6-0</TD><TD>26800.97</TD><TD>-30.91</TD><TD>50437.22</TD><TD>B 2</TD><TD></TD></TR>
+			<TR><TD>Flyiedgou KO-X d2-188</TD><TD>-1105.72</TD><TD>-30.16</TD><TD>8150.94</TD><TD>C 5</TD><TD></TD></TR>
+			<TR><TD>Flyoo Prao FC-X c4-0</TD><TD>22550.69</TD><TD>-39.22</TD><TD>40102.75</TD><TD>A 4</TD><TD></TD></TR>
+			<TR><TD>Flyua Dryoae XV-V b48-4</TD><TD>2118</TD><TD>-285.81</TD><TD>-9.03</TD><TD>4</TD><TD></TD></TR>
+			<TR><TD>Flyua Phio XE-A b43-0</TD><TD>2316.94</TD><TD>-960.56</TD><TD>10099.78</TD><TD>8</TD><TD></TD></TR>
+			<TR><TD>G 240-11</TD><TD>-74.22</TD><TD>67.34</TD><TD>-2.38</TD><TD>B 8</TD><TD></TD></TR>
+			<TR><TD>Gludgeia UN-K d8-1</TD><TD>2362.12</TD><TD>165.12</TD><TD>-4105.56</TD><TD>8 a</TD><TD></TD></TR>
+			<TR><TD>Gludgeia ZQ-B c27-0</TD><TD>2056.69</TD><TD>135.81</TD><TD>-3742.97</TD><TD>AB 2 b</TD><TD></TD></TR>
+			<TR><TD>Grea Eohn DV-E c28-0</TD><TD>21260.72</TD><TD>-100.78</TD><TD>3980.84</TD><TD>4</TD><TD></TD></TR>
+			<TR><TD>Gria Eon YH-D c15-0</TD><TD>-32623.19</TD><TD>-140.44</TD><TD>3418.44</TD><TD>3</TD><TD></TD></TR>
+			<TR><TD>Grie Dryiae PO-T b9-2</TD><TD>14321.28</TD><TD>-108.34</TD><TD>5548.22</TD><TD>2</TD><TD></TD></TR>
+			<TR><TD>Groeb BB-W c15-3</TD><TD>-12406.09</TD><TD>-8.78</TD><TD>-10613.16</TD><TD>BC 5</TD><TD></TD></TR>
+			<TR><TD>Groeb BB-W c15-3</TD><TD>-12406.09</TD><TD>-8.78</TD><TD>-10613.16</TD><TD>BC 5 b</TD><TD></TD></TR>
+			<TR><TD>Groeb XQ-S b31-0</TD><TD>-12392.06</TD><TD>49.12</TD><TD>-10614.03</TD><TD>A 8 b</TD><TD></TD></TR>
+			<TR><TD>Groeb XQ-S b31-2</TD><TD>-12400.59</TD><TD>46.62</TD><TD>-10616.41</TD><TD>2</TD><TD></TD></TR>
+			<TR><TD>HIP 102611</TD><TD>-153.22</TD><TD>-53.09</TD><TD>80.66</TD><TD>A 10</TD><TD></TD></TR>
+			<TR><TD>HIP 10972</TD><TD>-57.09</TD><TD>-156.47</TD><TD>-136.25</TD><TD>AB 5</TD><TD></TD></TR>
+			<TR><TD>HIP 13476</TD><TD>11.34</TD><TD>-177.34</TD><TD>-125.59</TD><TD>13</TD><TD></TD></TR>
+			<TR><TD>HIP 43490</TD><TD>202.88</TD><TD>-90.53</TD><TD>90.28</TD><TD>2</TD><TD></TD></TR>
+			<TR><TD>HIP 76521</TD><TD>83.12</TD><TD>40.44</TD><TD>174.69</TD><TD>A 2</TD><TD></TD></TR>
+			<TR><TD>HIP 9659</TD><TD>-104.5</TD><TD>-2.5</TD><TD>-94.78</TD><TD>7</TD><TD></TD></TR>
+			<TR><TD>Hyades Sector LX-T b3-0</TD><TD>-39.06</TD><TD>-102.66</TD><TD>-204.12</TD><TD>9</TD><TD></TD></TR>
+			<TR><TD>Hyades Sector PD-T c3-13</TD><TD>-84.53</TD><TD>-173.03</TD><TD>-138.34</TD><TD>6 b</TD><TD></TD></TR>
+			<TR><TD>Hypiae Auscs HZ-L b7-18</TD><TD>2287.22</TD><TD>-11.09</TD><TD>24701.47</TD><TD>10</TD><TD></TD></TR>
+			<TR><TD>Hypo Auf ER-K d9-5</TD><TD>-9106.56</TD><TD>2253.16</TD><TD>25407.56</TD><TD>B 10</TD><TD></TD></TR>
+			<TR><TD>Hypoae Aim JA-A c3</TD><TD>-7370.22</TD><TD>-4.94</TD><TD>-6161.41</TD><TD>CD 3</TD><TD></TD></TR>
+			<TR><TD>Hypuae Braea KS-A d1-0</TD><TD>10726.16</TD><TD>2361</TD><TD>34899.22</TD><TD>DE 3</TD><TD></TD></TR>
+			<TR><TD>Hyuedeou OA-A d0</TD><TD>29263</TD><TD>-15.03</TD><TD>-1023.38</TD><TD>B 5</TD><TD></TD></TR>
+			<TR><TD>IC 2944 Sector GW-D b16-0</TD><TD>5631.78</TD><TD>72.53</TD><TD>2163.31</TD><TD>3</TD><TD></TD></TR>
+			<TR><TD>IC 4604 Sector FG-X b1-3</TD><TD>61.06</TD><TD>157.78</TD><TD>503.69</TD><TD>7</TD><TD></TD></TR>
+			<TR><TD>Jukurang</TD><TD>26.84</TD><TD>174.28</TD><TD>17.19</TD><TD>ABCD 9</TD><TD></TD></TR>
+			<TR><TD>Kopernik</TD><TD>-9504.75</TD><TD>-901.75</TD><TD>19801.88</TD><TD>A 7</TD><TD></TD></TR>
+			<TR><TD>Lasao CT-T c19-495</TD><TD>5879.62</TD><TD>991.72</TD><TD>33062.53</TD><TD>ABC 3 a</TD><TD></TD></TR>
+			<TR><TD>Leameia ST-H b56-16</TD><TD>-12925.22</TD><TD>-303.72</TD><TD>20632.97</TD><TD>2</TD><TD></TD></TR>
+			<TR><TD>Mylaifai EJ-K c24-1223</TD><TD>-462.25</TD><TD>-413.94</TD><TD>19180.56</TD><TD>4</TD><TD></TD></TR>
+			<TR><TD>Mylaifai QB-O c22-1524</TD><TD>-606.97</TD><TD>-345.66</TD><TD>19104.84</TD><TD>2</TD><TD></TD></TR>
+			<TR><TD>NGC 5315 Sector MS-T b3-2</TD><TD>6482.84</TD><TD>-652.19</TD><TD>5266.81</TD><TD>AB 2</TD><TD></TD></TR>
+			<TR><TD>Nyeajaae WJ-G b43-4</TD><TD>-3579.59</TD><TD>-299.06</TD><TD>7545.75</TD><TD>13</TD><TD></TD></TR>
+			<TR><TD>Oob Aoc ZM-S c17-12</TD><TD>26879.72</TD><TD>7.59</TD><TD>17620.81</TD><TD>ABC 4</TD><TD></TD></TR>
+			<TR><TD>Oob Aoscs FY-H c23-9</TD><TD>16940.84</TD><TD>-1.44</TD><TD>17880.28</TD><TD>4</TD><TD></TD></TR>
+			<TR><TD>Oochody HV-Q c20-0</TD><TD>-3542.69</TD><TD>-540.88</TD><TD>-1460.72</TD><TD>3</TD><TD></TD></TR>
+			<TR><TD>Oochonz YM-O b38-0</TD><TD>3620.25</TD><TD>-383.28</TD><TD>-1523.97</TD><TD>3</TD><TD></TD></TR>
+			<TR><TD>Phipoea CM-C d13-6471</TD><TD>-496.19</TD><TD>507.72</TD><TD>28225.28</TD><TD>6</TD><TD></TD></TR>
+			<TR><TD>Phipoea DD-F c26-1089</TD><TD>-501.84</TD><TD>513.22</TD><TD>28218.25</TD><TD>2</TD><TD></TD></TR>
+			<TR><TD>Phipoea DD-F c26-2863</TD><TD>-504.06</TD><TD>498.78</TD><TD>28222.12</TD><TD>5</TD><TD></TD></TR>
+			<TR><TD>Phipoea GG-K b52-82</TD><TD>-502.59</TD><TD>502.06</TD><TD>28228.41</TD><TD>B 3</TD><TD></TD></TR>
+			<TR><TD>Phoo Aim CF-A b58-0</TD><TD>16982.91</TD><TD>558.38</TD><TD>-3646.84</TD><TD>3</TD><TD></TD></TR>
+			<TR><TD>Phraa Blao HO-S c20-7</TD><TD>11261.22</TD><TD>-163.25</TD><TD>34409.56</TD><TD>A 1</TD><TD></TD></TR>
+			<TR><TD>Phraa Blao IV-O b39-13</TD><TD>11346.88</TD><TD>-158.31</TD><TD>34340.19</TD><TD>4</TD><TD></TD></TR>
+			<TR><TD>Phraa Blao JJ-S c20-50</TD><TD>11273.84</TD><TD>-219.59</TD><TD>34386.19</TD><TD>5</TD><TD></TD></TR>
+			<TR><TD>Phroi Pra AA-Q c21-36</TD><TD>-1003.22</TD><TD>-1616.41</TD><TD>26764.28</TD><TD>4</TD><TD></TD></TR>
+			<TR><TD>Phylur AF-J b38-0</TD><TD>-1541.94</TD><TD>335.66</TD><TD>2316.81</TD><TD>1</TD><TD></TD></TR>
+			<TR><TD>Plio Eurl EU-R c4-3</TD><TD>1855.62</TD><TD>101.62</TD><TD>-839.19</TD><TD>4</TD><TD></TD></TR>
+			<TR><TD>Plua Auscs RG-Y d10</TD><TD>22758.75</TD><TD>-10.22</TD><TD>39986.44</TD><TD>BCD 1</TD><TD></TD></TR>
+			<TR><TD>Praea Euq SG-Y d10</TD><TD>1089.25</TD><TD>-22.56</TD><TD>332.12</TD><TD>AB 1</TD><TD></TD></TR>
+			<TR><TD>Puekaei QG-Y d3208</TD><TD>-8063.06</TD><TD>-9.5</TD><TD>13104.72</TD><TD>A 10</TD><TD></TD></TR>
+			<TR><TD>Pyramoe SK-A c16-12</TD><TD>-462.59</TD><TD>-384.53</TD><TD>6051.53</TD><TD>7</TD><TD></TD></TR>
+			<TR><TD>Pyramoe UZ-N d7-11</TD><TD>-498.66</TD><TD>-367.22</TD><TD>6044.53</TD><TD>11</TD><TD></TD></TR>
+			<TR><TD>Rosette Sector JH-V c2-11</TD><TD>2355.38</TD><TD>-170.5</TD><TD>-4740.84</TD><TD>6</TD><TD></TD></TR>
+			<TR><TD>Sadr Region Sector CV-X b1-2</TD><TD>-1728.56</TD><TD>80.62</TD><TD>300.12</TD><TD>9</TD><TD></TD></TR>
+			<TR><TD>Skaudou XX-C c28-14</TD><TD>-474.5</TD><TD>-496.47</TD><TD>10391.28</TD><TD>6</TD><TD></TD></TR>
+			<TR><TD>Slegou ZN-I c10-2</TD><TD>-4073.25</TD><TD>-888.09</TD><TD>-3156.69</TD><TD>3</TD><TD></TD></TR>
+			<TR><TD>Smaidiae MS-B c16-0</TD><TD>-17787.5</TD><TD>-101.44</TD><TD>-9344.97</TD><TD>BCD 5</TD><TD></TD></TR>
+			<TR><TD>Smootoae UW-J b22-10</TD><TD>24.56</TD><TD>8.56</TD><TD>51911.22</TD><TD>5</TD><TD></TD></TR>
+			<TR><TD>Socho</TD><TD>-72.44</TD><TD>-101.16</TD><TD>-141.19</TD><TD>5</TD><TD></TD></TR>
+			<TR><TD>Splieck IJ-O c20-0</TD><TD>6740.16</TD><TD>219.44</TD><TD>-12982</TD><TD>5</TD><TD></TD></TR>
+			<TR><TD>Spoihaae DD-T c20-13</TD><TD>-9143.84</TD><TD>-1311.12</TD><TD>20300.41</TD><TD>AB 3</TD><TD></TD></TR>
+			<TR><TD>Statue of Liberty Sector IH-V c2-10</TD><TD>5570.84</TD><TD>-56</TD><TD>2194.62</TD><TD>A 9</TD><TD></TD></TR>
+			<TR><TD>Stuemeae FG-Y d1474</TD><TD>29.31</TD><TD>-19</TD><TD>25909.28</TD><TD>2</TD><TD></TD></TR>
+			<TR><TD>Stuemeae FG-Y d772</TD><TD>32.94</TD><TD>-25</TD><TD>25910.66</TD><TD>2</TD><TD></TD></TR>
+			<TR><TD>Stuemeae GG-Y c3272</TD><TD>28.81</TD><TD>-13.41</TD><TD>25893.69</TD><TD>9</TD><TD></TD></TR>
+			<TR><TD>Stuemeae JM-W c1-8902</TD><TD>9.16</TD><TD>-19.75</TD><TD>25899.09</TD><TD>ABC 2</TD><TD></TD></TR>
+			<TR><TD>Stuemeae KM-W c1-1117</TD><TD>26</TD><TD>-10</TD><TD>25905.31</TD><TD>11</TD><TD></TD></TR>
+			<TR><TD>Stuemeae OS-U c2-2528</TD><TD>26.44</TD><TD>-19.41</TD><TD>25944.31</TD><TD>A 2</TD><TD></TD></TR>
+			<TR><TD>Swoilz UF-Y c17-14</TD><TD>1171.44</TD><TD>-99.19</TD><TD>995.94</TD><TD>3</TD><TD></TD></TR>
+			<TR><TD>Swoilz WC-T b37-3</TD><TD>1185</TD><TD>-80.69</TD><TD>1016.84</TD><TD>11</TD><TD></TD></TR>
+			<TR><TD>Swoilz WM-U b36-3</TD><TD>1194.28</TD><TD>-108.16</TD><TD>1002.78</TD><TD>3</TD><TD></TD></TR>
+			<TR><TD>Swoilz ZF-L d9-74</TD><TD>1173.47</TD><TD>-94.44</TD><TD>1018.16</TD><TD>8</TD><TD></TD></TR>
+			<TR><TD>Syneaxeau WG-Y c0</TD><TD>-6988.88</TD><TD>4.16</TD><TD>60435.62</TD><TD>4</TD><TD></TD></TR>
+			<TR><TD>Synookio AC-L d8-57</TD><TD>-47.47</TD><TD>389.97</TD><TD>12517.56</TD><TD>12</TD><TD></TD></TR>
+			<TR><TD>Synuefe KO-H b43-3</TD><TD>780.75</TD><TD>-181.62</TD><TD>-142.72</TD><TD>1</TD><TD></TD></TR>
+			<TR><TD>Syrivo UW-N c6-1</TD><TD>13568.34</TD><TD>20.41</TD><TD>54275.47</TD><TD>A 13</TD><TD></TD></TR>
+			<TR><TD>Tamaya</TD><TD>-21.44</TD><TD>-175.25</TD><TD>-20.94</TD><TD>9</TD><TD></TD></TR>
+			<TR><TD>Traikaae CI-Y b4</TD><TD>-342.38</TD><TD>-21.47</TD><TD>4083.66</TD><TD>13</TD><TD></TD></TR>
+			<TR><TD>Traili JD-I b10-0</TD><TD>25679.41</TD><TD>140.53</TD><TD>4275.66</TD><TD>BC 2</TD><TD></TD></TR>
+			<TR><TD>Witch Head Sector DQ-Y c2</TD><TD>383.69</TD><TD>-401.59</TD><TD>-768.72</TD><TD>ABC 10</TD><TD></TD></TR>
+			<TR><TD>Wregoe DJ-X c28-19</TD><TD>302.69</TD><TD>-0.09</TD><TD>212.28</TD><TD>6</TD><TD></TD></TR>
+			
+
+		</Table>
+	</div>
+</div>
+<script>
+
+	var input = document.getElementById("SystemNameInput");
+
+	input.addEventListener("keyup", function(event) {
+		// Number 13 is the "Enter" key on the keyboard
+		if (event.keyCode === 13) {
+		// Cancel the default action, if needed
+		event.preventDefault();
+		// Trigger the button element with a click
+		document.getElementById("SearchButton").click();
+		}
+	});
+
+	function SystemNameAC() {
+		var filter, url;
+		var input = document.getElementById("SystemNameInput");    
+		var xmlhttp = new XMLHttpRequest();
+		var DivList = document.getElementById("SystemNameInput-autocompleteList");
+		
+		xmlhttp.onreadystatechange = function() {
+			var SystemNameArr, i;
+			
+			DivList.innerHTML = '';
+			
+			if (this.readyState === XMLHttpRequest.DONE && this.status == 200) {
+				
+				SystemNameArr = JSON.parse(this.responseText)
+				
+				for(i = 0; i < SystemNameArr.length && i < 10; i++) {
+					b = document.createElement("DIV");
+					b.innerHTML = "<strong>" + SystemNameArr[i].name.substr(0, filter.length) + "</strong>";
+					b.innerHTML += SystemNameArr[i].name.substr(filter.length);
+					b.innerHTML += "<input type='hidden' value='" + SystemNameArr[i].name + "'>";
+					b.addEventListener("click", function(e) {
+						input.value = this.getElementsByTagName("input")[0].value;
+						DivList.innerHTML = '';
+					});
+					DivList.appendChild(b);
+				}
+			}
+		};
+		
+		input = document.getElementById("SystemNameInput");
+		filter = input.value.toUpperCase();
+		
+		if(filter.length >= 3){
+			url = 'https://www.edsm.net/api-v1/systems?systemName=' + encodeURIComponent(filter);
+		
+			xmlhttp.open("GET", url, true);
+			xmlhttp.send();
+		}else{
+			DivList.innerHTML = '';
+		}
+	}
+
+	function SearchClick() {
+
+		function ReadSystemData( callback ){
+
+			var xmlhttp = new XMLHttpRequest();
+			xmlhttp.onreadystatechange = function() {
+				if (this.readyState ==4 && this.status == 200) {
+					var SystemName = document.getElementById("SystemNameInput").value;
+				
+					if(this.responseText == '[]'){
+						alert('No system with name [' + SystemName + '] could be found!');
+					}else{
+				
+						var JsonResponse;
+						JsonResponse = JSON.parse(this.responseText);
+				
+						var SystemX = JsonResponse.coords.x;
+						var SystemY = JsonResponse.coords.y;
+						var SystemZ = JsonResponse.coords.z;
+					
+						document.getElementById("SystemPosX").value = SystemX;
+						document.getElementById("SystemPosY").value = SystemY;
+						document.getElementById("SystemPosZ").value = SystemZ;
+					}        	
+					callback(); // next step
+				}
+			};
+
+			var SystemName = document.getElementById("SystemNameInput").value;
+
+			if(SystemName != ''){
+				var url = 'https://www.edsm.net/api-v1/system?systemName=' +  encodeURIComponent(SystemName) + '&showCoordinates=1';
+
+				xmlhttp.open("GET", url, true);
+				xmlhttp.send();
+			}else{
+				callback();
+			};
+		}
+
+		function FilterData(){
+			var OverlapsTable = document.getElementById("OverlapsTable");
+			var SystemX = parseFloat(document.getElementById("SystemPosX").value);
+			var SystemY = parseFloat(document.getElementById("SystemPosY").value);
+			var SystemZ = parseFloat(document.getElementById("SystemPosZ").value);
+			var OverlapX, OverlapY, OverlapZ, Distance, i;
+
+			// Calcualte distances
+			for(i=1;i<OverlapsTable.rows.length;i++){
+				OverlapX = parseFloat(OverlapsTable.rows[i].cells[1].innerHTML);
+				OverlapY = parseFloat(OverlapsTable.rows[i].cells[2].innerHTML);
+				OverlapZ = parseFloat(OverlapsTable.rows[i].cells[3].innerHTML);
+
+				Distance = Math.sqrt(Math.pow(OverlapX-SystemX,2) + Math.pow(OverlapY-SystemY,2) + Math.pow(OverlapZ-SystemZ,2));
+
+				OverlapsTable.rows[i].cells[5].innerHTML = Distance.toFixed(2);
+			}
+
+			// Sort Table
+			var switching, CurrentValue, NextValue, shouldSwitch;
+			switching = true;
+			
+			while (switching) {
+				
+				switching = false;
+				
+				for (i = 1; i < (OverlapsTable.rows.length - 1); i++) {
+					shouldSwitch = false;
+					CurrentValue = parseFloat(OverlapsTable.rows[i].cells[5].innerHTML);
+					NextValue = parseFloat(OverlapsTable.rows[i + 1].cells[5].innerHTML);
+					
+					if (CurrentValue > NextValue) {
+						shouldSwitch = true;
+					}
+					if (shouldSwitch) {
+						OverlapsTable.rows[i].parentNode.insertBefore(OverlapsTable.rows[i + 1], OverlapsTable.rows[i]);
+						switching = true;
+					}
+				}
+			}
+		}
+
+		ReadSystemData(FilterData);
+
+	}
+</script>
+</body>
+</html>

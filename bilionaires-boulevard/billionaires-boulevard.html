@@ -1,0 +1,390 @@
+
+<head>
+    <style type="text/css">
+	    table.tableizer-table {
+		    font-size: 12px;
+		    border: 1px solid #CCC; 
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: rgba(0,0,0,0.7)
+        } 
+        .tableizer-table td {
+            padding: 4px;
+            margin: 3px;
+            border: 1px solid #CCC;
+        }
+        .tableizer-table th {
+            background-color: #FFB300; 
+            color: #FFF;
+            font-weight: bold;
+            font-size: 14px;
+        }
+    </style>
+    <style>
+    input[type=button] {
+        background-color: #FF9300;
+        color: #383838;
+        font-weight: bold;
+        cursor: pointer;
+        padding: 10px;
+    }
+    </style>
+    <script>
+        function CopyClick(InputElement) {
+            var TdNode=InputElement.parentNode;
+            
+            const reg1 = /<h2>/
+            const reg2 = /<\/h2>.*/
+
+            const TextElement = document.createElement('textarea');
+            TextElement.value = TdNode.innerHTML.replace(reg1, "").replace(reg2, "");
+            document.body.appendChild(TextElement);
+            TextElement.select();
+            document.execCommand('copy');
+            document.body.removeChild(TextElement);
+            
+        }
+    </script>
+</head>
+<body>
+    <table class="tableizer-table" id="MatTable">
+        <thead>
+            <tr bgcolor = "Black"><th>System</th><th>Body</th><th>Plants to Scan</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><center><H2>Col 285 Sector BS-I c10-11</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>ABCD 2 a</H2></center></td>
+                <td><input type="checkbox"> Cactoida Vermis<br><input type="checkbox"> Clypeus Lacrimam<br><input type="checkbox"> Frutexa Sponsae<br><input type="checkbox"> Osseus Discus<br><input type="checkbox"> Tussock Virgam</td>
+            </tr>
+            <tr>
+                <td><center><H2>HIP 82068</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>5 c</H2></center></td>
+                <td><input type="checkbox"> Cactoida Vermis<br><input type="checkbox"> Clypeus Lacrimam<br><input type="checkbox"> Frutexa Sponsae<br><input type="checkbox"> Osseus Discus</td>
+            </tr>
+            <tr>
+                <td><center><H2>HIP 83863</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>AB 1 e</H2></center></td>
+                <td><input type="checkbox"> Cactoida Vermis<br><input type="checkbox"> Clypeus Lacrimam<br><input type="checkbox"> Frutexa Sponsae<br><input type="checkbox"> Tussock Virgam</td>
+            </tr>
+            <tr>
+                <td><center><H2>HIP 84676</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>5 b</H2></center></td>
+                <td><input type="checkbox"> Clypeus Lacrimam<br><input type="checkbox"> Frutexa Sponsae<br><input type="checkbox"> Osseus Discus<br><input type="checkbox"> Tussock Virgam</td>
+            </tr>
+            <tr>
+                <td><center><H2>HIP 86940</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>2 a</H2></center></td>
+                <td><input type="checkbox"> Cactoida Vermis<br><input type="checkbox"> Clypeus Lacrimam<br><input type="checkbox"> Frutexa Sponsae<br><input type="checkbox"> Osseus Discus<br><input type="checkbox"> Tussock Virgam</td>
+            </tr>
+            <tr>
+                <td><center><H2>Acurus</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>A 3</H2></center></td>
+                <td><input type="checkbox"> Clypeus Margaritus<br><input type="checkbox"> Osseus Discus<br><input type="checkbox"> Tussock Virgam</td>
+            </tr>
+            <tr>
+                <td><center><H2>Col 285 Sector JY-H c10-27</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>B 5 a</H2></center></td>
+                <td><input type="checkbox"> Cactoida Vermis<br><input type="checkbox"> Clypeus Lacrimam<br><input type="checkbox"> Frutexa Sponsae<br><input type="checkbox"> Tussock Virgam</td>
+            </tr>
+            <tr>
+                <td><center><H2>Col 285 Sector GK-K b23-8</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>C 1</H2></center></td>
+                <td><input type="checkbox"> Cactoida Vermis<br><input type="checkbox"> Clypeus Margaritus<br><input type="checkbox"> Osseus Discus<br><input type="checkbox"> Stratum Tectonicas<br><input type="checkbox"> Tussock Virgam</td>
+            </tr>
+            <tr>
+                <td><center><H2>Col 285 Sector ID-G a54-2</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>A 2</H2></center></td>
+                <td><input type="checkbox"> Cactoida Vermis<br><input type="checkbox"> Stratum Tectonicas<br><input type="checkbox"> Tussock Virgam</td>
+            </tr>
+            <tr>
+                <td><center><H2>Kwatee</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>C 6</H2></center></td>
+                <td><input type="checkbox"> Cactoida Vermis<br><input type="checkbox"> Clypeus Margaritus<br><input type="checkbox"> Stratum Tectonicas</td>
+            </tr>
+            <tr>
+                <td><center><H2>Bridge</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>1</H2></center></td>
+                <td><input type="checkbox"> Cactoida Vermis<br><input type="checkbox"> Stratum Tectonicas<br><input type="checkbox"> Tussock Virgam</td>
+            </tr>
+            <tr>
+                <td><center><H2>Harma</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>A 7 f</H2></center></td>
+                <td><input type="checkbox"> Clypeus Lacrimam<br><input type="checkbox"> Frutexa Acus<br><input type="checkbox"> Osseus Pellebantus<br><input type="checkbox"> Tussock Triticum</td>
+            </tr>
+            <tr>
+                <td><center><H2>Daruwutja</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>B 4</H2></center></td>
+                <td><input type="checkbox"> Cactoida Vermis<br><input type="checkbox"> Clypeus Margaritus</td>
+            </tr>
+            <tr>
+                <td><center><H2>Daruwutja</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>B 5</H2></center></td>
+                <td><input type="checkbox"> Clypeus Margaritus<br><input type="checkbox"> Stratum Tectonicas<br><input type="checkbox"> Tussock Virgam</td>
+            </tr>
+            <tr>
+                <td><center><H2>Lyncis Sector CL-Y c14</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>ABC 1 c</H2></center></td>
+                <td><input type="checkbox"> Aleoida Gravis<br><input type="checkbox"> Recepta Deltahedronix<br><input type="checkbox"> Stratum Cucumisis</td>
+            </tr>
+            <tr>
+                <td><center><H2>Arietis Sector YU-X b1-4</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>B 6</H2></center></td>
+                <td><input type="checkbox"> Aleoida Gravis<br><input type="checkbox"> Clypeus Margaritus<br><input type="checkbox"> Stratum Tectonicas<br><input type="checkbox"> Tussock Triticum</td>
+            </tr>
+            <tr>
+                <td><center><H2>Hyades Sector YU-Y d76</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>1 b</H2></center></td>
+                <td><input type="checkbox"> Cactoida Vermis<br><input type="checkbox"> Clypeus Lacrimam<br><input type="checkbox"> Frutexa Sponsae<br><input type="checkbox"> Osseus Discus<br><input type="checkbox"> Tussock Virgam</td>
+            </tr>
+            <tr>
+                <td><center><H2>Hyades Sector YU-Y d76</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>1 c</H2></center></td>
+                <td><input type="checkbox"> Cactoida Vermis<br><input type="checkbox"> Clypeus Lacrimam<br><input type="checkbox"> Frutexa Sponsae<br><input type="checkbox"> Osseus Discus<br><input type="checkbox"> Tussock Virgam</td>
+            </tr>
+            <tr>
+                <td><center><H2>Hyades Sector AL-X c1-24</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>A 3</H2></center></td>
+                <td><input type="checkbox"> Aleoida Gravis<br><input type="checkbox"> Clypeus Margaritus<br><input type="checkbox"> Stratum Tectonicas</td>
+            </tr>
+            <tr>
+                <td><center><H2>HIP 22633</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>3 a</H2></center></td>
+                <td><input type="checkbox"> Clypeus Lacrimam<br><input type="checkbox"> Frutexa Sponsae<br><input type="checkbox"> Osseus Discus<br><input type="checkbox"> Tussock Virgam</td>
+            </tr>
+            <tr>
+                <td><center><H2>HIP 20415</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>11 b</H2></center></td>
+                <td><input type="checkbox"> Frutexa Acus<br><input type="checkbox"> Tubus Compagibus</td>
+            </tr>
+            <tr>
+                <td><center><H2>HIP 20415</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>11 d</H2></center></td>
+                <td><input type="checkbox"> Frutexa Acus<br><input type="checkbox"> Tubus Compagibus</td>
+            </tr>
+            <tr>
+                <td><center><H2>HIP 20415</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>7 c</H2></center></td>
+                <td><input type="checkbox"> Cactoida Vermis<br><input type="checkbox"> Clypeus Lacrimam<br><input type="checkbox"> Osseus Discus<br><input type="checkbox"> Tussock Virgam</td>
+            </tr>
+            <tr>
+                <td><center><H2>Arietis Sector ZE-A d74</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>1 d</H2></center></td>
+                <td><input type="checkbox"> Clypeus Lacrimam<br><input type="checkbox"> Frutexa Acus<br><input type="checkbox"> Osseus Pellebantus<br><input type="checkbox"> Stratum Cucumisis<br><input type="checkbox"> Tussock Triticum</td>
+            </tr>
+            <tr>
+                <td><center><H2>HIP 21946</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>6 b</H2></center></td>
+                <td><input type="checkbox"> Aleoida Gravis<br><input type="checkbox"> Clypeus Speculumi<br><input type="checkbox"> Osseus Pellebantus<br><input type="checkbox"> Stratum Cucumisis<br><input type="checkbox"> Tussock Triticum</td>
+            </tr>
+            <tr>
+                <td><center><H2>HR 1385</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>6 b</H2></center></td>
+                <td><input type="checkbox"> Cactoida Vermis<br><input type="checkbox"> Tussock Virgam</td>
+            </tr>
+            <tr>
+                <td><center><H2>HR 1385</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>6 c</H2></center></td>
+                <td><input type="checkbox"> Cactoida Vermis<br><input type="checkbox"> Tussock Virgam</td>
+            </tr>
+            <tr>
+                <td><center><H2>HR 1385</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>6 d</H2></center></td>
+                <td><input type="checkbox"> Cactoida Vermis<br><input type="checkbox"> Osseus Discus<br><input type="checkbox"> Tussock Virgam</td>
+            </tr>
+            <tr>
+                <td><center><H2>Hyades Sector GB-W b2-5</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>AB 5</H2></center></td>
+                <td><input type="checkbox"> Cactoida Vermis<br><input type="checkbox"> Stratum Tectonicas<br><input type="checkbox"> Tussock Virgam</td>
+            </tr>
+            <tr>
+                <td><center><H2>HIP 26761</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>5 a</H2></center></td>
+                <td><input type="checkbox"> Clypeus Lacrimam<br><input type="checkbox"> Frutexa Sponsae<br><input type="checkbox"> Osseus Discus</td>
+            </tr>
+            <tr>
+                <td><center><H2>HIP 26761</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>5 c</H2></center></td>
+                <td><input type="checkbox"> Cactoida Vermis<br><input type="checkbox"> Clypeus Lacrimam<br><input type="checkbox"> Frutexa Sponsae<br><input type="checkbox"> Osseus Discus<br><input type="checkbox"> Tussock Virgam</td>
+            </tr>
+            <tr>
+                <td><center><H2>Shoribelu</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>5 b</H2></center></td>
+                <td><input type="checkbox"> Cactoida Vermis<br><input type="checkbox"> Tussock Virgam</td>
+            </tr>
+            <tr>
+                <td><center><H2>Shoribelu</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>5 c</H2></center></td>
+                <td><input type="checkbox"> Cactoida Vermis<br><input type="checkbox"> Osseus Discus<br><input type="checkbox"> Tussock Virgam</td>
+            </tr>
+            <tr>
+                <td><center><H2>Shoribelu</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>9 e</H2></center></td>
+                <td><input type="checkbox"> Aleoida Coronamus<br><input type="checkbox"> Frutexa Acus</td>
+            </tr>
+            <tr>
+                <td><center><H2>HIP 28774</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>AB 10 e</H2></center></td>
+                <td><input type="checkbox"> Clypeus Lacrimam<br><input type="checkbox"> Frutexa Acus<br><input type="checkbox"> Osseus Pellebantus<br><input type="checkbox"> Tussock Triticum</td>
+            </tr>
+            <tr>
+                <td><center><H2>Col 285 Sector ST-P c6-11</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>A 4</H2></center></td>
+                <td><input type="checkbox"> Aleoida Gravis<br><input type="checkbox"> Clypeus Margaritus<br><input type="checkbox"> Stratum Tectonicas<br><input type="checkbox"> Tussock Triticum</td>
+            </tr>
+            <tr>
+                <td><center><H2>Aleutes</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>B 2</H2></center></td>
+                <td><input type="checkbox"> Cactoida Vermis<br><input type="checkbox"> Clypeus Margaritus<br><input type="checkbox"> Stratum Tectonicas</td>
+            </tr>
+            <tr>
+                <td><center><H2>Col 285 Sector YK-M c8-9</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>1</H2></center></td>
+                <td><input type="checkbox"> Aleoida Gravis<br><input type="checkbox"> Clypeus Margaritus<br><input type="checkbox"> Osseus Pellebantus<br><input type="checkbox"> Stratum Tectonicas<br><input type="checkbox"> Tussock Triticum</td>
+            </tr>
+            <tr>
+                <td><center><H2>HIP 56960</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>3 a</H2></center></td>
+                <td><input type="checkbox"> Cactoida Vermis<br><input type="checkbox"> Clypeus Lacrimam<br><input type="checkbox"> Osseus Discus<br><input type="checkbox"> Tussock Virgam</td>
+            </tr>
+            <tr>
+                <td><center><H2>Borfor</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>1 c</H2></center></td>
+                <td><input type="checkbox"> Cactoida Vermis<br><input type="checkbox"> Osseus Discus<br><input type="checkbox"> Tussock Virgam</td>
+            </tr>
+            <tr>
+                <td><center><H2>Borfor</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>1 d</H2></center></td>
+                <td><input type="checkbox"> Cactoida Vermis<br><input type="checkbox"> Tussock Virgam</td>
+            </tr>
+            <tr>
+                <td><center><H2>Arvirisa</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>C 4</H2></center></td>
+                <td><input type="checkbox"> Aleoida Gravis<br><input type="checkbox"> Clypeus Margaritus<br><input type="checkbox"> Stratum Tectonicas<br><input type="checkbox"> Tussock Triticum</td>
+            </tr>
+            <tr>
+                <td><center><H2>Chersem</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>2</H2></center></td>
+                <td><input type="checkbox"> Aleoida Gravis<br><input type="checkbox"> Osseus Pellebantus<br><input type="checkbox"> Stratum Tectonicas<br><input type="checkbox"> Tussock Triticum</td>
+            </tr>
+            <tr>
+                <td><center><H2>HIP 86086</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>4 a</H2></center></td>
+                <td><input type="checkbox"> Aleoida Gravis<br><input type="checkbox"> Clypeus Lacrimam<br><input type="checkbox"> Frutexa Acus<br><input type="checkbox"> Osseus Pellebantus</td>
+            </tr>
+            <tr>
+                <td><center><H2>HR 6015</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>3 c</H2></center></td>
+                <td><input type="checkbox"> Cactoida Vermis<br><input type="checkbox"> Clypeus Lacrimam<br><input type="checkbox"> Frutexa Sponsae<br><input type="checkbox"> Osseus Discus<br><input type="checkbox"> Tussock Virgam</td>
+            </tr>
+            <tr>
+                <td><center><H2>Col 285 Sector WE-Q d5-88</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>A 4</H2></center></td>
+                <td><input type="checkbox"> Clypeus Margaritus<br><input type="checkbox"> Osseus Pellebantus<br><input type="checkbox"> Stratum Tectonicas<br><input type="checkbox"> Tussock Triticum</td>
+            </tr>
+            <tr>
+                <td><center><H2>Kherthaje</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>3 e</H2></center></td>
+                <td><input type="checkbox"> Clypeus Speculumi<br><input type="checkbox"> Frutexa Acus<br><input type="checkbox"> Osseus Pellebantus<br><input type="checkbox"> Tussock Triticum</td>
+            </tr>
+            <tr>
+                <td><center><H2>Antliae Sector IM-W d1-129</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>4</H2></center></td>
+                <td><input type="checkbox"> Aleoida Gravis<br><input type="checkbox"> Clypeus Margaritus<br><input type="checkbox"> Stratum Tectonicas</td>
+            </tr>
+            <tr>
+                <td><center><H2>Setati</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>A 1</H2></center></td>
+                <td><input type="checkbox"> Cactoida Vermis<br><input type="checkbox"> Clypeus Margaritus<br><input type="checkbox"> Tussock Virgam</td>
+            </tr>
+            <tr>
+                <td><center><H2>Col 285 Sector BG-E c12-16</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>A 8 a</H2></center></td>
+                <td><input type="checkbox"> Clypeus Lacrimam<br><input type="checkbox"> Osseus Pellebantus<br><input type="checkbox"> Stratum Cucumisis<br><input type="checkbox"> Tussock Triticum</td>
+            </tr>
+            <tr>
+                <td><center><H2>Col 285 Sector SI-J c9-12</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>5 e</H2></center></td>
+                <td><input type="checkbox"> Aleoida Gravis<br><input type="checkbox"> Clypeus Lacrimam<br><input type="checkbox"> Osseus Pellebantus<br><input type="checkbox"> Stratum Cucumisis<br><input type="checkbox"> Tussock Triticum</td>
+            </tr>
+            <tr>
+                <td><center><H2>HIP 37068</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>1 b</H2></center></td>
+                <td><input type="checkbox"> Cactoida Vermis<br><input type="checkbox"> Osseus Discus<br><input type="checkbox"> Tussock Virgam</td>
+            </tr>
+            <tr>
+                <td><center><H2>HIP 37068</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>6 a</H2></center></td>
+                <td><input type="checkbox"> Frutexa Acus<br><input type="checkbox"> Tubus Compagibus</td>
+            </tr>
+            <tr>
+                <td><center><H2>HIP 37068</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>6 b</H2></center></td>
+                <td><input type="checkbox"> Frutexa Acus<br><input type="checkbox"> Tubus Compagibus</td>
+            </tr>
+            <tr>
+                <td><center><H2>Wuning</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>A 1</H2></center></td>
+                <td><input type="checkbox"> Cactoida Vermis<br><input type="checkbox"> Clypeus Margaritus<br><input type="checkbox"> Stratum Tectonicas<br><input type="checkbox"> Tussock Virgam</td>
+            </tr>
+            <tr>
+                <td><center><H2>Col 285 Sector ZE-P c6-21</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>B 4</H2></center></td>
+                <td><input type="checkbox"> Cactoida Vermis<br><input type="checkbox"> Clypeus Margaritus<br><input type="checkbox"> Osseus Discus<br><input type="checkbox"> Tussock Virgam</td>
+            </tr>
+            <tr>
+                <td><center><H2>HIP 26060</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>5 a</H2></center></td>
+                <td><input type="checkbox"> Clypeus Lacrimam<br><input type="checkbox"> Frutexa Acus<br><input type="checkbox"> Osseus Pellebantus<br><input type="checkbox"> Stratum Cucumisis</td>
+            </tr>
+            <tr>
+                <td><center><H2>BD-08 535</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>1 c</H2></center></td>
+                <td><input type="checkbox"> Clypeus Lacrimam<br><input type="checkbox"> Osseus Pellebantus<br><input type="checkbox"> Stratum Cucumisis<br><input type="checkbox"> Tussock Triticum</td>
+            </tr>
+            <tr>
+                <td><center><H2>Hyades Sector JR-W c1-6</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>1 a</H2></center></td>
+                <td><input type="checkbox"> Aleoida Gravis<br><input type="checkbox"> Clypeus Lacrimam<br><input type="checkbox"> Stratum Cucumisis<br><input type="checkbox"> Tussock Triticum</td>
+            </tr>
+            <tr>
+                <td><center><H2>HIP 9331</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>AB 5 c</H2></center></td>
+                <td><input type="checkbox"> Clypeus Lacrimam<br><input type="checkbox"> Frutexa Acus<br><input type="checkbox"> Osseus Pellebantus<br><input type="checkbox"> Tussock Triticum</td>
+            </tr>
+            <tr>
+                <td><center><H2>HIP 772</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>2 b</H2></center></td>
+                <td><input type="checkbox"> Cactoida Vermis<br><input type="checkbox"> Osseus Discus<br><input type="checkbox"> Tussock Virgam</td>
+            </tr>
+            <tr>
+                <td><center><H2>HIP 772</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>2 c</H2></center></td>
+                <td><input type="checkbox"> Cactoida Vermis<br><input type="checkbox"> Osseus Discus<br><input type="checkbox"> Tussock Virgam</td>
+            </tr>
+            <tr>
+                <td><center><H2>El Tio</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>5 a</H2></center></td>
+                <td><input type="checkbox"> Clypeus Speculumi<br><input type="checkbox"> Frutexa Acus<br><input type="checkbox"> Osseus Pellebantus<br><input type="checkbox"> Tussock Triticum</td>
+            </tr>
+            <tr>
+                <td><center><H2>HIP 105439</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>AB 4 e</H2></center></td>
+                <td><input type="checkbox"> Cactoida Vermis<br><input type="checkbox"> Clypeus Lacrimam<br><input type="checkbox"> Frutexa Sponsae<br><input type="checkbox"> Tussock Virgam</td>
+            </tr>
+            <tr>
+                <td><center><H2>Faroras</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>3 d</H2></center></td>
+                <td><input type="checkbox"> Aleoida Gravis<br><input type="checkbox"> Clypeus Lacrimam<br><input type="checkbox"> Osseus Pellebantus<br><input type="checkbox"> Tussock Triticum</td>
+            </tr>
+            <tr>
+                <td><center><H2>Di Yomi</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>C 7</H2></center></td>
+                <td><input type="checkbox"> Aleoida Gravis<br><input type="checkbox"> Clypeus Margaritus<br><input type="checkbox"> Stratum Tectonicas</td>
+            </tr>
+            <tr>
+                <td><center><H2>Samontia</H2><br><input style= "padding: 2px 5px;" type="button" value="Copy" onclick="CopyClick(this)"></center></td>
+                <td><center><H2>1 g</H2></center></td>
+                <td><input type="checkbox"> Aleoida Gravis<br><input type="checkbox"> Clypeus Lacrimam<br><input type="checkbox"> Osseus Pellebantus<br><input type="checkbox"> Tussock Triticum</td>
+            </tr>     </tbody>
+    </table>
+</body>

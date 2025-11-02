@@ -1,0 +1,160 @@
+<style type="text/css">
+#BPSelect {
+      background-color: #FFB300;  
+      font-size: 14px; /* Increase font-size */
+      Width: 80%;
+      color: #383838;
+      padding: 5px 5px 5px 5px; /* Add some padding */
+      border: 1px solid #ddd; /* Add a grey border */
+      margin-bottom: 12px; /* Add some space below the input */
+    }
+  table.tableizer-table {
+      font-size: 12px;
+      border: 1px solid #CCC; 
+      font-family: Arial, Helvetica, sans-serif;
+        background-color: rgba(0,0,0,0.7)
+  } 
+  .tableizer-table td {
+      padding: 4px;
+      margin: 3px;
+      border: 1px solid #CCC;
+  }
+  .tableizer-table th {
+      background-color: #FF9300; 
+      color: #383838;
+      font-weight: bold;
+        font-size: 14px;
+  }
+</style>
+
+<script>
+function TerminalSearchFunction(){
+	var SelectInput, SelectValue, Table, tr, i, TDElement, TDValue; 
+	
+    SelectInput = document.getElementById("BPSelect");
+    SelectValue = SelectInput.value.toUpperCase();
+    
+    Table = document.getElementById("TerminalTable");
+    tr = Table.getElementsByTagName("tr");
+    
+    for (i = 0; i < tr.length; i++) {
+    
+    	TrDisplay = '';
+    
+    	TDElement = tr[i].getElementsByTagName("td")[2];
+        if(TDElement){
+        	TDValue = TDElement.textContent || TDElement.innerText;
+            
+            if(TDValue.toUpperCase() != SelectValue){
+            	TrDisplay = 'none';
+            }
+        }
+        tr[i].style.display = TrDisplay;
+    }    
+}
+</script>
+
+<table class="tableizer-table" id="TerminalTable">
+<thead>
+          <tr class="tableizer-firstrow">
+            <th colspan="4" style="vertical-align:middle; text-align:center;">Ancient Data Terminal Sites</th>
+        </tr>
+        <tr class="tableizer-firstrow">
+          <th colspan="4" style="vertical-align:middle; text-align:center;">
+          <select id="BPSelect" onchange="TerminalSearchFunction()">
+            <option value="" disabled selected hidden>Select Blueprint Type...</option>
+            <option value="Module">Guardian Module Blueprint Fragment</option>
+            <option value="Weapon">Guardian Weapon Blueprint Fragment</option>
+            <option value="Vessel">Guardian Vessel Blueprint Fragment</option>
+          </select>
+          </th>
+      </tr>
+        <tr class="tableizer-firstrow">
+          <th>System Name</th>
+          <th>Planet</th>
+          <th>Blueprint Type</th>
+          <th>Key Type</th>
+      </tr>
+  </thead>
+  <tbody>
+    <tr style = "display: none">
+      <td>HD 63154</td><td>B 3 A</td><td>Module</td><td>Ancient Relic or Key</td>
+      </tr><tr style = "display: none">
+      <td>Synuefe NL-N C23-4</td><td>B 3</td><td>Module</td><td>Ancient Relic or Key</td>
+      </tr><tr style = "display: none">
+      <td>Vela Dark Region DL-Y D112</td><td>1 A</td><td>Module</td><td>Ancient Relic or Key</td>
+      </tr><tr style = "display: none">
+      <td>Synuefe GT-H B43-1</td><td>C 4</td><td>Module</td><td>Ancient Relic or Key</td>
+      </tr><tr style = "display: none">
+      <td>COL 173 Sector GS-J B25-4</td><td>D 2</td><td>Module</td><td>Ancient Relic or Key</td>
+      </tr><tr style = "display: none">
+      <td>Synuefe EU-Q c21-10</td><td>A 3</td><td>Weapon</td><td>Ancient Relic or Key</td>
+      </tr><tr style = "display: none">
+      <td>Vela Dark Region EG-X B1-1</td><td>A 1</td><td>Weapon</td><td>Ancient Relic or Key</td>
+      </tr><tr style = "display: none">
+      <td>COL 173 Sector HR-M B23-3</td><td>B 7</td><td>Weapon</td><td>Ancient Relic or Key</td>
+      </tr><tr style = "display: none">
+      <td>Synuefe ZL-J D10-109</td><td>E 3</td><td>Weapon</td><td>Ancient Relic or Key</td>
+      </tr><tr style = "display: none">
+      <td>Synuefe CE-R C21-6</td><td>C 1</td><td>Weapon</td><td>Ancient Relic or Key</td>
+      </tr><tr style = "display: none">
+      <td>Synuefe SP-F B44-0</td><td>C 1</td><td>Weapon</td><td>Ancient Relic or Key</td>
+      </tr><tr style = "display: none">
+      <td>Vela Dark Region DL-Y D91</td><td>5 A</td><td>Weapon</td><td>Ancient Relic or Key</td>
+      </tr><tr style = "display: none">
+      <td>COL 173 Sector OD-J B25-2</td><td>B 1</td><td>Weapon</td><td>Ancient Relic or Key</td>
+      </tr><tr style = "display: none">
+      <td>Vela Dark Region JS-T B3-0</td><td>A 3</td><td>Weapon</td><td>Ancient Relic or Key</td>
+      </tr><tr style = "display: none">
+      <td>COL 173 Sector LT-Q D5-82</td><td>A 3</td><td>Weapon</td><td>Ancient Relic or Key</td>
+      </tr><tr style = "display: none">
+      <td>COL 173 Sector ZL-L B24-2</td><td>B 1</td><td>Weapon</td><td>Ancient Relic or Key</td>
+      </tr><tr style = "display: none">
+      <td>Synuefe FK-P C22-2</td><td>E 1</td><td>Weapon</td><td>Ancient Relic or Key</td>
+      </tr><tr style = "display: none">
+      <td>COL 173 Sector CC-K B25-8</td><td>A 5</td><td>Weapon</td><td>Ancient Relic or Key</td>
+      </tr><tr style = "display: none">
+      <td>COL 173 Sector ME-P D6-92</td><td>B 5</td><td>Weapon</td><td>Ancient Relic or Key</td>
+      </tr><tr style = "display: none">
+      <td>Vela Dark Region EL-Y D55</td><td>1</td><td>Weapon</td><td>Ancient Relic or Key</td>
+      </tr><tr style = "display: none">
+      <td>COL 173 Sector RU-O D6-16</td><td>A 2 A</td><td>Weapon</td><td>Ancient Relic or Key</td>
+      </tr><tr style = "display: none">
+      <td>COL 173 Sector KY-Q D5-26</td><td>6 A</td><td>Weapon</td><td>Ancient Relic or Key</td>
+      </tr><tr style = "display: none">
+      <td>COL 173 Sector HN-I B26-5</td><td>A 1</td><td>Weapon</td><td>Ancient Relic or Key</td>
+      </tr><tr style = "display: none">
+      <td>COL 173 Sector ZS-F C12-27</td><td>B 3</td><td>Weapon</td><td>Ancient Relic or Key</td>
+      </tr><tr style = "display: none">
+      <td>Vela Dark Region ZE-A D66</td><td>6 B</td><td>Weapon</td><td>Ancient Relic or Key</td>
+      </tr><tr style = "display: none">
+      <td>NGC 2451A Sector IR-W D1-77 AB</td><td>1 A</td><td>Weapon</td><td>Ancient Relic or Key</td>
+      </tr><tr style = "display: none">
+      <td>COL 173 Sector PZ-O D6-110</td><td>5 A</td><td>Weapon</td><td>Ancient Relic or Key</td>
+      </tr><tr style = "display: none">
+      <td>Synuefe BH-J D10-68</td><td>C 1</td><td>Weapon</td><td>Ancient Relic or Key</td>
+      </tr><tr style = "display: none">
+      <td>Synuefe EU-Q c21-15</td><td>A 1</td><td>Vessel</td><td>Key</td>
+      </tr><tr style = "display: none">
+      <td>NGC 2451A Sector VJ-R c4-22</td><td>A 1</td><td>Vessel</td><td>Key</td>
+      </tr><tr style = "display: none">
+      <td>Synuefe AH-J d10-103</td><td>B 1</td><td>Vessel</td><td>Key</td>
+      </tr><tr style = "display: none">
+      <td>Synuefe IL-N c23-19</td><td>B 2</td><td>Vessel</td><td>Key</td>
+      </tr><tr style = "display: none">
+      <td>Synuefe AH-J d10-20</td><td>A 3</td><td>Vessel</td><td>Key</td>
+      </tr><tr style = "display: none">
+      <td>IC 2391 Sector FL-X b1-7</td><td>A 3</td><td>Vessel</td><td>Key</td>
+      </tr><tr style = "display: none">
+      <td>	Synuefe PF-E b45-5</td><td>B 2</td><td>Vessel</td><td>Key</td>
+      </tr><tr style = "display: none">
+      <td>	HIP 36781</td><td>A 6 b</td><td>Vessel</td><td>Key</td>
+      </tr><tr style = "display: none">
+      <td>Synuefe ZG-J d10-79</td><td>B 1</td><td>Vessel</td><td>Key</td>
+      </tr><tr style = "display: none">
+      <td>	Synuefe EN-H d11-96</td><td>7 A</td><td>Vessel</td><td>Key</td>
+      </tr><tr style = "display: none">
+      <td>Synuefe AH-J d10-46</td><td>C 1</td><td>Vessel</td><td>Key</td>
+      </tr>
+  </tbody>
+</table>

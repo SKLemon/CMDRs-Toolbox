@@ -1,0 +1,519 @@
+<style type="text/css">
+    #ModuleNameInput {
+      background-color: #FFB300;  
+      font-size: 14px; /* Increase font-size */
+      Width: 80%;
+      color: #383838;
+      padding: 5px 5px 5px 5px; /* Add some padding */
+      border: 1px solid #ddd; /* Add a grey border */
+      margin-bottom: 12px; /* Add some space below the input */
+    }
+    table.tableizer-table {
+      font-size: 12px;
+      border: 1px solid #CCC; 
+      font-family: Arial, Helvetica, sans-serif;
+        background-color: rgba(0,0,0,0.7)
+  } 
+  .tableizer-table td {
+      padding: 4px;
+      margin: 3px;
+      border: 1px solid #CCC;
+  }
+  .tableizer-table th {
+      background-color: #FF9300; 
+      color: #383838;
+      font-weight: bold;
+        font-size: 14px;
+  }
+  </style>
+  
+   <script>
+    function SearchFunction() {
+      // Declare variables
+      var Nameinput, Namefilter, table, tr, NameTd, i, NameValue, TrDisplay, RowSpan;
+      Nameinput = document.getElementById("ModuleNameInput");
+      Namefilter = Nameinput.value.toUpperCase();
+      
+      table = document.getElementById("ModuleTable");
+      tr = table.getElementsByTagName("tr");
+    
+      // Loop through all table rows, and hide those who don't match the search query
+      RowSpan = 0;
+      for (i = 0; i < tr.length; i++) {
+        NameTd = tr[i].getElementsByTagName("td")[0];
+        TrDisplay = "";
+        if (NameTd) {
+            if(Namefilter == "ALL"){
+                TrDisplay = "";
+            }else{
+                TrDisplay = "none";
+                if(RowSpan > 0){
+                    TrDisplay = "";
+                    RowSpan = RowSpan - 1;
+                }else{
+                    NameValue = NameTd.textContent || NameTd.innerText;      
+                    if (NameValue.toUpperCase().indexOf(Namefilter) > -1) {
+                        TrDisplay = "";
+                        RowSpan = NameTd.rowSpan;
+                    }
+                }
+            }
+        }
+        tr[i].style.display = TrDisplay;        
+      }
+    }
+    </script>
+  
+  <table class="tableizer-table" id="ModuleTable">
+  <thead>
+          <tr class="tableizer-firstrow">
+              <th colspan="3" style="vertical-align:middle; text-align:center;">Guardian Module Unlock Requirements</th>
+          </tr>
+          <tr class="tableizer-firstrow">
+            <th colspan="3" style="vertical-align:middle; text-align:center;">
+                <Select id="ModuleNameInput" onchange="SearchFunction()">
+                  <option value="" disabled selected hidden>Select Module...</option>
+                  <option value="Guardian Frame Shift Drive Booster">Guardian Frame Shift Drive Booster</option>
+                  <option value="Guardian Shield Reinforcement Package">Guardian Shield Reinforcement Package</option>
+                  <option value="Module Reinforcement Package">Module Reinforcement Package</option>
+                  <option value="Guardian Hull Reinforcement Package">Guardian Hull Reinforcement Package</option>
+                  <option value="Guardian Hybrid Power Distributor">Guardian Hybrid Power Distributor</option>
+                  <option value="Guardian Hybrid Power Plant">Guardian Hybrid Power Plant</option>
+                  <option value="Guardian Gauss Cannon">Guardian Gauss Cannon</option>
+                  <option value="Guardian Plasma Charger">Guardian Plasma Charger</option>
+                  <option value="Guardian Shard Cannon">Guardian Shard Cannon</option>
+                  <option value="XG7 Trident">XG7 Trident</option>
+                  <option value="XG8 Javelin">XG8 Javelin</option>
+                  <option value="XG9 Lance">XG9 Lance</option>
+              </Select>
+            </th>
+          </tr>
+          <tr class="tableizer-firstrow">
+              <th>Module</th>
+                <th>Material</th>
+                <th>Material Type</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr style = "display: none">
+              <td Rowspan="5" style="vertical-align : middle;text-align:center;"><h2>Guardian Frame Shift Drive Booster</h2></td>
+              <td>1 Guardian Module Blueprint Fragment</td><td>Guardian Blueprint Fragment</td>
+          </tr>
+            <tr style = "display: none">
+              <td>21 Guardian Power Cell</td><td>Guardian Material</td>
+          </tr>
+            <tr style = "display: none">
+              <td>21 Guardian Technology Component</td><td>Guardian Material</td>
+          </tr>
+            <tr style = "display: none">
+              <td>24 Focus Crystals</td><td>Manufactured Material</td>
+          </tr>
+            <tr style = "display: none">
+              <td>8 HN Shock Mount</td><td>Commodity</td>
+          </tr>
+          
+          <tr style = "display: none"><td Colspan = "3"></td></tr>
+          
+          <tr style = "display: none">
+              <td Rowspan="5" style="vertical-align : middle;text-align:center;"><h2>Guardian Shield Reinforcement Package</h2></td>
+              <td>1 Guardian Module Blueprint Fragment</td><td>Guardian Blueprint Fragment</td>
+          </tr>
+            <tr style = "display: none">
+              <td>17 Guardian Power Cell</td><td>Guardian Material</td>
+          </tr>
+          <tr style = "display: none">
+              <td>20 Guardian Technology Component</td><td>Guardian Material</td>
+          </tr>
+            <tr style = "display: none">
+              <td>24 Pattern Delta Obelisk Data</td><td>Guardian Data</td>
+          </tr>
+          <tr style = "display: none">
+              <td>8 Hardware Diagnostic Sensor</td><td>Commodity</td>
+          </tr>
+  
+          <tr style = "display: none"><td Colspan = "3"></td></tr>
+          
+          <tr style = "display: none">
+              <td Rowspan="5" style="vertical-align : middle;text-align:center;"><h2>Module Reinforcement Package</h2></td>
+              <td>1 Guardian Module Blueprint Fragment</td><td>Guardian Blueprint Fragment</td>
+          </tr>
+            <tr style = "display: none">
+              <td>18 Guardian Sentinel Wreckage Components</td><td>Guardian Material</td>
+          </tr>
+            <tr style = "display: none">
+              <td>15 Pattern Epsilon Obelisk Data</td><td>Guardian Data</td>
+          </tr>
+            <tr style = "display: none">
+              <td>20 Guardian Power Conduit</td><td>Guardian Material</td>
+          </tr>
+          <tr style = "display: none">
+              <td>9 Reinforced Mounting Plate</td><td>Commodity</td>
+          </tr>
+  
+          <tr style = "display: none"><td Colspan = "3"></td></tr>
+          
+          <tr style = "display: none">
+              <td Rowspan="5" style="vertical-align : middle;text-align:center;"><h2>Guardian Hull Reinforcement Package</h2></td>
+              <td>1 Guardian Module Blueprint Fragment</td><td>Guardian Blueprint Fragment</td>
+          </tr>
+            <tr style = "display: none">
+              <td>21 Guardian Sentinel Wreckage Components</td><td>Guardian Material</td>
+          </tr>
+            <tr style = "display: none">
+              <td>16 Pattern Beta Obelisk Data</td><td>Guardian Data</td>
+          </tr>
+            <tr style = "display: none">
+              <td>16 Pattern Gamma Obelisk Data</td><td>Guardian Data</td>
+          </tr>
+          <tr style = "display: none">
+              <td>12 Reinforced Mounting Plate</td><td>Commodity</td>
+          </tr>
+  
+          <tr style = "display: none"><td Colspan = "3"></td></tr>
+          
+          <tr style = "display: none">
+              <td Rowspan="5" style="vertical-align : middle;text-align:center;"><h2>Guardian Hybrid Power Distributor</h2></td>
+              <td>1 Guardian Module Blueprint Fragment</td><td>Guardian Blueprint Fragment</td>
+          </tr>
+            <tr style = "display: none">
+              <td>20 Pattern Alpha Obelisk Data</td><td>Guardian Data</td>
+          </tr>
+            <tr style = "display: none">
+              <td>24 Guardian Power Cell</td><td>Guardian Material</td>
+          </tr>
+            <tr style = "display: none">
+              <td>18 Phase Alloys</td><td>Manufactured Material</td>
+          </tr>
+          <tr style = "display: none">
+              <td>6 Heatsink Interlink</td><td>Commodity</td>
+          </tr>
+  
+          <tr style = "display: none"><td Colspan = "3"></td></tr>
+          
+          <tr style = "display: none">
+              <td Rowspan="5" style="vertical-align : middle;text-align:center;"><h2>Guardian Hybrid Power Plant</h2></td>
+              <td>1 Guardian Module Blueprint Fragment</td><td>Guardian Blueprint Fragment</td>
+          </tr>
+            <tr style = "display: none">
+              <td>18 Guardian Power Conduit</td><td>Guardian Material</td>
+          </tr>
+            <tr style = "display: none">
+              <td>21 Pattern Epsilon Obelisk Data</td><td>Guardian Data</td>
+          </tr>
+            <tr style = "display: none">
+              <td>15 Heat Resistant Ceramics</td><td>Manufactured Material</td>
+          </tr>
+          <tr style = "display: none">
+              <td>10 Energy Grid Assembly</td><td>Commodity</td>
+          </tr>
+  
+          <tr style = "display: none"><td Colspan = "3"></td Colspan = "3"></tr>
+          
+          <tr style = "display: none">
+              <td Rowspan="4" style="vertical-align : middle;text-align:center;"><h2>Guardian Gauss Cannon</h2> Small Fixed</td>
+              <td>1 Guardian Weapon Blueprint Fragment</td><td>Guardian Blueprint Fragment</td>
+          </tr>
+            <tr style = "display: none">
+              <td>12 Guardian Power Conduit</td><td>Guardian Material</td>
+          </tr>
+            <tr style = "display: none">
+              <td>12 Guardian Sentinel Wreckage Components</td><td>Guardian Material</td>
+          </tr>
+            <tr style = "display: none">
+              <td>15 Guardian Sentinel Weapon Parts</td><td>Guardian Material</td>
+          </tr>
+          
+          <tr style = "display: none"><td Colspan = "3"></td></tr>
+          
+          <tr style = "display: none">
+              <td Rowspan="5" style="vertical-align : middle;text-align:center;"><h2>Guardian Gauss Cannon</h2> Medium Fixed</td>
+              <td>1 Guardian Weapon Blueprint Fragment</td><td>Guardian Blueprint Fragment</td>
+          </tr>
+            <tr style = "display: none">
+              <td>18 Guardian Power Cell</td><td>Guardian Material</td>
+          </tr>
+            <tr style = "display: none">
+              <td>20 Guardian Technology Component</td><td>Guardian Material</td>
+          </tr>
+            <tr style = "display: none">
+  
+              <td>15 Manganese</td><td>Raw Material</td>
+          </tr>
+          <tr style = "display: none">
+              <td>6 Magnetic Emitter Coil</td><td>Commodity</td>
+          </tr>
+  
+          <tr style = "display: none"><td Colspan = "3"></td></tr>
+          
+          <tr style = "display: none">
+              <td Rowspan="4" style="vertical-align : middle;text-align:center;"><h2>Guardian Plasma Charger</h2> Small Fixed</td>
+              <td>1 Guardian Weapon Blueprint Fragment</td><td>Guardian Blueprint Fragment</td>
+          </tr>
+            <tr style = "display: none">
+              <td>12 Guardian Power Cell</td><td>Guardian Material</td>
+          </tr>
+            <tr style = "display: none">
+              <td>12 Guardian Sentinel Weapon Parts</td><td>Guardian Material</td>
+          </tr>
+            <tr style = "display: none">
+              <td>15 Guardian Technology Component</td><td>Guardian Material</td>
+          </tr>
+  
+          <tr style = "display: none"><td Colspan = "3"></td></tr>
+          
+          <tr style = "display: none">
+              <td Rowspan="4" style="vertical-align : middle;text-align:center;"><h2>Guardian Plasma Charger</h2> Small Turreted</td>
+              <td>1 Guardian Weapon Blueprint Fragment</td><td>Guardian Blueprint Fragment</td>
+          </tr>
+            <tr style = "display: none">
+              <td>12 Guardian Power Cell</td><td>Guardian Material</td>
+          </tr>
+            <tr style = "display: none">
+              <td>15 Guardian Sentinel Weapon Parts</td><td>Guardian Material</td>
+          </tr>
+            <tr style = "display: none">
+              <td>12 Guardian Technology Component</td><td>Guardian Material</td>
+          </tr>
+  
+          <tr style = "display: none"><td Colspan = "3"></td></tr>
+          
+          <tr style = "display: none">
+              <td Rowspan="5" style="vertical-align : middle;text-align:center;"><h2>Guardian Plasma Charger</h2> Medium Fixed</td>
+              <td>1 Guardian Weapon Blueprint Fragment</td><td>Guardian Blueprint Fragment</td>
+          </tr>
+            <tr style = "display: none">
+              <td>19 Guardian Power Conduit</td><td>Guardian Material</td>
+          </tr>
+            <tr style = "display: none">
+              <td>16 Guardian Sentinel Weapon Parts</td><td>Guardian Material</td>
+          </tr>
+            <tr style = "display: none">
+              <td>14 Chromium</td><td>Raw Material</td>
+          </tr>
+          <tr style = "display: none">
+              <td>8 Micro-Weave Cooling Hoses</td><td>Commodity</td>
+          </tr>
+  
+          <tr style = "display: none"><td Colspan = "3"></td></tr>
+          
+          <tr style = "display: none">
+              <td Rowspan="5" style="vertical-align : middle;text-align:center;"><h2>Guardian Plasma Charger</h2> Medium Turreted</td>
+              <td>2 Guardian Weapon Blueprint Fragment</td><td>Guardian Blueprint Fragment</td>
+          </tr>
+            <tr style = "display: none">
+              <td>21 Guardian Power Conduit</td><td>Guardian Material</td>
+          </tr>
+            <tr style = "display: none">
+              <td>20 Guardian Sentinel Weapon Parts</td><td>Guardian Material</td>
+          </tr>
+            <tr style = "display: none">
+              <td>16 Chromium</td><td>Raw Material</td>
+          </tr>
+          <tr style = "display: none">
+              <td>8 Articulation Motors</td><td>Commodity</td>
+          </tr>
+  
+          <tr style = "display: none"><td Colspan = "3"></td></tr>
+          
+          <tr style = "display: none">
+              <td Rowspan="5" style="vertical-align : middle;text-align:center;"><h2>Guardian Plasma Charger</h2> Large Fixed</td>
+              <td>1 Guardian Weapon Blueprint Fragment</td><td>Guardian Blueprint Fragment</td>
+          </tr>
+            <tr style = "display: none">
+              <td>28 Guardian Power Conduit</td><td>Guardian Material</td>
+          </tr>
+            <tr style = "display: none">
+              <td>20 Guardian Sentinel Weapon Parts</td><td>Guardian Material</td>
+          </tr>
+            <tr style = "display: none">
+              <td>28 Chromium</td><td>Raw Material</td>
+          </tr>
+          <tr style = "display: none">
+              <td>10 Micro-Weave Cooling Hoses</td><td>Commodity</td>
+          </tr>
+  
+          <tr style = "display: none"><td Colspan = "3"></td></tr>
+          
+          <tr style = "display: none">
+              <td Rowspan="5" style="vertical-align : middle;text-align:center;"><h2>Guardian Plasma Charger</h2> Large Turreted</td>
+              <td>2 Guardian Weapon Blueprint Fragment</td><td>Guardian Blueprint Fragment</td>
+          </tr>
+            <tr style = "display: none">
+              <td>26 Guardian Power Conduit</td><td>Guardian Material</td>
+          </tr>
+            <tr style = "display: none">
+              <td>24 Guardian Sentinel Weapon Parts</td><td>Guardian Material</td>
+          </tr>
+            <tr style = "display: none">
+              <td>26 Chromium</td><td>Raw Material</td>
+          </tr>
+          <tr style = "display: none">
+              <td>10 Articulation Motors</td><td>Commodity</td>
+          </tr>
+  
+          <tr style = "display: none"><td Colspan = "3"></td></tr>
+          
+          <tr style = "display: none">
+              <td Rowspan="4" style="vertical-align : middle;text-align:center;"><h2>Guardian Shard Cannon</h2> Small Fixed</td>
+              <td>1 Guardian Weapon Blueprint Fragment</td><td>Guardian Blueprint Fragment</td>
+          </tr>
+            <tr style = "display: none">
+              <td>12 Guardian Power Conduit</td><td>Guardian Material</td>
+          </tr>
+            <tr style = "display: none">
+              <td>12 Guardian Technology Component</td><td>Guardian Material</td>
+          </tr>
+            <tr style = "display: none">
+              <td>15 Guardian Sentinel Weapon Parts</td><td>Guardian Material</td>
+          </tr>
+  
+          <tr style = "display: none"><td Colspan = "3"></td></tr>
+          
+          <tr style = "display: none">
+              <td Rowspan="4" style="vertical-align : middle;text-align:center;"><h2>Guardian Shard Cannon</h2> Small Turreted</td>
+              <td>1 Guardian Weapon Blueprint Fragment</td><td>Guardian Blueprint Fragment</td>
+          </tr>
+            <tr style = "display: none">
+              <td>12 Guardian Power Conduit</td><td>Guardian Material</td>
+          </tr>
+          <tr style = "display: none">
+              <td>15 Guardian Technology Component</td><td>Guardian Material</td>
+          </tr>
+            <tr style = "display: none">
+              <td>12 Guardian Sentinel Weapon Parts</td><td>Guardian Material</td>
+          </tr>
+  
+          <tr style = "display: none"><td Colspan = "3"></td></tr>
+          
+          <tr style = "display: none">
+              <td Rowspan="5" style="vertical-align : middle;text-align:center;"><h2>Guardian Shard Cannon</h2> Medium Fixed</td>
+              <td>1 Guardian Weapon Blueprint Fragment</td><td>Guardian Blueprint Fragment</td>
+          </tr>
+            <tr style = "display: none">
+              <td>20 Guardian Sentinel Wreckage Components</td><td>Guardian Material</td>
+          </tr>
+          <tr style = "display: none">
+              <td>18 Guardian Technology Component</td><td>Guardian Material</td>
+          </tr>
+            <tr style = "display: none">
+              <td>14 Carbon</td><td>Raw Material</td>
+          </tr>
+            <tr style = "display: none">
+              <td>12 Power Transfer Bus</td><td>Commodity</td>
+          </tr>
+  
+          <tr style = "display: none"><td Colspan = "3"></td></tr>
+          
+          <tr style = "display: none">
+              <td Rowspan="5" style="vertical-align : middle;text-align:center;"><h2>Guardian Shard Cannon</h2> Medium Turreted</td>
+              <td>2 Guardian Weapon Blueprint Fragment</td><td>Guardian Blueprint Fragment</td>
+          </tr>
+            <tr style = "display: none">
+              <td>16 Guardian Sentinel Wreckage Components</td><td>Guardian Material</td>
+          </tr>
+          <tr style = "display: none">
+              <td>20 Guardian Technology Component</td><td>Guardian Material</td>
+          </tr>
+            <tr style = "display: none">
+              <td>15 Carbon</td><td>Raw Material</td>
+          </tr>
+          <tr style = "display: none">
+              <td>12 Micro Controllers</td><td>Commodity</td>
+          </tr>
+  
+          <tr style = "display: none"><td Colspan = "3"></td></tr>
+          
+          <tr style = "display: none">
+              <td Rowspan="5" style="vertical-align : middle;text-align:center;"><h2>Guardian Shard Cannon</h2> Large Fixed</td>
+              <td>1 Guardian Weapon Blueprint Fragment</td><td>Guardian Blueprint Fragment</td>
+          </tr>
+            <tr style = "display: none">
+              <td>20 Guardian Sentinel Wreckage Components</td><td>Guardian Material</td>
+          </tr>
+          <tr style = "display: none">
+              <td>28 Guardian Technology Component</td><td>Guardian Material</td>
+          </tr>
+            <tr style = "display: none">
+              <td>20 Carbon</td><td>Raw Material</td>
+          </tr>
+            <tr style = "display: none">
+              <td>18 Micro Controllers</td><td>Commodity</td>
+          </tr>
+  
+          <tr style = "display: none"><td Colspan = "3"></td></tr>
+          
+          <tr style = "display: none">
+              <td Rowspan="5" style="vertical-align : middle;text-align:center;"><h2>Guardian Shard Cannon</h2> Large Turreted</td>
+              <td>2 Guardian Weapon Blueprint Fragment</td><td>Guardian Blueprint Fragment</td>
+          </tr>
+            <tr style = "display: none">
+              <td>20 Guardian Sentinel Wreckage Components</td><td>Guardian Material</td>
+          </tr>
+          <tr style = "display: none">
+              <td>26 Guardian Technology Component</td><td>Guardian Material</td>
+          </tr>
+            <tr style = "display: none">
+              <td>28 Carbon</td><td>Raw Material</td>
+          </tr>
+          <tr style = "display: none">
+              <td>12 Micro Controllers</td><td>Commodity</td>
+          </tr>
+  
+          <tr style = "display: none"><td Colspan = "3"></td></tr>
+          
+          <tr style = "display: none">
+              <td Rowspan="5" style="vertical-align : middle;text-align:center;"><h2>XG7 Trident</h2></td>
+              <td>1 Guardian Ship Blueprint Fragment</td><td>Guardian Blueprint Fragment</td>
+          </tr>
+            <tr style = "display: none">
+              <td>25 Guardian Power Cell</td><td>Guardian Material</td>
+          </tr>
+          <tr style = "display: none">
+              <td>26 Pattern Epsilon Obelisk Data</td><td>Guardian Data</td>
+          </tr>
+            <tr style = "display: none">
+              <td>18 Pattern Beta Obelisk Data</td><td>Guardian Data</td>
+          </tr>
+          <tr style = "display: none">
+              <td>25 Guardian Technology Component</td><td>Commodity</td>
+          </tr>
+  
+          <tr style = "display: none"><td Colspan = "3"></td></tr>
+          
+          <tr style = "display: none">
+              <td Rowspan="5" style="vertical-align : middle;text-align:center;"><h2>XG8 Javelin</h2></td>
+              <td>1 Guardian Ship Blueprint Fragment</td><td>Guardian Blueprint Fragment</td>
+          </tr>
+            <tr style = "display: none">
+              <td>25 Guardian Power Cell</td><td>Guardian Material</td>
+          </tr>
+          <tr style = "display: none">
+              <td>26 Pattern Epsilon Obelisk Data</td><td>Guardian Data</td>
+          </tr>
+            <tr style = "display: none">
+              <td>18 Guardian Sentinel Wreckage Components</td><td>Guardian Material</td>
+          </tr>
+          <tr style = "display: none">
+              <td>25 Guardian Technology Component</td><td>Commodity</td>
+          </tr>
+  
+          <tr style = "display: none"><td Colspan = "3"></td></tr>
+          
+          <tr style = "display: none">
+              <td Rowspan="5" style="vertical-align : middle;text-align:center;"><h2>XG9 Lance</h2></td>
+              <td>1 Guardian Ship Blueprint Fragment</td><td>Guardian Blueprint Fragment</td>
+          </tr>
+            <tr style = "display: none">
+              <td>25 Guardian Power Cell</td><td>Guardian Material</td>
+          </tr>
+          <tr style = "display: none">
+              <td>26 Pattern Epsilon Obelisk Data</td><td>Guardian Data</td>
+          </tr>
+            <tr style = "display: none">
+              <td>18 Guardian Sentinel Weapon Parts</td><td>Guardian Material</td>
+          </tr>
+          <tr style = "display: none">
+              <td>25 Guardian Technology Component</td><td>Commodity</td>
+          </tr>
+      </tbody>
+  </table>

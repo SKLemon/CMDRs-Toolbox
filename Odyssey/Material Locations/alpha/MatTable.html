@@ -1,0 +1,184 @@
+<style type="text/css">
+  #MatNameInput {
+  background-color: #FFB300;  
+  font-size: 14px; /* Increase font-size */
+  Width: 80%;
+  color: #383838;
+  padding: 5px 5px 5px 5px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 12px; /* Add some space below the input */
+}
+  #TypeInput{
+    background-color: #FFB300;  
+  	font-size: 12px; /* Increase font-size */
+  	Width: 100px;
+  	color: #383838;
+    padding: 5px 0px 5px 0px;
+    border: 1px solid #ddd; /* Add a grey border */
+  	margin-bottom: 12px; /* Add some space below the input */
+  }
+   #SubTypeInput{
+    background-color: #FFB300;  
+  	font-size: 12px; /* Increase font-size */
+  	Width: 150px;
+  	color: #383838;
+    padding: 5px 0px 5px 0px;
+    border: 1px solid #ddd; /* Add a grey border */
+  	margin-bottom: 12px; /* Add some space below the input */
+  }
+#GradeInput{
+    background-color: #FFB300;  
+  	font-size: 12px; /* Increase font-size */
+  	Width: 50px;
+  	color: #383838;
+    padding: 5px 0px 5px 0px;
+    border: 1px solid #ddd; /* Add a grey border */
+  	margin-bottom: 12px; /* Add some space below the input */
+  }
+	table.tableizer-table {
+		font-size: 12px;
+		border: 1px solid #CCC; 
+		font-family: Arial, Helvetica, sans-serif;
+      	background-color: rgba(0,0,0,0.7)
+	} 
+	.tableizer-table td {
+		padding: 4px;
+		margin: 3px;
+		border: 1px solid #CCC;
+    white-space: nowrap;
+	}
+	.tableizer-table th {
+		background-color: #FF9300; 
+		color: #383838;
+		font-weight: bold;
+      	font-size: 14px;
+	}
+</style>
+
+<script>
+function SearchFunction() {
+  // Declare variables
+  var Nameinput, Namefilter, table, tr, NameTd, i, NameValue, TrDisplay;
+  Nameinput = document.getElementById("MatNameInput");
+  Namefilter = Nameinput.value.toUpperCase();
+  
+  table = document.getElementById("MatTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    NameTd = tr[i].getElementsByTagName("td")[0];
+    
+    TrDisplay = "";
+    
+    if (NameTd) {
+      NameValue = NameTd.textContent || NameTd.innerText;
+      if (NameValue.toUpperCase().indexOf(Namefilter) <= -1) {
+       TrDisplay = "none";
+      }
+    }
+    tr[i].style.display = TrDisplay;
+  }
+}
+</script>
+
+<table class="tableizer-table" id="MatTable">
+<thead><tr class="tableizer-firstrow">
+    <th>Material Name</th>
+    <th colspan="2">Security Locker</th>
+    <th colspan="2">Tech Locker</th>
+    <th colspan="2">Medical Locker</th>
+    <th colspan="2">Research Locker</th>
+    <th colspan="2">Industrial Locker</th>
+    <th colspan="2">Mining Locker</th>
+    <th colspan="2">Agricultural Locker</th>
+    <th colspan="2">Locker</th>
+  </tr>
+<tr class="tableizer-firstrow">
+  <th>
+    <input type="text" id="MatNameInput" onkeyup="SearchFunction()" placeholder="Material Name...">
+  </th>
+  <th>Small</th>
+  <th>Large</th>
+  <th>Small</th>
+  <th>Large</th>
+  <th>Small</th>
+  <th>Large</th>
+  <th>Small</th>
+  <th>Large</th>
+  <th>Small</th>
+  <th>Large</th>
+  <th>Small</th>
+  <th>Large</th>
+  <th>Small</th>
+  <th>Large</th>
+  <th>Small</th>
+  <th>Large</th>
+</tr> 
+ </thead>
+
+ <tbody>
+  <tr><td><b>Aerogel</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Buildings Schematic</b></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Carbon Fibre Plating</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Chemical Catalyst</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td></tr>
+  <tr><td><b>Chemical Process Sample</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Chemical Sample</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Chemical Superbase</b></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td bgcolor="White"></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td></tr>
+  <tr><td><b>Circuit Board</b></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td></tr>
+  <tr><td><b>Circuit Switch</b></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td></tr>
+  <tr><td><b>Compact Library</b></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Compression-Liquified Gas</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Deep Mantle Sample</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Degraded Power Regulator</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Electrical Fuse</b></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Electrical Wiring</b></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Electromagnet</b></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Encrypted Memory Chip</b></td><td bgcolor="White"></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td></tr>
+  <tr><td><b>Epinephrine</b></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Epoxy Adhesive</b></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td></tr>
+  <tr><td><b>G-Meds</b></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td bgcolor="White"></td></tr>
+  <tr><td><b>Genetic Repair Meds</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Genetic Sample </b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Graphien</b></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td></tr>
+  <tr><td><b>Health Monitor</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Inertia Canister</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td></tr>
+  <tr><td><b>Infinity</b></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Insight</b></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Insight Data Bank</b></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td></tr>
+  <tr><td><b>Insight Entertainment Suite</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td></tr>
+  <tr><td><b>Ion Bettery</b></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td></tr>
+  <tr><td><b>Ionised Gas</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Memory Chip</b></td><td bgcolor="White"></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td></tr>
+  <tr><td><b>Metal Coil</b></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td bgcolor="White"></td></tr>
+  <tr><td><b>Micro Hydraulics</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td></tr>
+  <tr><td><b>Micro Supercapacitor</b></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Micro Thrusters</b></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td bgcolor="White"></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Micro Transformer</b></td><td></td><td></td><td bgcolor="White"></td><td></td><td bgcolor="White"></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td></tr>
+  <tr><td><b>Microbial Inhibitor</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td></tr>
+  <tr><td><b>Microelectrode</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td></tr>
+  <tr><td><b>Motor</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td bgcolor="White"></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td></tr>
+  <tr><td><b>Nutritional Concentrate</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td></tr>
+  <tr><td><b>Optical Fiber</b></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td></tr>
+  <tr><td><b>Optical Lens</b></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td></tr>
+  <tr><td><b>Oxygenic Bacteria</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td></tr>
+  <tr><td><b>Personal Computer</b></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td></tr>
+  <tr><td><b>Personal Documents</b></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>PH Neutraliser</b></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td></tr>
+  <tr><td><b>Power Regulator</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Pyrolytic Catalyst</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>RDX</b></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td bgcolor="White"></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Scrambler</b></td><td bgcolor="White"></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Ship Schematic</b></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Suit Schematic</b></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Surveillance Equipment</b></td><td bgcolor="White"></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Synthetic Genome</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td></tr>
+  <tr><td><b>Titanium Plating</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Transmitter</b></td><td bgcolor="White"></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td></tr>
+  <tr><td><b>Tungsten Carbide</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr> 
+  <tr><td><b>Universal Translator</b></td><td bgcolor="White"></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Viscoelastic Polymer</b></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td></tr>
+  <tr><td><b>Vehicle Schematic</b></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Weapon Component</b></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td><b>Weapon Schematic</b></td><td></td><td></td><td bgcolor="White"></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td bgcolor="White"></td><td></td><td></td><td></td><td></td></tr>
+</tbody></table>

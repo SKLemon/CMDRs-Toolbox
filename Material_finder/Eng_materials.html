@@ -1,0 +1,284 @@
+<style type="text/css">
+  #MatNameInput {
+  background-color: #FFB300;  
+  font-size: 14px; /* Increase font-size */
+  Width: 80%;
+  color: #383838;
+  padding: 5px 5px 5px 5px; /* Add some padding */
+  border: 1px solid #ddd; /* Add a grey border */
+  margin-bottom: 12px; /* Add some space below the input */
+}
+  #TypeInput{
+    background-color: #FFB300;  
+  	font-size: 12px; /* Increase font-size */
+  	Width: 100px;
+  	color: #383838;
+    padding: 5px 0px 5px 0px;
+    border: 1px solid #ddd; /* Add a grey border */
+  	margin-bottom: 12px; /* Add some space below the input */
+  }
+   #SubTypeInput{
+    background-color: #FFB300;  
+  	font-size: 12px; /* Increase font-size */
+  	Width: 150px;
+  	color: #383838;
+    padding: 5px 0px 5px 0px;
+    border: 1px solid #ddd; /* Add a grey border */
+  	margin-bottom: 12px; /* Add some space below the input */
+  }
+#GradeInput{
+    background-color: #FFB300;  
+  	font-size: 12px; /* Increase font-size */
+  	Width: 50px;
+  	color: #383838;
+    padding: 5px 0px 5px 0px;
+    border: 1px solid #ddd; /* Add a grey border */
+  	margin-bottom: 12px; /* Add some space below the input */
+  }
+	table.tableizer-table {
+		font-size: 12px;
+		border: 1px solid #CCC; 
+		font-family: Arial, Helvetica, sans-serif;
+      	background-color: rgba(0,0,0,0.7)
+	} 
+	.tableizer-table td {
+		padding: 4px;
+		margin: 3px;
+		border: 1px solid #CCC;
+    white-space: nowrap;
+	}
+	.tableizer-table th {
+		background-color: #FF9300; 
+		color: #383838;
+		font-weight: bold;
+      	font-size: 14px;
+	}
+</style>
+
+<script>
+function SearchFunction() {
+  // Declare variables
+  var Nameinput, Namefilter, TypeInput, TypeFilter, SubTypeInput, SubTypeFilter, GradeInput, GradeFilter, table, tr, NameTd, TypeTd, SubTypeTd, GradeTd, i, NameValue, TypeValue, SubTypeValue, GradeValue, TrDisplay;
+  Nameinput = document.getElementById("MatNameInput");
+  Namefilter = Nameinput.value.toUpperCase();
+  
+  TypeInput = document.getElementById("TypeInput");
+  TypeFilter = TypeInput.value.toUpperCase();
+  
+  SubTypeInput = document.getElementById("SubTypeInput");
+  SubTypeFilter = SubTypeInput.value.toUpperCase();
+  
+  GradeInput = document.getElementById("GradeInput");
+  GradeFilter = GradeInput.value.toUpperCase();
+  
+  table = document.getElementById("MatTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    NameTd = tr[i].getElementsByTagName("td")[0];
+    TypeTd = tr[i].getElementsByTagName("td")[1];
+    SubTypeTd = tr[i].getElementsByTagName("td")[2];
+    GradeTd = tr[i].getElementsByTagName("td")[3];
+    
+    TrDisplay = "";
+    
+    if (NameTd) {
+      NameValue = NameTd.textContent || NameTd.innerText;
+      if (NameValue.toUpperCase().indexOf(Namefilter) <= -1) {
+       TrDisplay = "none";
+      }
+    }
+    if (TypeTd) {
+      TypeValue = TypeTd.textContent || TypeTd.innerText;
+      if (TypeValue.toUpperCase() != TypeFilter && TypeFilter != "ALL") {
+       TrDisplay = "none";
+      }
+    }
+    if (SubTypeTd) {
+      SubTypeValue = SubTypeTd.textContent || SubTypeTd.innerText;
+      if (SubTypeValue.toUpperCase() != SubTypeFilter && SubTypeFilter != "ALL") {
+       TrDisplay = "none";
+      }
+    }
+    if (GradeTd) {
+      GradeValue = GradeTd.textContent || GradeTd.innerText;
+      if (GradeValue.toUpperCase() != GradeFilter && GradeFilter != "ALL") {
+       TrDisplay = "none";
+      }
+    }
+    tr[i].style.display = TrDisplay;
+  }
+}
+</script>
+
+<table class="tableizer-table" id="MatTable">
+<thead><tr class="tableizer-firstrow"><th>Name</th><th>Type</th><th>Sub-Type</th><th>Grade</th><th>Where to get</th><th>&nbsp;</th><th>&nbsp;</th></tr>
+<tr class="tableizer-firstrow">
+  <th>
+    <input type="text" id="MatNameInput" onkeyup="SearchFunction()" placeholder="Material Name...">
+  </th><th>
+  <Select id="TypeInput" onchange="SearchFunction()">
+    <option value="All">All</option>
+    <option value="Data">Data</option>
+    <option value="Raw Material">Raw Material</option>
+    <option value="Manufactured">Manufactured</option>
+  </Select>
+  </th><th>
+  <Select id="SubTypeInput" onchange="SearchFunction()">
+    <option value="All">All</option>
+    <option value="Alloys">Alloys</option>
+    <option value="Capacitor">Capacitor</option>
+    <option value="Chemical">Chemical</option>
+    <option value="Composite">Composite</option>
+    <option value="Conductive">Conductive</option>
+    <option value="Crystals">Crystals</option>
+    <option value="Data Archives">Data Archives</option>
+    <option value="Emission Data">Emission Data</option>
+    <option value="Encoded Firmware">Encoded Firmware</option>
+    <option value="Encryption Files">Encryption Files</option>
+    <option value="Guardian Blueprint">Guardian Blueprint</option>
+    <option value="Guardian Obelisk Data">Guardian Obelisk Data</option>
+    <option value="Heat">Heat</option>
+    <option value="Mechanical Components">Mechanical Components</option>
+    <option value="Raw Cat 1">Raw Cat 1</option>
+    <option value="Raw Cat 2">Raw Cat 2</option>
+    <option value="Raw Cat 3">Raw Cat 3</option>
+    <option value="Raw Cat 4">Raw Cat 4</option>
+    <option value="Raw Cat 5">Raw Cat 5</option>
+    <option value="Raw Cat 6">Raw Cat 6</option>
+    <option value="Raw Cat 7">Raw Cat 7</option>
+    <option value="Shield Data">Shield Data</option>
+    <option value="Shielding">Shielding</option>
+    <option value="Thermic">Thermic</option>
+    <option value="Wake Scans">Wake Scans</option>
+  </Select>
+  </th><th>
+  <Select id="GradeInput" onchange="SearchFunction()">
+    <option value="All">All</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">4</option>
+    <option value="5">5</option>
+  </Select>
+  </th><th></th><th></th><th></th></tr> 
+ </thead>
+
+ <tbody>
+ <tr><td><b>Aberrant Shield Pattern Analysis</b></td><td>Data</td><td>Shield Data</td><td>4</td><td>Cross trade from Jameson's crashed ship</td><td><a target="_blank" href="https://youtu.be/CYbR4uYo9Bs">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Abnormal Compact Emissions Data</b></td><td>Data</td><td>Emission Data</td><td>5</td><td>Cross trade from Jameson's crashed ship</td><td><a href="https://youtu.be/CYbR4uYo9Bs">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Adaptive Encryptors Capture</b></td><td>Data</td><td>Encryption Files</td><td>5</td><td>Jameson's crashed ship</td><td><a target="_blank" href="https://youtu.be/CYbR4uYo9Bs">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Anomalous Bulk Scan Data</b></td><td>Data</td><td>Data Archives</td><td>1</td><td>Cross trade from Jameson's crashed ship</td><td><a target="_blank" href="https://youtu.be/CYbR4uYo9Bs">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Anomalous FSD Telemetry</b></td><td>Data</td><td>Wake Scans</td><td>2</td><td>Scanning High wakes</td><td><a target="_blank" href="https://youtu.be/aqBjcjHORDU">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Antimony</b></td><td>Raw material</td><td>Raw Cat 7</td><td>4</td><td>Crystal Shards or Crashed Anaconda</td><td><a target="_blank" href="https://youtu.be/u8SgJz_Qydg">Video Guide</a></td><td><a href="https://youtu.be/mlHVjMNeiUU">Video Guide</a></td></tr>
+ <tr><td><b>Arsenic</b></td><td>Raw material</td><td>Raw Cat 6</td><td>2</td><td>Surface prospecting</td><td><a target="_blank" href="https://youtu.be/0xTRtyUTu3o">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Atypical Disrupted Wake Echoes</b></td><td>Data</td><td>Wake Scans</td><td>1</td><td>Scanning High wakes</td><td><a target="_blank" href="https://youtu.be/aqBjcjHORDU">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Atypical Encryption Archives</b></td><td>Data</td><td>Encryption Files</td><td>4</td><td>Jameson's crashed ship</td><td><a target="_blank" href="https://youtu.be/CYbR4uYo9Bs">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Basic Conductors</b></td><td>Manufactured</td><td>Conductive</td><td>1</td><td>Dav's Hope </td><td><a target="_blank" href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Biotech Conductors</b></td><td>Manufactured</td><td>Conductive</td><td>5</td><td>Only given as missions reward</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+ <tr><td><b>Boron</b></td><td>Raw material</td><td>Raw Cat 7</td><td>3</td><td>Mining</td><td></td><td>&nbsp;</td></tr>
+ <tr><td><b>Cadmium</b></td><td>Raw material</td><td>Raw Cat 3</td><td>3</td><td>Surface prospecting</td><td><a target="_blank" href="https://youtu.be/0xTRtyUTu3o">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Carbon</b></td><td>Raw material</td><td>Raw Cat 1</td><td>1</td><td>Surface prospecting</td><td><a target="_blank" href="https://youtu.be/0xTRtyUTu3o">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Chemical Distillery</b></td><td>Manufactured</td><td>Chemical</td><td>3</td><td>Dav's Hope or Hot Jupitor</td><td><a target="_blank" href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td><a target="_blank" href="https://youtu.be/Vgsy_HABvTA">Video Guide</a></td></tr>
+ <tr><td><b>Chemical Manipulators</b></td><td>Manufactured</td><td>Chemical</td><td>4</td><td>Dav's Hope or Hot Jupitor</td><td><a target="_blank" href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td><a target="_blank" href="https://youtu.be/Vgsy_HABvTA">Video Guide</a></td></tr>
+ <tr><td><b>Chemical Processors</b></td><td>Manufactured</td><td>Chemical</td><td>2</td><td>Dav's Hope or Hot Jupitor</td><td><a target="_blank" href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td><a target="_blank" href="https://youtu.be/Vgsy_HABvTA">Video Guide</a></td></tr>
+ <tr><td><b>Chemical Storage Units</b></td><td>Manufactured</td><td>Chemical</td><td>1</td><td>Dav's Hope</td><td><a target="_blank" href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Chromium</b></td><td>Raw material</td><td>Raw Cat 2</td><td>2</td><td>Surface prospecting</td><td><a target="_blank" href="https://youtu.be/0xTRtyUTu3o">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Classified Scan Databanks</b></td><td>Data</td><td>Data Archives</td><td>3</td><td>Cross trade from Jameson's crashed ship</td><td><a target="_blank" href="https://youtu.be/CYbR4uYo9Bs">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Classified Scan Fragment</b></td><td>Data</td><td>Data Archives</td><td>5</td><td>Cross trade from Jameson's crashed ship</td><td><a target="_blank" href="https://youtu.be/CYbR4uYo9Bs">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Compact Composites</b></td><td>Manufactured</td><td>Composite</td><td>1</td><td>Passenger misssions</td><td><a target="_blank" href="https://youtu.be/VYD5WGt97VA">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Compound Shielding</b></td><td>Manufactured</td><td>Shielding</td><td>4</td><td>Dav's Hope or Hot Jupitor</td><td><a target="_blank" href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td><a target="_blank" href="https://youtu.be/Vgsy_HABvTA">Video Guide</a></td></tr>
+ <tr><td><b>Conductive Ceramics</b></td><td>Manufactured</td><td>Conductive</td><td>3</td><td>Dav's Hope or Hot Jupitor</td><td><a target="_blank" href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td><a target="_blank" href="https://youtu.be/Vgsy_HABvTA">Video Guide</a></td></tr>
+ <tr><td><b>Conductive Components</b></td><td>Manufactured</td><td>Conductive</td><td>2</td><td>Dav's Hope or Hot Jupitor</td><td><a target="_blank" href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td><a target="_blank" href="https://youtu.be/Vgsy_HABvTA">Video Guide</a></td></tr>
+ <tr><td><b>Conductive Polymers</b></td><td>Manufactured</td><td>Conductive</td><td>4</td><td>Dav's Hope or Hot Jupitor</td><td><a target="_blank" href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td><a target="_blank" href="https://youtu.be/Vgsy_HABvTA">Video Guide</a></td></tr>
+ <tr><td><b>Configurable Components</b></td><td>Manufactured</td><td>Mechanical Components</td><td>4</td><td>Dav's Hope or Hot Jupitor</td><td><a target="_blank" href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td><a target="_blank" href="https://youtu.be/Vgsy_HABvTA">Video Guide</a></td></tr>
+ <tr><td><b>Core Dynamics Composites</b></td><td>Manufactured</td><td>Composite</td><td>5</td><td>High-grade emissions in Federal systems</td><td><a target="_blank" href="https://youtu.be/Hb4SNolwlBw">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Cracked Industrial Firmware</b></td><td>Data</td><td>Encoded Firmware</td><td>3</td><td>Dav's Hope or cross trade from Jameson's crashed ship</td><td><a target="_blank" href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td><a target="_blank" href="https://youtu.be/CYbR4uYo9Bs">Video Guide</a></td></tr>
+ <tr><td><b>Crystal Shards</b></td><td>Manufactured</td><td>Crystals</td><td>1</td><td>Dav's Hope </td><td><a target="_blank" href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Datamined Wake Exceptions</b></td><td>Data</td><td>Wake Scans</td><td>5</td><td>Scanning High wakes or cross trade from Jameson's crashed ship</td><td><a target="_blank" href="https://youtu.be/aqBjcjHORDU">Video Guide</a></td><td><a target="_blank" href="https://youtu.be/CYbR4uYo9Bs">Video Guide</a></td></tr>
+ <tr><td><b>Decoded Emission Data</b></td><td>Data</td><td>Emission Data</td><td>4</td><td>Cross trade from Jameson's crashed ship</td><td><a target="_blank" href="https://youtu.be/CYbR4uYo9Bs">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Distorted Shield Cycle Recordings</b></td><td>Data</td><td>Shield Data</td><td>1</td><td>Cross trade from Jameson's crashed ship</td><td><a href="https://youtu.be/CYbR4uYo9Bs">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Divergent Scan Data</b></td><td>Data</td><td>Data Archives</td><td>4</td><td>Cross trade from Jameson's crashed ship</td><td><a target="_blank" href="https://youtu.be/CYbR4uYo9Bs">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Eccentric Hyperspace Trajectories</b></td><td>Data</td><td>Wake Scans</td><td>4</td><td>Scanning High wakes or cross trade from Jameson's crashed ship</td><td><a href="https://youtu.be/aqBjcjHORDU">Video Guide</a></td><td><a target="_blank" href="https://youtu.be/CYbR4uYo9Bs">Video Guide</a></td></tr>
+ <tr><td><b>Electrochemical Arrays</b></td><td>Manufactured</td><td>Capacitor</td><td>3</td><td>Dav's Hope</td><td><a target="_blank" href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Exceptional Scrambled Emission Data</b></td><td>Data</td><td>Emission Data</td><td>1</td><td>Cross trade from Jameson's crashed ship</td><td><a href="https://youtu.be/CYbR4uYo9Bs">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Exquisite Focus Crystals</b></td><td>Manufactured</td><td>Crystals</td><td>5</td><td>Passenger missions</td><td><a href="https://youtu.be/VYD5WGt97VA">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Filament Composites</b></td><td>Manufactured</td><td>Composite</td><td>2</td><td>Drop when killing military and system security ship</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+ <tr><td><b>Flawed Focus Crystals</b></td><td>Manufactured</td><td>Crystals</td><td>2</td><td>Dav's Hope</td><td><a target="_blank" href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Focus Crystals</b></td><td>Manufactured</td><td>Crystals</td><td>3</td><td>Dav's Hope </td><td><a target="_blank" href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Galvanising Alloys</b></td><td>Manufactured</td><td>Alloys</td><td>2</td><td>Dav's Hope</td><td><a target="_blank" href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Germanium</b></td><td>Raw material</td><td>Raw Cat 5</td><td>2</td><td>Surface prospecting</td><td><a target="_blank" href="https://youtu.be/0xTRtyUTu3o">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Grid Resistors</b></td><td>Manufactured</td><td>Capacitor</td><td>1</td><td>Dav's Hope</td><td><a target="_blank" href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Guardian Module Blueprint Segment</b></td><td>Data</td><td>Guardian Blueprint</td><td>4</td><td>Guardian structures</td><td><a target="_blank" href="https://youtu.be/0M_IHxFGj9Y">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Guardian Vessel Blueprint Segment</b></td><td>Data</td><td>Guardian Blueprint</td><td>4</td><td>Guardian structures</td><td><a target="_blank" href="https://youtu.be/0M_IHxFGj9Y">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Guardian Weapon Blueprint Segment</b></td><td>Data</td><td>Guardian Blueprint</td><td>4</td><td>Guardian structures</td><td><a target="_blank" href="https://youtu.be/0M_IHxFGj9Y">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Heat Conduction Wiring</b></td><td>Manufactured</td><td>Heat</td><td>1</td><td>Dav's Hope</td><td><a target="_blank" href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Heat Dispersion Plate</b></td><td>Manufactured</td><td>Heat</td><td>2</td><td>Dav's Hope or Hot Jupitor</td><td><a target="_blank" href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td><a target="_blank" href="https://youtu.be/Vgsy_HABvTA">Video Guide</a></td></tr>
+ <tr><td><b>Heat Exchangers</b></td><td>Manufactured</td><td>Heat</td><td>3</td><td>Dav's Hope or Hot Jupitor</td><td><a href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td><a target="_blank" href="https://youtu.be/Vgsy_HABvTA">Video Guide</a></td></tr>
+ <tr><td><b>Heat Resistant Ceramics</b></td><td>Manufactured</td><td>Thermic</td><td>2</td><td>Drops when killing Transport ships</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+ <tr><td><b>Heat Vanes</b></td><td>Manufactured</td><td>Heat</td><td>4</td><td>Dav's Hope or Hot Jupitor</td><td><a href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td><a target="_blank" href="https://youtu.be/Vgsy_HABvTA">Video Guide</a></td></tr>
+ <tr><td><b>High Density Composites</b></td><td>Manufactured</td><td>Composite</td><td>3</td><td>Dav's Hope </td><td><a target="_blank" href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Hybrid Capacitors</b></td><td>Manufactured</td><td>Capacitor</td><td>2</td><td>Dav's Hope</td><td><a target="_blank" href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Imperial Shielding</b></td><td>Manufactured</td><td>Shielding</td><td>5</td><td>High-grade emissions in empire system</td><td><a target="_blank" href="https://youtu.be/Hb4SNolwlBw">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Improvised Components</b></td><td>Manufactured</td><td>Mechanical Components</td><td>5</td><td>High-grade emissions in systems in civil unrest</td><td><a href="https://youtu.be/Hb4SNolwlBw">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Inconsistent Shield Soak Analysis</b></td><td>Data</td><td>Shield Data</td><td>2</td><td>Cross trade from Jameson's crashed ship</td><td><a href="https://youtu.be/CYbR4uYo9Bs">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Iron</b></td><td>Raw material</td><td>Raw Cat 4</td><td>1</td><td>Surface prospecting</td><td><a target="_blank" href="https://youtu.be/0xTRtyUTu3o">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Irregular Emission Data</b></td><td>Data</td><td>Emission Data</td><td>2</td><td>Cross trade from Jameson's crashed ship</td><td><a target="_blank" href="https://youtu.be/CYbR4uYo9Bs">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Lead</b></td><td>Raw material</td><td>Raw Cat 7</td><td>1</td><td>Mining</td><td></td><td>&nbsp;</td></tr>
+ <tr><td><b>Manganese</b></td><td>Raw material</td><td>Raw Cat 3</td><td>2</td><td>Surface prospecting</td><td><a target="_blank" href="https://youtu.be/0xTRtyUTu3o">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Mechanical Components</b></td><td>Manufactured</td><td>Mechanical Components</td><td>3</td><td>Dav's Hope or Hot Jupitor</td><td><a target="_blank" href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td><a target="_blank" href="https://youtu.be/Vgsy_HABvTA">Video Guide</a></td></tr>
+ <tr><td><b>Mechanical Equipment</b></td><td>Manufactured</td><td>Mechanical Components</td><td>2</td><td>Dav's Hope or Hot Jupitor</td><td><a target="_blank" href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td><a target="_blank" href="https://youtu.be/Vgsy_HABvTA">Video Guide</a></td></tr>
+ <tr><td><b>Mechanical Scrap</b></td><td>Manufactured</td><td>Mechanical Components</td><td>1</td><td>Dav's Hope </td><td><a target="_blank" href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Mercury</b></td><td>Raw material</td><td>Raw Cat 6</td><td>3</td><td>Surface prospecting</td><td><a target="_blank" href="https://youtu.be/0xTRtyUTu3o">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Military Grade Alloys</b></td><td>Manufactured</td><td>Thermic</td><td>5</td><td>High-grade emissions in systems in war or civil war </td><td><a target="_blank" href="https://youtu.be/Hb4SNolwlBw">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Military Supercapacitors</b></td><td>Manufactured</td><td>Capacitor</td><td>5</td><td>High-grade emissions in systems in war or civil war</td><td><a target="_blank" href="https://youtu.be/Hb4SNolwlBw">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Modified Consumer Firmware</b></td><td>Data</td><td>Encoded Firmware</td><td>2</td><td>Dav's Hope or Surface science bases</td><td><a target="_blank" href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td><a href="https://youtu.be/lLtqs4hZKf0">Video Guide</a></td></tr>
+ <tr><td><b>Modified Embedded Firmware</b></td><td>Data</td><td>Encoded Firmware</td><td>5</td><td>Cross trade from Jameson's crashed ship</td><td><a target="_blank" href="https://youtu.be/CYbR4uYo9Bs">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Molybdenum</b></td><td>Raw material</td><td>Raw Cat 2</td><td>3</td><td>Surface prospecting</td><td><a target="_blank" href="https://youtu.be/0xTRtyUTu3o">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Nickel</b></td><td>Raw material</td><td>Raw Cat 5</td><td>1</td><td>Surface prospecting</td><td><a target="_blank" href="https://youtu.be/0xTRtyUTu3o">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Niobium</b></td><td>Raw material</td><td>Raw Cat 1</td><td>3</td><td>Surface prospecting</td><td><a target="_blank" href="https://youtu.be/0xTRtyUTu3o">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Open Symmetric Keys</b></td><td>Data</td><td>Encryption Files</td><td>3</td><td>Cross trade from Jameson's crashed ship</td><td><a target="_blank" href="https://youtu.be/CYbR4uYo9Bs">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Pattern Alpha Obelisk Data</b></td><td>Data</td><td>Guardian Obelisk Data</td><td>3</td><td>Active obelisks at guaridan ruins</td><td><a target="_blank" href="https://youtu.be/p6sC9ZsN__g">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Pattern Beta Obelisk Data</b></td><td>Data</td><td>Guardian Obelisk Data</td><td>2</td><td>Active obelisks at guaridan ruins</td><td><a target="_blank" href="https://youtu.be/p6sC9ZsN__g">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Pattern Delta Obelisk Data</b></td><td>Data</td><td>Guardian Obelisk Data</td><td>4</td><td>Active obelisks at guaridan ruins</td><td><a target="_blank" href="https://youtu.be/p6sC9ZsN__g">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Pattern Epsilon Obelisk Data</b></td><td>Data</td><td>Guardian Obelisk Data</td><td>4</td>	<td>Active obelisks at guaridan ruins</td><td><a target="_blank" href="https://youtu.be/p6sC9ZsN__g">Video Guide</a></td><td>&nbsp;</td></tr>	
+ <tr><td><b>Peculiar Shield Frequency Data</b></td><td>Data</td><td>Shield Data</td><td>5</td><td>Cross trade from Jameson's crashed ship</td><td><a target="_blank" href="https://youtu.be/CYbR4uYo9Bs">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Pharmaceutical Isolators</b></td><td>Manufactured</td><td>Chemical</td><td>5</td><td>High-grade emissions in systems in outbreak (Aliance or independent is best)</td><td><a href="https://youtu.be/Hb4SNolwlBw">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Phase Alloys</b></td><td>Manufactured</td><td>Alloys</td><td>3</td><td>Dav's Hope</td><td><a href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Phosphorus</b></td><td>Raw material</td><td>Raw Cat 2</td><td>1</td><td>Surface prospecting</td><td><a target="_blank" href="https://youtu.be/0xTRtyUTu3o">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Polonium</b></td><td>Raw material</td><td>Raw Cat 6</td><td>4</td><td>Crystal Shards</td><td><a target="_blank" href="https://youtu.be/u8SgJz_Qydg">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Polymer Capacitors</b></td><td>Manufactured</td><td>Capacitor</td><td>4</td><td>Dav's Hope</td><td><a target="_blank" href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Precipitated Alloys</b></td><td>Manufactured</td><td>Thermic</td><td>3</td><td>Drop when killing military and system security ship</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+ <tr><td><b>Proprietary Composites</b></td><td>Manufactured</td><td>Composite</td><td>4</td><td>Encoded emissions in Federal systems in Election</td><td><a target="_blank" href="https://youtu.be/33qNErKMTJc">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Proto Heat Radiators</b></td><td>Manufactured</td><td>Heat</td><td>5</td><td>High-grade emissions in systems in boom</td><td><a target="_blank" href="https://youtu.be/Hb4SNolwlBw">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Proto Light Alloys</b></td><td>Manufactured</td><td>Alloys</td><td>4</td><td>High-grade emissions in systems in boom</td><td><a target="_blank" href="https://youtu.be/Hb4SNolwlBw">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Proto Radiolic Alloys</b></td><td>Manufactured</td><td>Alloys</td><td>5</td><td>High-grade emissions in systems in boom</td><td><a target="_blank" href="https://youtu.be/Hb4SNolwlBw">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Refined Focus Crystals</b></td><td>Manufactured</td><td>Crystals</td><td>4</td><td>Dav's Hope </td><td><a target="_blank" href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Rhenium</b></td><td>Raw material</td><td>Raw Cat 6</td><td>1</td><td>Mining</td><td></td><td>&nbsp;</td></tr>
+ <tr><td><b>Ruthenium</b></td><td>Raw material</td><td>Raw Cat 3</td><td>4</td><td>Crystal Shards or Crashed Anaconda</td><td><a target="_blank" href="https://youtu.be/u8SgJz_Qydg">Video Guide</a></td><td><a href="https://youtu.be/mlHVjMNeiUU">Video Guide</a></td></tr>
+ <tr><td><b>Salvaged Alloys</b></td><td>Manufactured</td><td>Alloys</td><td>1</td><td>Dav's Hope </td><td><a target="_blank" href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Security Firmware Patch</b></td><td>Data</td><td>Encoded Firmware</td><td>4</td><td>Cross trade from Jameson's crashed ship</td><td><a target="_blank" href="https://youtu.be/CYbR4uYo9Bs">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Selenium</b></td><td>Raw material</td><td>Raw Cat 4</td><td>4</td><td>Brain trees or Surface prospecting</td><td><a target="_blank" href="https://youtu.be/Ffqx_j_xRnc">Video Guide</a></td><td><a target="_blank" href="https://youtu.be/0xTRtyUTu3o">Video Guide</a></td></tr>
+ <tr><td><b>Shield Emitters</b></td><td>Manufactured</td><td>Shielding</td><td>2</td><td>Dav's Hope or Hot Jupitor</td><td><a target="_blank" href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td><a target="_blank" href="https://youtu.be/Vgsy_HABvTA">Video Guide</a></td></tr>
+ <tr><td><b>Shielding Sensors</b></td><td>Manufactured</td><td>Shielding</td><td>3</td><td>Dav's Hope or Hot Jupitor</td><td><a target="_blank" href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td><a target="_blank" href="https://youtu.be/Vgsy_HABvTA">Video Guide</a></td></tr>
+ <tr><td><b>Specialised Legacy Firmware</b></td><td>Data</td><td>Encoded Firmware</td><td>1</td><td>Dav's hope or Cross trade from Jameson's crashed ship</td><td><a target="_blank" href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td><a target="_blank" href="https://youtu.be/CYbR4uYo9Bs">Video Guide</a></td></tr>
+ <tr><td><b>Strange Wake Solutions</b></td><td>Data</td><td>Wake Scans</td><td>3</td><td>Scanning High wakes or Cross trade from Jameson's crashed ship</td><td><a target="_blank" href="https://youtu.be/aqBjcjHORDU">Video Guide</a></td><td><a target="_blank" href="https://youtu.be/CYbR4uYo9Bs">Video Guide</a></td></tr>
+ <tr><td><b>Sulphur</b></td><td>Raw material</td><td>Raw Cat 3</td><td>1</td><td>Surface prospecting</td><td><a target="_blank" href="https://youtu.be/0xTRtyUTu3o">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Tagged Encryption Codes</b></td><td>Data</td><td>Encryption Files</td><td>2</td><td>Dav's Hope or Scan mega ships</td><td><a target="_blank" href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td><a href="https://youtu.be/zpt32LAQZxY">Video Guide</a></td></tr>
+ <tr><td><b>Technetium</b></td><td>Raw material</td><td>Raw Cat 2</td><td>4</td><td>Crystal Shards</td><td><a target="_blank" href="https://youtu.be/u8SgJz_Qydg">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Tellurium</b></td><td>Raw material</td><td>Raw Cat 5</td><td>4</td><td>Crystal Shards or Crashed Anaconda</td><td><a target="_blank" href="https://youtu.be/u8SgJz_Qydg">Video Guide</a></td><td><a href="https://youtu.be/mlHVjMNeiUU">Video Guide</a></td></tr>
+ <tr><td><b>Tempered Alloys</b></td><td>Manufactured</td><td>Thermic</td><td>1</td><td>Drops when killing combat ships</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+ <tr><td><b>Thermic Alloys</b></td><td>Manufactured</td><td>Thermic</td><td>4</td><td>Drops when killing combat ships</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+ <tr><td><b>Tin</b></td><td>Raw material</td><td>Raw Cat 4</td><td>3</td><td>Surface prospecting</td><td><a target="_blank" href="https://youtu.be/0xTRtyUTu3o">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Tungsten</b></td><td>Raw material</td><td>Raw Cat 5</td><td>3</td><td>Crashed Anaconda or Surface prospecting</td><td><a target="_blank" href="https://youtu.be/mlHVjMNeiUU">Video Guide</a></td><td><a href="https://youtu.be/0xTRtyUTu3o">Video Guide</a></td></tr>
+ <tr><td><b>Unexpected Emission Data</b></td><td>Data</td><td>Emission Data</td><td>3</td><td>Cross trade from Jameson's crashed ship</td><td><a target="_blank" href="https://youtu.be/CYbR4uYo9Bs">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Unidentified Scan Archives</b></td><td>Data</td><td>Data Archives</td><td>2</td><td>Cross trade from Jameson's crashed ship</td><td><a target="_blank" href="https://youtu.be/CYbR4uYo9Bs">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Untypical Shield Scans</b></td><td>Data</td><td>Shield Data</td><td>3</td><td>Cross trade from Jameson's crashed ship</td><td><a target="_blank" href="https://youtu.be/CYbR4uYo9Bs">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Unusual Encrypted Files</b></td><td>Data</td><td>Encryption Files</td><td>1</td><td>Dav's hope or Cross trade from Jameson's crashed ship</td><td><a target="_blank" href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td><a target="_blank" href="https://youtu.be/CYbR4uYo9Bs">Video Guide</a></td></tr>
+ <tr><td><b>Vanadium</b></td><td>Raw material</td><td>Raw Cat 1</td><td>2</td><td>Surface prospecting</td><td><a target="_blank" href="https://youtu.be/0xTRtyUTu3o">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Worn Shield Emitters</b></td><td>Manufactured</td><td>Shielding</td><td>1</td><td>Dav's Hope</td><td><a target="_blank" href="https://youtu.be/p7KzYG1RUEI">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Yttrium</b></td><td>Raw material</td><td>Raw Cat 1</td><td>4</td><td>Crystal Shards</td><td><a target="_blank" href="https://youtu.be/u8SgJz_Qydg">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Zinc</b></td><td>Raw material</td><td>Raw Cat 4</td><td>2</td><td>Surface prospecting</td><td><a target="_blank" href="https://youtu.be/0xTRtyUTu3o">Video Guide</a></td><td>&nbsp;</td></tr>
+ <tr><td><b>Zirconium</b></td><td>Raw material</td><td>Raw Cat 7</td><td>2</td><td>Crashed Anaconda or Surface prospecting</td><td><a target="_blank" href="https://youtu.be/mlHVjMNeiUU">Video Guide</a></td><td><a href="https://youtu.be/0xTRtyUTu3o">Video Guide</a></td></tr>
+</tbody></table>
